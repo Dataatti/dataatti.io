@@ -24,8 +24,10 @@ a {
 h1 {
   color: #d06f3f;
   font-family: 'Baloo Bhai 2', cursive;
+  text-align: center;
 }
 
 h2 {
   font-size: xx-large;
 }
+
