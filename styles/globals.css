@@ -8,6 +8,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+body {
+  background-color: #f7f4dc;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -20,5 +24,8 @@ a {
 h1 {
   color: #d06f3f;
   font-family: 'Baloo Bhai 2', cursive;
+}
 
+h2 {
+  font-size: xx-large;
 }

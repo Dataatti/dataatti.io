@@ -12,6 +12,7 @@ export default function Home() {
       <main className={styles.main}>
         <img src="dataattilogo.svg" width="100%" />
         <h1>Bringing sweet potatoes to the digital era</h1>
+        <h2 id="stay-tuned">Stay tuned!</h2>
       </main>
     </div>
   )
