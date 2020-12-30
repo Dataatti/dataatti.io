@@ -1,0 +1,76 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+
+import PreviewBox from '@pagerland/themes/src/Landing/components/Preview';
+
+import Theme from '../../index';
+import preview from '../../assets/preview.png';
+
+<Meta title="Themes/Landing/Components/Preview" component={Preview} />
+
+# Preview
+
+Preview is a simple styled img element.
+
+```js
+import Preview from '@pagerland/themes/src/Landing/components/Preview';
+
+<Preview src="avatar path" />;
+```
+
+## Default
+
+<Preview>
+  <Story name="Default">
+    <Theme>
+      <PreviewBox width={350} ImgProps={{ src: preview }} title="Pagerland" />
+    </Theme>
+  </Story>
+</Preview>
+
+## With badge
+
+<Preview>
+  <Story name="With badge">
+    <Theme>
+      <PreviewBox isNew width={350} ImgProps={{ src: preview }} title="Pagerland" />
+    </Theme>
+  </Story>
+</Preview>
+
+## With actions
+
+<Preview>
+  <Story name="With actions">
+    <Theme>
+      <PreviewBox
+        actions={[
+          {
+            label: 'Next.JS',
+            variant: 'primary',
+          },
+          {
+            label: 'Gatsby',
+            variant: 'accent',
+          },
+        ]}
+        width={350}
+        ImgProps={{ src: preview }}
+        title="Pagerland"
+      />
+    </Theme>
+  </Story>
+</Preview>
+
+## Placeholder
+
+<Preview>
+  <Story name="Placeholder">
+    <Theme>
+      <PreviewBox placeholder width={350} title="Pagerland" />
+    </Theme>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={PreviewBox} />

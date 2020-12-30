@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/**/*.js",
+      "use": "@now/node"
+    },
+    {
+      "src": "/pagerland-landing/**/*.*",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "/pagerland-gatsby/**/*.*",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "/pagerland-next/**/*.*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/next/(.*)", "dest": "/pagerland-next/$1" },
+    { "src": "/gatsby/(.*)", "dest": "/pagerland-gatsby/$1" },
+    { "src": "/api/(.*)", "dest": "/api/$1.js" },
+    { "src": "/(.*)", "dest": "/pagerland-landing/$1" }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@pagerland/docs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "7.11.6",
+    "@storybook/addon-actions": "6.0.26",
+    "@storybook/addon-docs": "6.0.26",
+    "@storybook/addon-info": "5.3.21",
+    "@storybook/addon-links": "6.0.26",
+    "@storybook/addons": "6.0.26",
+    "@storybook/react": "6.0.26",
+    "babel-eslint": "10.1.0",
+    "babel-loader": "8.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "regenerator-runtime": "0.13.7",
+    "vue": "2.6.12",
+    "webpack": "4.44.2"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  }
+}

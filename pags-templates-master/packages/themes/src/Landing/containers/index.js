@@ -1,0 +1,9 @@
+export { default as BuyCta } from './BuyCta';
+export { default as Copyright } from './Copyright';
+export { default as Demos } from './Demos';
+export { default as Features } from './Features';
+export { default as Navbar } from './Navbar';
+export { default as Newsletter } from './Newsletter';
+export { default as Reviews } from './Reviews';
+export { default as Support } from './Support';
+export { default as Welcome } from './Welcome';

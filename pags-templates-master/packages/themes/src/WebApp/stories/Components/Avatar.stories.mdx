@@ -1,0 +1,44 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+
+import Theme from '../../index';
+
+import Avatar from '../../components/Avatar';
+
+import avatar from '../../assets/avatar.jpg';
+import avatarx2 from '../../assets/avatar@2x.jpg';
+
+<Meta title="Themes/WebApp/Components/Avatar" component={Avatar} />
+
+# Avatar
+
+Avatar is a simple styled img element.
+
+```js
+import Avatar from '@pagerland/common/src/components/Avatar';
+
+<Avatar src="path to image" />;
+```
+
+### Default
+
+<Preview>
+  <Story name="Default">
+    <Theme>
+      <Avatar src={avatar} srcSet={`${avatar} 1x, ${avatarx2} 2x`} />
+    </Theme>
+  </Story>
+</Preview>
+
+### Fancy
+
+<Preview>
+  <Story name="Fancy">
+    <Theme>
+      <Avatar fancy src={avatar} srcSet={`${avatar} 1x, ${avatarx2} 2x`} />
+    </Theme>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Avatar} />

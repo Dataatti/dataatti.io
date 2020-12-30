@@ -1,0 +1,47 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import Box from '@pagerland/common/src/components/Box';
+import Switch from '@pagerland/common/src/components/Switch';
+
+import Theme from '../../index';
+
+<Meta title="Themes/Corporate/Components/Switch" component={Switch} />
+
+# Switch
+
+Switch is a component to managing boolean state
+
+```js
+import Switch from '@pagerland/common/src/components/Switch';
+
+<Switch checked={false} onToggle={() => {}} />;
+```
+
+## Off
+
+<Preview>
+  <Story name="Off">
+    <Theme>
+      <div>
+        <Switch checked={false} onToggle={() => {}} />
+      </div>
+    </Theme>
+  </Story>
+</Preview>
+
+## On
+
+<Preview>
+  <Story name="On">
+    <Theme>
+      <div>
+        <Switch checked={true} onToggle={() => {}} />
+      </div>
+    </Theme>
+  </Story>
+</Preview>
+
+## Props
+
+It supports also styled-system props.
+
+<Props of={Switch} />

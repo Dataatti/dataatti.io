@@ -1,0 +1,118 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+
+import Card from '@pagerland/common/src/components/Card';
+import Icon from '@pagerland/common/src/components/Icon';
+import Typography from '@pagerland/common/src/components/Typography';
+import Grid from '@pagerland/common/src/components/Grid';
+
+import Comparison from '@pagerland/icons/src/line/Comparison';
+import Heart from '@pagerland/icons/src/line/Heart';
+import Postcard from '@pagerland/icons/src/line/Postcard';
+
+import Theme from '../../index';
+
+<Meta title="Themes/Landing/Components/Card" component={Card} />
+
+# Card
+
+Cards contain content and actions about a single subject.
+
+```js
+import Card from '@pagerland/common/src/components/Card';
+
+<Card>Content of the card</Card>;
+```
+
+<Preview>
+  <Story name="Default">
+    <Theme>
+      <Card>Content of the card</Card>
+    </Theme>
+  </Story>
+</Preview>
+
+### With bubble
+
+<Preview>
+  <Story name="With bubble">
+    <Theme>
+      <Card bubble mb={3}>
+        <Typography variant="quote2">
+          We looked at a few themes before deciding on Modellic. The theme is excellent, well built
+          and even better is the demo data it comes with meaning in no time you have a website up
+          and running, with lots of options and customisation. Most impressed by the support. Heleb
+          is very helpful and quick in replying to your support ticket which is excellent. Also he
+          is constantly looking at ways to make the theme even better. Cannot recommend Coffeecream
+          enough!
+        </Typography>
+      </Card>
+    </Theme>
+  </Story>
+</Preview>
+
+### With shadow stack
+
+<Preview>
+  <Story name="With shadow stack">
+    <Theme>
+      <Card
+        bg="gray.5"
+        m={5}
+        p={5}
+        boxShadow={[
+          [0, 24, 48, 'rgba(24, 154, 180, 0.2)'],
+          [32, -16, 0, 'gray.4'],
+          [-32, -32, 0, 'gray.3'],
+        ]}
+      >
+        <Typography variant="quote2">
+          We looked at a few themes before deciding on Modellic. The theme is excellent, well built
+          and even better is the demo data it comes with meaning in no time you have a website up
+          and running, with lots of options and customisation. Most impressed by the support.
+        </Typography>
+      </Card>
+    </Theme>
+  </Story>
+</Preview>
+
+### Complex usage
+
+<Preview>
+  <Story name="Complex usage">
+    <Theme>
+      <Grid gridTemplateColumns="repeat(3, 1fr)" gridGap="30px">
+        <Card p={30}>
+          <Icon icon={Comparison} fontSize={48} color="primary" display="block" mb={24} />
+          <Typography variant="h4" as="h4">
+            Features subheading
+          </Typography>
+          <Typography color="gray.1">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel vehicula dui.
+          </Typography>
+        </Card>
+        <Card p={30}>
+          <Icon icon={Heart} fontSize={48} color="secondary" display="block" mb={24} />
+          <Typography variant="h4" as="h4">
+            Features subheading
+          </Typography>
+          <Typography color="gray.1">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel vehicula dui.
+          </Typography>
+        </Card>
+        <Card p={30}>
+          <Icon icon={Postcard} fontSize={48} color="accent" display="block" mb={24} />
+          <Typography variant="h4" as="h4">
+            Features subheading
+          </Typography>
+          <Typography color="gray.1">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel vehicula dui.
+          </Typography>
+        </Card>
+      </Grid>
+    </Theme>
+  </Story>
+</Preview>
+
+## Props
+
+This component doesn't have specified prop types. Use default props as in DIV html tag and styled system stuff.

@@ -1,0 +1,30 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+
+import Avatar from '@pagerland/common/src/components/Avatar';
+import ThemeforestLogo from '../../assets/preview.jpg';
+
+import Theme from '../../index';
+
+<Meta title="Themes/Corporate/Components/Avatar" component={Avatar} />
+
+# Avatar
+
+Avatar is a simple styled img element.
+
+```js
+import Avatar from '@pagerland/common/src/components/Avatar';
+
+<Avatar src="avatar path" />;
+```
+
+<Preview>
+  <Story name="Default">
+    <Theme>
+      <Avatar src={ThemeforestLogo} />
+    </Theme>
+  </Story>
+</Preview>
+
+## Props
+
+This component doesn't have specified prop types. Use default props as in SPAN html tag and styled system stuff.

@@ -1,0 +1,13 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <mask id="avatar_dashed_circle_mask" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="80" height="80">
+    <circle cx="40" cy="40" r="40" fill="#EF5939" />
+  </mask>
+  <g mask="url(#avatar_dashed_circle_mask)">
+    <path d="M-16.6306 52.7128L-21.3334 48.219L46.0912 -22.3247L50.794 -17.8289L-16.6306 52.7128Z" fill="#EF5939" />
+    <path d="M-6.21397 62.5985L-10.9167 58.1048L56.5078 -12.4409L61.2106 -7.94313L-6.21397 62.5985Z" fill="#EF5939" />
+    <path d="M4.01345 72.4945L-0.689331 67.9988L66.7353 -2.54492L71.438 1.95085L4.01345 72.4945Z" fill="#EF5939" />
+    <path d="M14.4321 82.3783L9.72729 77.8846L77.1519 7.33887L81.8547 11.8346L14.4321 82.3783Z" fill="#EF5939" />
+    <path d="M24.8466 92.2743L20.1438 87.7806L87.5684 17.2349L92.2692 21.7286L24.8466 92.2743Z" fill="#EF5939" />
+    <path d="M35.074 102.156L30.3712 97.6623L97.7958 27.1187L102.497 31.6124L35.074 102.156Z" fill="#EF5939" />
+  </g>
+</svg>

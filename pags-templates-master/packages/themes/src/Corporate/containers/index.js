@@ -1,0 +1,12 @@
+export { default as Navbar } from './Navbar';
+export { default as Welcome } from './Welcome';
+export { default as Offer } from './Offer';
+export { default as Goals } from './Goals';
+export { default as Mission } from './Mission';
+export { default as Cta } from './Cta';
+export { default as Team } from './Team';
+export { default as Testimonials } from './Testimonials';
+export { default as Pricing } from './Pricing';
+export { default as Copyright } from './Copyright';
+export { default as Contact } from './Contact';
+export { default as Newsletter } from './Newsletter';

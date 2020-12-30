@@ -1,0 +1,76 @@
+{
+  "name": "@pagerland/templates",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "gatsby:dev": "yarn workspace @pagerland/gatsby dev",
+    "gatsby:build": "yarn workspace @pagerland/gatsby build",
+    "gatsby:start": "yarn workspace @pagerland/gatsby serve",
+    "next:dev": "yarn workspace @pagerland/next dev",
+    "next:build": "yarn workspace @pagerland/next build",
+    "next:start": "yarn workspace @pagerland/next start",
+    "next:export": "yarn workspace @pagerland/next next export",
+    "landing:dev": "yarn workspace @pagerland/landing dev",
+    "landing:build": "yarn workspace @pagerland/landing build",
+    "landing:start": "yarn workspace @pagerland/landing serve",
+    "docs": "yarn workspace @pagerland/docs storybook",
+    "pre-commit": "lint-staged"
+  },
+  "author": "Pagerland Team",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "7.11.6",
+    "@storybook/addon-actions": "6.0.26",
+    "@storybook/addon-docs": "6.0.26",
+    "@storybook/addon-info": "5.3.21",
+    "@storybook/addon-links": "6.0.26",
+    "@storybook/addons": "6.0.26",
+    "@storybook/react": "6.0.26",
+    "babel-eslint": "10.1.0",
+    "babel-loader": "8.1.0",
+    "eslint": "7.10.0",
+    "eslint-config-airbnb": "18.2.0",
+    "eslint-config-prettier": "6.12.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsx-a11y": "6.3.1",
+    "eslint-plugin-react": "7.21.3",
+    "eslint-plugin-react-hooks": "4.1.2",
+    "husky": "4.3.0",
+    "lerna": "3.22.1",
+    "lint-staged": "10.4.0",
+    "stylelint": "13.7.2",
+    "stylelint-config-standard": "20.0.0",
+    "stylelint-config-styled-components": "0.1.1",
+    "stylelint-order": "4.1.0",
+    "stylelint-processor-styled-components": "1.10.0",
+    "now": "20.1.1"
+  },
+  "bin": {
+    "pagerland-init": "./packages/cli/index.js"
+  },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint",
+      "stylelint"
+    ],
+    "*.{css,scss}": [
+      "prettier --write",
+      "stylelint"
+    ],
+    "*.json": [
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
+    ],
+    "*.graphql": [
+      "prettier --write"
+    ]
+  }
+}

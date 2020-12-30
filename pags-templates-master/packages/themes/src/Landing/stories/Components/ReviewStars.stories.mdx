@@ -1,0 +1,32 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import ReviewStars from '@pagerland/common/src/components/ReviewStars';
+import Card from '@pagerland/common/src/components/Card';
+import Typography from '@pagerland/common/src/components/Typography';
+
+import Fade from 'react-reveal/Fade';
+
+import Theme from '../../index';
+
+<Meta title="Themes/Landing/Components/ReviewStars" component={ReviewStars} />
+
+# ReviewStars
+
+ReviewStars is a component to rendering collapsed items.
+
+```js
+import ReviewStars from '@pagerland/common/src/components/ReviewStars';
+
+<ReviewStars rate={4} />;
+```
+
+<Preview>
+  <Story name="Default">
+    <Theme>
+      <ReviewStars rate={4} />
+    </Theme>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={ReviewStars} />
