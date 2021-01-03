@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Head from 'next/head';
-import Image from 'next/image';
 
 import Sticky from 'react-sticky-el';
 
@@ -37,7 +36,7 @@ const client = createClient({
   accessToken: "SvsZP-sQaZK1v-v3so-iuvBmrMMGTy82Q0VBPXfMzUQ"
 });
 
-const Logo = props => <Image src="/logo.svg" alt="dataatti logo" width="150px" height="50px" {...props} />;
+const Logo = props => <img src="/logo.svg" alt="dataatti logo" width="150px" height="50px" {...props} />;
 
 const Startup = ({ url, entries }) => {
   return (
