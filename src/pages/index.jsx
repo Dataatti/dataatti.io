@@ -39,6 +39,33 @@ const client = createClient({
 const Logo = props => <img src="/logo.svg" alt="dataatti logo" width="150px" height="50px" {...props} />;
 
 const Startup = ({ url, entries }) => {
+
+  function encode(data) {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
+  }
+
+  const handleSubmit = async (values, actions) => {
+    event.preventDefault()
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "contact",
+          ...values,
+        })
+      })
+
+      await actions.resetForm()
+
+      await actions.setSubmitting(false)
+    } catch (err) {
+      console.warn(err);
+    }
+  }
+
   return (
     <Theme>
       <Head>
@@ -56,7 +83,7 @@ const Startup = ({ url, entries }) => {
       <Services name="services" />
       <About name="about" />
       <Team name="team" />
-      <Contact name="contact" />
+      <Contact name="contact" mailer={{ onSubmit: (e) => handleSubmit(e) }} />
     </Theme>
   )
 };
