@@ -16,10 +16,9 @@ import {
     Contact,
 } from '@pagerland/themes/src/Startup/containers';
 
-import SEO from '../components/SEO';
+import SEO from '../../components/SEO';
 
 import { createClient } from 'contentful';
-import { locale } from 'core-js';
 
 // 52qlh6k2p2ly
 const client = createClient({
@@ -82,7 +81,7 @@ const validationSchema = Yup.object().shape({
     phone: Yup.number().required().positive().integer().max(9999999999),
 });
 
-const StartupFi = ({ entries }) => {
+const Startup = ({ entries }) => {
 
     function encode(data) {
         return Object.keys(data)
@@ -115,7 +114,7 @@ const StartupFi = ({ entries }) => {
                 <link href={theme.typography.googleFont} rel="stylesheet" />
                 <meta name="theme-color" content={theme.colors.primary} />
             </Head>
-            <SEO title="Dataatti.io" />
+            <SEO title="Dataatti" />
 
             <Sticky style={{ zIndex: 999, position: 'relative' }}>
                 <Navbar Logo={Logo} actions={[]} />
@@ -133,18 +132,19 @@ const StartupFi = ({ entries }) => {
 };
 
 
-export async function getStaticProps() {
-
+export async function getStaticProps(context) {
+    const { lang } = context.params;
     // Add contentfull requests here
     try {
         const entries = await client
             .getEntry("5pymhLgyj8UGm4hNxtlKE5", {
-                locale: "fi",
+                locale: lang === "fi" ? "fi" : "en-US",
             })
 
         return {
             props: {
                 entries: entries,
+                lang,
             }
         }
     } catch (err) {
@@ -158,5 +158,12 @@ export async function getStaticProps() {
     }
 }
 
+export async function getStaticPaths() {
+    return {
+        paths: ["/fi", "/en"],
+        fallback: true
+    }
+}
 
-export default StartupFi;
+
+export default Startup;
