@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 
 import Sticky from 'react-sticky-el';
@@ -83,51 +84,19 @@ const validationSchema = Yup.object().shape({
 
 const Startup = ({ entries }) => {
 
-  function encode(data) {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&")
-  }
+  const router = useRouter();
 
-  const handleSubmit = async (values, actions) => {
-    try {
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-          "form-name": "contact",
-          ...values,
-        })
-      })
-
-      await actions.resetForm()
-
-      await actions.setSubmitting(false)
-    } catch (err) {
-      console.warn(err);
+  useEffect(() => {
+    const userLang = navigator.language || navigator.userLanguage;
+    if (userLang === "fi-FI") {
+      router.push("/fi");
+    } else {
+      router.push("/en")
     }
-  }
-
+  }, [])
   return (
-    <Theme>
-      <Head>
-        <link href={theme.typography.googleFont} rel="stylesheet" />
-        <meta name="theme-color" content={theme.colors.primary} />
-      </Head>
-      <SEO title="Dataatti.io" />
-
-      <Sticky style={{ zIndex: 999, position: 'relative' }}>
-        <Navbar Logo={Logo} actions={[]} />
-      </Sticky>
-
-      <Welcome name="" title={entries.fields.headline} text={entries.fields.headerText} />
-      <Services name="services" />
-      <About name="about" />
-      <Team name="team" />
-      <Contact name="contact" mailer={{
-        onSubmit: (e) => handleSubmit(e), fields: fields, cta: "Contact", title: "Contact us", validationSchema: validationSchema
-      }} />
-    </Theme>
+    <>
+    </>
   )
 };
 
