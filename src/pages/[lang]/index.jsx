@@ -121,7 +121,7 @@ const Startup = ({ fields }) => {
             <Sticky style={{ zIndex: 999, position: 'relative' }}>
                 <Navbar Logo={Logo} actions={[]} />
             </Sticky>
-            <Welcome name="" title={fields.headline} text={fields.headerText} />
+            <Welcome name="" title={fields.headline} text={fields.headerText} avatars={[]} />
             <Services name="services" services={[
                 {
                     title: fields.servicesTitleOne,
