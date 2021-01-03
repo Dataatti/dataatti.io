@@ -122,7 +122,7 @@ const Startup = ({ fields }) => {
                 <Navbar Logo={Logo} actions={[]} />
             </Sticky>
             <Welcome name="" title={fields.headline} text={fields.headerText} avatars={[]} />
-            <Services name="services" services={[
+            <Services name="services" title={fields.servicesTitle} services={[
                 {
                     title: fields.servicesTitleOne,
                     text: fields.servicesTextOne,
