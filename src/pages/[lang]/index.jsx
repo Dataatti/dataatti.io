@@ -30,7 +30,7 @@ const client = createClient({
 
 const Logo = props => <img src="/logo.svg" alt="dataatti logo" width="150px" height="50px" {...props} />;
 
-const fields = [
+const mailerFields = [
     {
         name: "fullName",
         type: "string",
@@ -82,6 +82,21 @@ const validationSchema = Yup.object().shape({
 });
 
 const Startup = ({ entries }) => {
+    const { fields } = entries;
+    const services = [
+        {
+            title: fields.servicesTitleOne,
+            text: fields.servicesTextOne,
+        },
+        {
+            title: fields.servicesTitleTwo,
+            text: fields.servicesTextTwo,
+        },
+        {
+            title: fields.servicesTitleThree,
+            text: fields.servicesTextThree,
+        }
+    ]
 
     function encode(data) {
         return Object.keys(data)
@@ -120,12 +135,12 @@ const Startup = ({ entries }) => {
                 <Navbar Logo={Logo} actions={[]} />
             </Sticky>
 
-            <Welcome name="" title={entries.fields.headline} text={entries.fields.headerText} />
-            <Services name="services" />
-            <About name="about" />
-            <Team name="team" />
+            <Welcome name="" title={fields.headline} text={fields.headerText} />
+            <Services name="services" services={services} />
+            <About name="about" title={fields.aboutTitle} text={fields.aboutText} />
+            <Team name="team" title={fields.meetOurTeamTitle} text={fields.meetOurTeamText} />
             <Contact name="contact" mailer={{
-                onSubmit: (e) => handleSubmit(e), fields: fields, cta: "Contact", title: "Contact us", validationSchema: validationSchema
+                onSubmit: (e) => handleSubmit(e), fields: mailerFields, cta: "Contact", title: "Contact us", validationSchema: validationSchema
             }} />
         </Theme>
     )
