@@ -2,31 +2,23 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Head from 'next/head';
+import * as Yup from 'yup';
 
 import Sticky from 'react-sticky-el';
 
 import Theme, { theme } from '@pagerland/themes/src/Startup';
 import {
   Navbar,
-  Copyright,
   Welcome,
   Services,
   About,
   Team,
-  Pricing,
-  Blog,
   Contact,
 } from '@pagerland/themes/src/Startup/containers';
-
-import preview from '@pagerland/themes/src/Startup/assets/preview.jpg';
 
 import SEO from '../components/SEO';
 
 import { createClient } from 'contentful';
-
-import styled from 'styled-components';
-
-import { base } from '@pagerland/common/src/utils';
 
 // 52qlh6k2p2ly
 const client = createClient({
@@ -43,23 +35,53 @@ const fields = [
     name: "fullName",
     type: "string",
     placeholder: "Full-name",
+    label: "Full-name",
     initialValue: ""
   },
   {
     name: "company",
     type: "string",
     placeholder: "Company",
+    label: "Company",
     initialValue: ""
   },
   {
     name: "email",
     type: "email",
-    placeholder: "email",
+    label: "Email",
+    placeholder: "Email",
+    initialValue: ""
+  },
+  {
+    name: "phone",
+    type: "number",
+    label: "Phone",
+    placeholder: "Phone",
+    initialValue: ""
+  },
+  {
+    name: "contact-reason",
+    type: "string",
+    label: "Contact reason",
+    placeholder: "Contact reason",
     initialValue: ""
   }
 ]
 
-const Startup = ({ url, entries }) => {
+const validationSchema = Yup.object().shape({
+  fullName: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  company: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  phone: Yup.number().required().positive().integer().max(9999999999),
+});
+
+const Startup = ({ entries }) => {
 
   function encode(data) {
     return Object.keys(data)
@@ -91,7 +113,6 @@ const Startup = ({ url, entries }) => {
       <Head>
         <link href={theme.typography.googleFont} rel="stylesheet" />
         <meta name="theme-color" content={theme.colors.primary} />
-        <meta property="og:image" content={`${url}${preview}`} />
       </Head>
       <SEO title="Dataatti.io" />
 
@@ -103,7 +124,9 @@ const Startup = ({ url, entries }) => {
       <Services name="services" />
       <About name="about" />
       <Team name="team" />
-      <Contact name="contact" mailer={{ onSubmit: (e) => handleSubmit(e), fields: fields, cta: "Contact", title: "Contact us" }} />
+      <Contact name="contact" mailer={{
+        onSubmit: (e) => handleSubmit(e), fields: fields, cta: "Contact", title: "Contact us", validationSchema: validationSchema
+      }} />
     </Theme>
   )
 };
@@ -138,8 +161,5 @@ Startup.propTypes = {
   url: PropTypes.string,
 };
 
-Startup.defaultProps = {
-  url: 'https://pager.land/next/',
-};
 
 export default Startup;
