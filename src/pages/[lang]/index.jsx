@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 
 import Sticky from 'react-sticky-el';
@@ -81,22 +82,8 @@ const validationSchema = Yup.object().shape({
     phone: Yup.number().required().positive().integer().max(9999999999),
 });
 
-const Startup = ({ entries }) => {
-    const { fields } = entries;
-    const services = [
-        {
-            title: fields.servicesTitleOne,
-            text: fields.servicesTextOne,
-        },
-        {
-            title: fields.servicesTitleTwo,
-            text: fields.servicesTextTwo,
-        },
-        {
-            title: fields.servicesTitleThree,
-            text: fields.servicesTextThree,
-        }
-    ]
+const Startup = ({ fields }) => {
+
 
     function encode(data) {
         return Object.keys(data)
@@ -134,9 +121,21 @@ const Startup = ({ entries }) => {
             <Sticky style={{ zIndex: 999, position: 'relative' }}>
                 <Navbar Logo={Logo} actions={[]} />
             </Sticky>
-
             <Welcome name="" title={fields.headline} text={fields.headerText} />
-            <Services name="services" services={services} />
+            <Services name="services" services={[
+                {
+                    title: fields.servicesTitleOne,
+                    text: fields.servicesTextOne,
+                },
+                {
+                    title: fields.servicesTitleTwo,
+                    text: fields.servicesTextTwo,
+                },
+                {
+                    title: fields.servicesTitleThree,
+                    text: fields.servicesTextThree,
+                }
+            ]} />
             <About name="about" title={fields.aboutTitle} text={fields.aboutText} />
             <Team name="team" title={fields.meetOurTeamTitle} text={fields.meetOurTeamText} />
             <Contact name="contact" mailer={{
@@ -146,6 +145,12 @@ const Startup = ({ entries }) => {
     )
 };
 
+export async function getStaticPaths() {
+    return {
+        paths: ["/fi", "/en"],
+        fallback: false
+    }
+}
 
 export async function getStaticProps(context) {
     const { lang } = context.params;
@@ -158,8 +163,7 @@ export async function getStaticProps(context) {
 
         return {
             props: {
-                entries: entries,
-                lang,
+                fields: entries.fields,
             }
         }
     } catch (err) {
@@ -173,12 +177,6 @@ export async function getStaticProps(context) {
     }
 }
 
-export async function getStaticPaths() {
-    return {
-        paths: ["/fi", "/en"],
-        fallback: true
-    }
-}
 
 
 export default Startup;
