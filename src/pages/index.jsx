@@ -38,6 +38,27 @@ const client = createClient({
 
 const Logo = props => <img src="/logo.svg" alt="dataatti logo" width="150px" height="50px" {...props} />;
 
+const fields = [
+  {
+    name: "fullName",
+    type: "string",
+    placeholder: "Full-name",
+    initialValue: ""
+  },
+  {
+    name: "company",
+    type: "string",
+    placeholder: "Company",
+    initialValue: ""
+  },
+  {
+    name: "email",
+    type: "email",
+    placeholder: "email",
+    initialValue: ""
+  }
+]
+
 const Startup = ({ url, entries }) => {
 
   function encode(data) {
@@ -47,7 +68,6 @@ const Startup = ({ url, entries }) => {
   }
 
   const handleSubmit = async (values, actions) => {
-    event.preventDefault()
     try {
       await fetch("/", {
         method: "POST",
@@ -83,10 +103,11 @@ const Startup = ({ url, entries }) => {
       <Services name="services" />
       <About name="about" />
       <Team name="team" />
-      <Contact name="contact" mailer={{ onSubmit: (e) => handleSubmit(e) }} />
+      <Contact name="contact" mailer={{ onSubmit: (e) => handleSubmit(e), fields: fields, cta: "Contact", title: "Contact us" }} />
     </Theme>
   )
 };
+
 
 export async function getStaticProps() {
 
