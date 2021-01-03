@@ -1,5 +1,5 @@
 import React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 import { ServerStyleSheet } from 'styled-components';
 
@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
           {this.props.styleTags}
           <link rel="icon" href="/icons/icon-48x48.png?v=fe808657b067201fdd8e22e0c3a39714" />
@@ -47,7 +47,7 @@ export default class MyDocument extends Document {
             }}
           />
         </body>
-      </html>
+      </Html>
     );
   }
 }
