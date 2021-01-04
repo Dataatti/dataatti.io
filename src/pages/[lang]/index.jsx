@@ -33,59 +33,62 @@ const client = createClient({
 
 const Logo = props => <img src="/logo.svg" alt="dataatti logo" width="150px" height="50px" {...props} />;
 
-const mailerFields = [
-  {
-    name: "fullName",
-    type: "string",
-    placeholder: "Full-name",
-    label: "Full-name",
-    initialValue: ""
-  },
-  {
-    name: "company",
-    type: "string",
-    placeholder: "Company",
-    label: "Company",
-    initialValue: ""
-  },
-  {
-    name: "email",
-    type: "email",
-    label: "Email",
-    placeholder: "Email",
-    initialValue: ""
-  },
-  {
-    name: "phone",
-    type: "number",
-    label: "Phone",
-    placeholder: "Phone",
-    initialValue: ""
-  },
-  {
-    name: "contact-reason",
-    type: "string",
-    label: "Contact reason",
-    placeholder: "Contact reason",
-    initialValue: ""
-  }
-]
-
-const validationSchema = Yup.object().shape({
-  fullName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  company: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
-  phone: Yup.number().required().positive().integer().max(9999999999),
-});
-
 const Startup = ({ fields }) => {
 
+  // validation for the contact form
+  const validationSchema = Yup.object().shape({
+    fullName: Yup.string()
+      .min(2, fields.contactFormValidationTooShort)
+      .max(256, fields.contactFormValidationTooLong)
+      .required(fields.contactFormValidationRequired),
+    company: Yup.string()
+      .min(2, fields.contactFormValidationTooShort)
+      .max(256, fields.contactFormValidationTooLong)
+      .required(fields.contactFormValidationRequired),
+    email: Yup.string().email(fields.contactFormValidationInvalidEmail).required(fields.contactFormValidationRequired),
+    phone: Yup.string(),
+    contactReason: Yup.string().required(fields.contactFormValidationRequired)
+  });
+
+  // fields for the contact form
+  const mailerFields = [
+    {
+      name: "fullName",
+      type: "string",
+      placeholder: fields.contactFormNameField,
+      label: fields.contactFormNameField,
+      initialValue: "",
+    },
+    {
+      name: "company",
+      type: "string",
+      placeholder: fields.contactFormCompanyField,
+      label: fields.contactFormCompanyField,
+      initialValue: ""
+    },
+    {
+      name: "email",
+      type: "email",
+      label: fields.contactFormEmailField,
+      placeholder: fields.contactFormEmailField,
+      initialValue: ""
+    },
+    {
+      name: "phone",
+      type: "string",
+      label: fields.contactFormPhoneField,
+      placeholder: fields.contactFormPhoneField,
+      initialValue: ""
+    },
+    {
+      name: "contactReason",
+      type: "string",
+      label: fields.contactFormContactReasonField,
+      placeholder: fields.contactFormContactReasonField,
+      initialValue: "",
+      multiline: true
+    }
+  ]
 
   function encode(data) {
     return Object.keys(data)
@@ -155,7 +158,7 @@ const Startup = ({ fields }) => {
         variant: 'secondary',
       }} />
       <Contact name="contact" mailer={{
-        onSubmit: (e) => handleSubmit(e), fields: mailerFields, cta: "Contact", title: "Contact us", validationSchema: validationSchema
+        onSubmit: (e) => handleSubmit(e), fields: mailerFields, cta: fields.contactFormSubmitButton, title: fields.contactFormTitle, validationSchema: validationSchema
       }} />
     </Theme>
   )
