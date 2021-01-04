@@ -207,6 +207,12 @@ Navbar.defaultProps = {
     ...smoothLinkProps,
   },
   ActionsWrapperProps: {
+    display: 'flex',
+    flexDirection: {
+      _: 'column',
+      lg: 'row',
+    },
+    alignItems: 'center',
     mt: {
       _: 2,
       lg: 0,
@@ -219,6 +225,14 @@ Navbar.defaultProps = {
   ActionProps: {
     variant: 'accent',
     as: 'a',
+    mx: {
+      _: 0,
+      lg: 1,
+    },
+    my: {
+      _: 2,
+      lg: 0,
+    },
   },
   ToggleButtonProps: {
     buttonWidth: 24,

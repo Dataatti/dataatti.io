@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
 import * as Yup from 'yup';
 import { Link } from 'react-scroll';
 
@@ -33,7 +32,7 @@ const client = createClient({
 
 const Logo = props => <img src="/logo.svg" alt="dataatti logo" width="150px" height="50px" {...props} />;
 
-const Startup = ({ fields }) => {
+const Startup = ({ fields, langToggle }) => {
 
   // validation for the contact form
   const validationSchema = Yup.object().shape({
@@ -124,7 +123,36 @@ const Startup = ({ fields }) => {
       <SEO title="Dataatti" />
 
       <Sticky style={{ zIndex: 999, position: 'relative' }}>
-        <Navbar Logo={Logo} actions={[]} />
+        <Navbar Logo={Logo}
+          links={[
+            {
+              to: '',
+              label: fields.navbarHome,
+            },
+            {
+              to: 'services',
+              label: fields.navbarServices,
+            },
+            {
+              to: 'about',
+              label: fields.navbarAbout,
+            },
+            {
+              to: 'team',
+              label: fields.navbarTeam,
+            },
+          ]}
+          actions={[
+            langToggle,
+            {
+              to: 'contact',
+              label: fields.navbarContact,
+              as: Link,
+              ...smoothLinkProps,
+              variant: 'accent'
+            },
+          ]}
+        />
       </Sticky>
       <Welcome name="" title={fields.headline} text={fields.headerText} avatars={[]} actions={[
         {
@@ -175,14 +203,38 @@ export async function getStaticProps(context) {
   const { lang } = context.params;
   // Add contentfull requests here
   try {
-    const entries = await client
-      .getEntry("5pymhLgyj8UGm4hNxtlKE5", {
-        locale: lang === "fi" ? "fi" : "en-US",
-      })
+    let entries
+    let langToggle
+    if (lang === "fi") {
+      entries = await client
+        .getEntry("5pymhLgyj8UGm4hNxtlKE5", {
+          locale: "fi",
+        })
+      langToggle = {
+        label: 'In English',
+        as: 'a',
+        variant: 'default',
+        size: 'small',
+        href: '/en'
+      }
+    } else {
+      entries = await client
+        .getEntry("5pymhLgyj8UGm4hNxtlKE5", {
+          locale: "en-US",
+        })
+      langToggle = {
+        label: 'Suomeksi',
+        as: 'a',
+        variant: 'default',
+        size: 'small',
+        href: '/fi'
+      }
+    }
 
     return {
       props: {
         fields: entries.fields,
+        langToggle
       }
     }
   } catch (err) {

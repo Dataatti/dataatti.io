@@ -28,7 +28,6 @@ import Avatar82x from './assets/avatars/avatar-8@2x.jpg';
 
 
 export default {
-  title: 'Startup',
   navbar: {
     links: [
       {
@@ -46,14 +45,6 @@ export default {
       {
         to: 'team',
         label: 'Team',
-      },
-      {
-        to: 'pricing',
-        label: 'Pricing',
-      },
-      {
-        to: 'blog',
-        label: 'News',
       },
       {
         to: 'contact',
