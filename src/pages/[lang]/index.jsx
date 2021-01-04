@@ -157,7 +157,7 @@ const Startup = ({ fields }) => {
         ...smoothLinkProps,
         variant: 'secondary',
       }} />
-      <Contact name="contact" mailer={{
+      <Contact name="contact" title={fields.contactTitle} mailer={{
         onSubmit: (e) => handleSubmit(e), fields: mailerFields, cta: fields.contactFormSubmitButton, title: fields.contactFormTitle, validationSchema: validationSchema
       }} />
     </Theme>

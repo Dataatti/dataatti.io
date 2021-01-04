@@ -444,39 +444,29 @@ export default {
   contact: {
     title: 'Contact us',
     sections: [
-      {
-        icon: MapMarker,
-        text: textToMultiline`5263 Sunset St undefined Salinas,\nWest Virginia 25420\nUnited States`,
-      },
+      /*  {
+         icon: MapMarker,
+         text: textToMultiline`5263 Sunset St undefined Salinas,\nWest Virginia 25420\nUnited States`,
+       }, */
       {
         icon: MobilePhone,
-        text: '(219) 555-0114',
+        text: '+358 40 521 6860',
       },
       {
         icon: PaperAirplane,
-        text: 'nathan.roberts@example.com',
+        text: 'hello@dataatti.com',
       },
     ],
     socialLinks: [
       {
-        icon: FacebookF,
-        href: 'https://mypags.app',
-        title: 'Facebook',
-      },
-      {
         icon: Instagram,
-        href: 'https://mypags.app',
+        href: 'https://www.instagram.com/dataatti/',
         title: 'Instagram',
       },
       {
-        icon: Twitter,
-        href: 'https://mypags.app',
-        title: 'Twitter',
-      },
-      {
         icon: Linkedin,
-        href: 'https://mypags.app',
-        title: 'Linkedin',
+        href: 'https://www.linkedin.com/company/dataatti/',
+        title: 'LinkedIn',
       },
     ],
     mailer: {
