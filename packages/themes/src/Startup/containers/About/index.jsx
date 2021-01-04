@@ -41,9 +41,9 @@ const About = ({
         <Fade bottom cascade duration={600}>
           <Typography {...TitleProps}>{title}</Typography>
           <Typography {...TextProps}>{text}</Typography>
-          <Button {...CtaProps} {...cta}>
+          {/* <Button {...CtaProps} {...cta}>
             {cta.label}
-          </Button>
+          </Button> */}
         </Fade>
       </Box>
     </Container>

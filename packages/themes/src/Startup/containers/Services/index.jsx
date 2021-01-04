@@ -48,11 +48,11 @@ const Services = ({
           </Fade>
         ))}
       </Grid>
-      <Fade top cascade duration={600}>
+      {/* <Fade top cascade duration={600}>
         <Button {...CtaProps} {...cta}>
           {cta.label}
         </Button>
-      </Fade>
+      </Fade> */}
     </Container>
   </Box>
 );
