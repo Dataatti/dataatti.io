@@ -32,7 +32,7 @@ const client = createClient({
 
 const Logo = props => <img src="/logo.svg" alt="dataatti logo" width="150px" height="50px" {...props} />;
 
-const Startup = ({ fields, langToggle }) => {
+const Startup = ({ fields, langToggle, teamMembers }) => {
 
   // validation for the contact form
   const validationSchema = Yup.object().shape({
@@ -184,7 +184,35 @@ const Startup = ({ fields, langToggle }) => {
         as: Link,
         ...smoothLinkProps,
         variant: 'secondary',
-      }} />
+      }}
+        people={teamMembers.map(member => {
+          return ({
+            avatar: {
+              src: member.fields.image.fields.file.url,
+            },
+            name: member.fields.name,
+            position: member.fields.position,
+            social: {
+              linkedin: member.fields.linkedIn,
+            }
+          })
+        })}
+        GridProps={{
+          mb: {
+            _: 4,
+            md: 5,
+          },
+          gridTemplateColumns: {
+            _: 'repeat(2, 1fr)',
+            md: 'repeat(3, 1fr)',
+            lg: 'repeat(3, 1fr)',
+          },
+          gridColumnGap: '32px',
+          gridRowGap: {
+            _: '32px',
+            md: '64px',
+          },
+        }} />
       <Contact name="contact" title={fields.contactTitle} mailer={{
         onSubmit: (e) => handleSubmit(e), fields: mailerFields, cta: fields.contactFormSubmitButton, title: fields.contactFormTitle, validationSchema: validationSchema
       }} />
@@ -203,6 +231,7 @@ export async function getStaticProps(context) {
   const { lang } = context.params;
   // Add contentfull requests here
   try {
+    // get page content
     let entries
     let langToggle
     if (lang === "fi") {
@@ -231,10 +260,15 @@ export async function getStaticProps(context) {
       }
     }
 
+    // get team member data
+    const teamMembers = await client
+      .getEntries({ content_type: 'teamMember' })
+
     return {
       props: {
         fields: entries.fields,
-        langToggle
+        langToggle,
+        teamMembers: teamMembers.items
       }
     }
   } catch (err) {
