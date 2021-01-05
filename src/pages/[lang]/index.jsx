@@ -6,6 +6,8 @@ import { Link } from 'react-scroll';
 
 import MobilePhone from '@pagerland/icons/src/monochrome/MobilePhone';
 import PaperAirplane from '@pagerland/icons/src/monochrome/PaperAirplane';
+import Building from '@pagerland/icons/src/line/Building';
+import DocumentInfo from '@pagerland/icons/src/line/DocumentInfo';
 
 import Instagram from '@pagerland/icons/src/monochrome/Instagram';
 import Linkedin from '@pagerland/icons/src/monochrome/Linkedin';
@@ -228,6 +230,14 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
           {
             icon: PaperAirplane,
             text: 'hello@dataatti.com',
+          },
+          {
+            icon: DocumentInfo,
+            text: '3172458-9'
+          },
+          {
+            icon: Building,
+            text: 'Dataatti Oy',
           },
         ]}
         socialLinks={[
