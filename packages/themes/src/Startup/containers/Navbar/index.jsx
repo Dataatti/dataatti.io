@@ -12,7 +12,7 @@ import NavbarWrapper from '@pagerland/common/src/components/Navbar';
 
 import LanderPagerLogo from '../../components/Logo';
 
-import data from '../../data';
+import data from '../../docs.data';
 import { LogoWrapper, MobileWrapper, NavbarLink, ToggleButton, Wrapper } from './styled.components';
 import { zIndex } from '../../styles';
 

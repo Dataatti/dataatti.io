@@ -13,7 +13,7 @@ import Card from '@pagerland/common/src/components/Card';
 import { Form, Formik } from 'formik';
 import Input from '@pagerland/common/src/components/Formik/Input';
 import Button from '@pagerland/common/src/components/Button';
-import data from '../../data';
+import data from '../../docs.data';
 import Background from './Background';
 import Squares from './Squares';
 

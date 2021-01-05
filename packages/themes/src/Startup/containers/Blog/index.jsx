@@ -10,7 +10,7 @@ import Grid from '@pagerland/common/src/components/Grid';
 import Button from '@pagerland/common/src/components/Button';
 import Article from '../../components/Article';
 
-import data from '../../data';
+import data from '../../docs.data';
 
 const Blog = ({
   name,

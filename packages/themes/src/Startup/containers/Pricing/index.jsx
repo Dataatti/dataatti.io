@@ -15,7 +15,7 @@ import Icon from '@pagerland/common/src/components/Icon';
 import Plus from '@pagerland/icons/src/monochrome/Plus';
 
 import Img from '@pagerland/common/src/components/Img';
-import data from '../../data';
+import data from '../../docs.data';
 import { CardWrapper } from './styled.components';
 
 import Background from './Background';

@@ -7,7 +7,7 @@ import Typography from '@pagerland/common/src/components/Typography';
 
 import List from '@pagerland/common/src/components/List';
 
-import data from '../../data';
+import data from '../../docs.data';
 
 const Copyright = ({
   copyright,

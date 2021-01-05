@@ -14,7 +14,7 @@ import Twitter from '@pagerland/icons/src/monochrome/Twitter';
 import Skype from '@pagerland/icons/src/monochrome/Skype';
 
 import Link from '@pagerland/common/src/components/Link';
-import data from '../../data';
+import data from '../../docs.data';
 import Avatar from '../../components/Avatar';
 
 const Team = ({

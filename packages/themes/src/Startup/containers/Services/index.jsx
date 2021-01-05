@@ -9,7 +9,7 @@ import Grid from '@pagerland/common/src/components/Grid';
 
 import Img from '@pagerland/common/src/components/Img';
 import Button from '@pagerland/common/src/components/Button';
-import data from '../../data';
+import data from '../../docs.data';
 
 const Services = ({
   name,

@@ -7,7 +7,7 @@ import Typography from '@pagerland/common/src/components/Typography';
 import Container from '@pagerland/common/src/components/Container';
 import Button from '@pagerland/common/src/components/Button';
 
-import data from '../../data';
+import data from '../../docs.data';
 import { RoundedImage } from './styled.components';
 
 import Background from './Background';

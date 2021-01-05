@@ -7,7 +7,7 @@ import Typography from '@pagerland/common/src/components/Typography';
 import Button from '@pagerland/common/src/components/Button';
 
 import Avatar from '../../components/Avatar';
-import data from '../../data';
+import data from '../../docs.data';
 
 import { ContainerWithBackground, RoundedImage } from './styled.components';
 import Squares from './Squares';
