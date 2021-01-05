@@ -204,6 +204,7 @@ Navbar.defaultProps = {
     },
     as: Link,
     activeColor: 'secondary',
+    hoverColor: 'secondary',
     ...smoothLinkProps,
   },
   ActionsWrapperProps: {
