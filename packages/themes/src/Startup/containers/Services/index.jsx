@@ -44,8 +44,8 @@ const Services = ({
             <Box {...ServiceItemProps}>
               <Img src={service.image} {...ServiceIconProps} />
               {service.icon && (
-                <Badge margin="20px auto" backgroundColor={['primary', 'accent', 'secondary'][key % 3]}>
-                  <Icon icon={service.icon} IconProps={{ fontSize: '36px' }} />
+                <Badge margin="20px auto" height="100px" width="100px" backgroundColor={['primary', 'accent', 'secondary'][key % 3]}>
+                  <Icon icon={service.icon} IconProps={{ fontSize: '72px' }} />
                 </Badge>
               )}
               <Typography {...ServiceTitleProps}>{service.title}</Typography>
