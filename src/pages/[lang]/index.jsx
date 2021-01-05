@@ -8,6 +8,9 @@ import MobilePhone from '@pagerland/icons/src/monochrome/MobilePhone';
 import PaperAirplane from '@pagerland/icons/src/monochrome/PaperAirplane';
 import Building from '@pagerland/icons/src/line/Building';
 import DocumentInfo from '@pagerland/icons/src/line/DocumentInfo';
+import Desktop from '@pagerland/icons/src/line/Desktop';
+import User from '@pagerland/icons/src/line/User';
+import MobileAndroid from '@pagerland/icons/src/line/MobileAndroid'
 
 import Instagram from '@pagerland/icons/src/monochrome/Instagram';
 import Linkedin from '@pagerland/icons/src/monochrome/Linkedin';
@@ -173,14 +176,17 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
       ]} />
       <Services name="services" title={fields.servicesTitle} services={[
         {
+          icon: Desktop,
           title: fields.servicesTitleOne,
           text: fields.servicesTextOne,
         },
         {
+          icon: User,
           title: fields.servicesTitleTwo,
           text: fields.servicesTextTwo,
         },
         {
+          icon: MobileAndroid,
           title: fields.servicesTitleThree,
           text: fields.servicesTextThree,
         }
