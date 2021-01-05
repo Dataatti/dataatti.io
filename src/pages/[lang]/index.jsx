@@ -20,6 +20,7 @@ import {
   About,
   Team,
   Contact,
+  Copyright
 } from '@pagerland/themes/src/Startup/containers';
 import { smoothLinkProps } from '@pagerland/common/src/utils';
 
@@ -242,6 +243,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
           },
         ]}
       />
+      <Copyright copyright={"© Dataatti Oy 2020"} links={[]} />
     </Theme>
   )
 };
