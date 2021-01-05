@@ -6,21 +6,21 @@ export const space = [0, 4, 8, 16, 32, 64];
 export const colors = {
   primary: '#0C4B5B',
   secondary: '#51B3A7',
-  accent: '#F24F28',
+  accent: '#D06F3F',
   black: '#252728',
   error: '#EB5757',
   success: '#27AE60',
   shades: {
     primary: ['#0C4B5B', '#126F87', '#1895B4', '#1EBAE1'],
     secondary: ['#51B3A7', '#75C3B9', '#98D2CB', '#BCE2DD'],
-    accent: ['#F24F28', '#F57557', '#F89D87', '#FBC4B7'],
+    accent: ['#D06F3F', '#B25121', '#EE8D5D', '#F89767'],
   },
   gray: ['#3D4042', '#6E7477', '#A2A6A9', '#BDC0C2', '#D7D9DA', '#E4E6E7', '#F7F7F8', '#FFFFFF'],
 };
 
 export const typography = {
-  googleFont: 'https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap',
-  fontFamily: "'Sen', sans-serif",
+  googleFont: 'https://fonts.googleapis.com/css2?family=Hind:wght@400;700&display=swap',
+  fontFamily: "'Hind', sans-serif",
   color: colors.gray[1],
   sizes: {
     base: 16,
