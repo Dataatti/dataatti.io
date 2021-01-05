@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build && next export",
-    "start": "next start"
+    "start": "next start",
+    "docs": "yarn workspace @pagerland/docs storybook"
   },
   "dependencies": {
     "contentful": "^8.1.6",
@@ -25,7 +26,13 @@
     "babel-plugin-styled-components": "1.11.1",
     "next-images": "1.6.0",
     "next-transpile-modules": "4.1.0",
-    "webpack": "4.44.2"
+    "webpack": "4.44.2",
+    "@storybook/addon-actions": "6.0.26",
+    "@storybook/addon-docs": "6.0.26",
+    "@storybook/addon-info": "5.3.21",
+    "@storybook/addon-links": "6.0.26",
+    "@storybook/addons": "6.0.26",
+    "@storybook/react": "6.0.26"
   },
   "workspaces": [
     "packages/*"
