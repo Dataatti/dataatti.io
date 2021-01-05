@@ -1,9 +1,14 @@
 import React from 'react';
 
 import Head from 'next/head';
-import { useRouter } from 'next/router'
 import * as Yup from 'yup';
 import { Link } from 'react-scroll';
+
+import MobilePhone from '@pagerland/icons/src/monochrome/MobilePhone';
+import PaperAirplane from '@pagerland/icons/src/monochrome/PaperAirplane';
+
+import Instagram from '@pagerland/icons/src/monochrome/Instagram';
+import Linkedin from '@pagerland/icons/src/monochrome/Linkedin';
 
 import Sticky from 'react-sticky-el';
 
@@ -209,7 +214,34 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
         }} />
       <Contact name="contact" title={fields.contactTitle} mailer={{
         onSubmit: (e) => handleSubmit(e), fields: mailerFields, cta: fields.contactFormSubmitButton, title: fields.contactFormTitle, validationSchema: validationSchema
-      }} />
+      }}
+        sections={[
+          /*  {
+             icon: MapMarker,
+             text: textToMultiline`5263 Sunset St undefined Salinas,\nWest Virginia 25420\nUnited States`,
+           }, */
+          {
+            icon: MobilePhone,
+            text: '+358 40 521 6860',
+          },
+          {
+            icon: PaperAirplane,
+            text: 'hello@dataatti.com',
+          },
+        ]}
+        socialLinks={[
+          {
+            icon: Instagram,
+            href: 'https://www.instagram.com/dataatti/',
+            title: 'Instagram',
+          },
+          {
+            icon: Linkedin,
+            href: 'https://www.linkedin.com/company/dataatti/',
+            title: 'LinkedIn',
+          },
+        ]}
+      />
     </Theme>
   )
 };
