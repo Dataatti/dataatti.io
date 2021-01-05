@@ -197,6 +197,8 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
           return ({
             avatar: {
               src: member.fields.image.fields.file.url,
+              width: '120px',
+              height: '120px'
             },
             name: member.fields.name,
             position: member.fields.position,
