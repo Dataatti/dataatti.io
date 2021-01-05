@@ -8,8 +8,9 @@ import Container from '@pagerland/common/src/components/Container';
 import Grid from '@pagerland/common/src/components/Grid';
 
 import Img from '@pagerland/common/src/components/Img';
-import Button from '@pagerland/common/src/components/Button';
+import Badge from '@pagerland/common/src/components/Badge';
 import data from '../../docs.data';
+import Icon from '@pagerland/common/src/components/Icon';
 
 const Services = ({
   name,
@@ -41,7 +42,12 @@ const Services = ({
         {services.map((service, key) => (
           <Fade bottom cascade duration={600} delay={key * 100} key={key}>
             <Box {...ServiceItemProps}>
-              <Img src={service.icon} {...ServiceIconProps} />
+              <Img src={service.image} {...ServiceIconProps} />
+              {service.icon && (
+                <Badge margin="20px auto" backgroundColor={['primary', 'accent', 'secondary'][key % 3]}>
+                  <Icon icon={service.icon} IconProps={{ fontSize: '36px' }} />
+                </Badge>
+              )}
               <Typography {...ServiceTitleProps}>{service.title}</Typography>
               <Typography {...ServiceTextProps}>{service.text}</Typography>
             </Box>
@@ -130,6 +136,7 @@ Services.propTypes = {
    */
   services: PropTypes.arrayOf(
     PropTypes.shape({
+      image: PropTypes.string,
       icon: PropTypes.string,
       title: PropTypes.node,
       text: PropTypes.node,

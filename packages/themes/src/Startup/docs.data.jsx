@@ -139,19 +139,19 @@ export default {
     title: 'Our services',
     services: [
       {
-        icon: Estimations,
+        image: Estimations,
         title: 'Estimation',
         text:
           'Vivamus eleifend nec purus eget rutrum. Cras urna lacus, consectetur ut erat sed, commodo gravida mauris. Sed eu vulputate sapien. Nulla consectetur efficitur congue.',
       },
       {
-        icon: Ecommerce,
+        image: Ecommerce,
         title: 'Ecommerce',
         text:
           'Vivamus eleifend nec purus eget rutrum. Cras urna lacus, consectetur ut erat sed, commodo gravida mauris. Sed eu vulputate sapien. Nulla consectetur efficitur congue.',
       },
       {
-        icon: Support,
+        image: Support,
         title: 'Support',
         text:
           'Vivamus eleifend nec purus eget rutrum. Cras urna lacus, consectetur ut erat sed, commodo gravida mauris. Sed eu vulputate sapien. Nulla consectetur efficitur congue.',
