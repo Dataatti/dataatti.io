@@ -56,29 +56,7 @@ export default {
     img: {
       src: Welcome,
       srcSet: `${Welcome} 1x, ${Welcome2x} 2x`,
-    },
-    avatars: [
-      {
-        src: Avatar1,
-        srcSet: `${Avatar1} 1x, ${Avatar12x} 2x`,
-      },
-      {
-        src: Avatar2,
-        srcSet: `${Avatar2} 1x, ${Avatar22x} 2x`,
-      },
-      {
-        src: Avatar3,
-        srcSet: `${Avatar3} 1x, ${Avatar32x} 2x`,
-      },
-      {
-        src: Avatar4,
-        srcSet: `${Avatar4} 1x, ${Avatar42x} 2x`,
-      },
-      {
-        src: Avatar5,
-        srcSet: `${Avatar5} 1x, ${Avatar52x} 2x`,
-      },
-    ],
+    }
   },
   about: {
     img: {
@@ -86,115 +64,6 @@ export default {
       srcSet: `${AboutUs} 1x, ${AboutUs2x} 2x`,
     },
   },
-  team: {
-    people: [
-      {
-        avatar: {
-          src: Avatar1,
-          srcSet: `${Avatar1} 1x, ${Avatar12x} 2x`,
-        },
-        name: 'Timothy Wilson',
-        position: 'Co-Founder, CEO',
-        social: {
-          linkedin: '#',
-          twitter: '#',
-          skype: '#',
-        },
-      },
-      {
-        avatar: {
-          src: Avatar2,
-          srcSet: `${Avatar2} 1x, ${Avatar22x} 2x`,
-        },
-        name: 'Bernard Nguyen',
-        position: 'Co-Founder, CEO',
-        social: {
-          linkedin: '#',
-          twitter: '#',
-          skype: '#',
-        },
-      },
-      {
-        avatar: {
-          src: Avatar3,
-          srcSet: `${Avatar3} 1x, ${Avatar32x} 2x`,
-        },
-        name: 'Bessie Richards',
-        position: 'Co-Founder, CEO',
-        social: {
-          linkedin: '#',
-          twitter: '#',
-          skype: '#',
-        },
-      },
-      {
-        avatar: {
-          src: Avatar4,
-          srcSet: `${Avatar4} 1x, ${Avatar42x} 2x`,
-        },
-        name: 'Judith Black',
-        position: 'Co-Founder, CEO',
-        social: {
-          linkedin: '#',
-          twitter: '#',
-          skype: '#',
-        },
-      },
-      {
-        avatar: {
-          src: Avatar5,
-          srcSet: `${Avatar5} 1x, ${Avatar52x} 2x`,
-        },
-        name: 'Robert Edwards',
-        position: 'Co-Founder, CEO',
-        social: {
-          linkedin: '#',
-          twitter: '#',
-          skype: '#',
-        },
-      },
-      {
-        avatar: {
-          src: Avatar6,
-          srcSet: `${Avatar6} 1x, ${Avatar62x} 2x`,
-        },
-        name: 'Dianne Robertson',
-        position: 'Co-Founder, CEO',
-        social: {
-          linkedin: '#',
-          twitter: '#',
-          skype: '#',
-        },
-      },
-      {
-        avatar: {
-          src: Avatar7,
-          srcSet: `${Avatar7} 1x, ${Avatar72x} 2x`,
-        },
-        name: 'Shane Black',
-        position: 'Co-Founder, CEO',
-        social: {
-          linkedin: '#',
-          twitter: '#',
-          skype: '#',
-        },
-      },
-      {
-        avatar: {
-          src: Avatar8,
-          srcSet: `${Avatar8} 1x, ${Avatar82x} 2x`,
-        },
-        name: 'Nathan Fox',
-        position: 'Co-Founder, CEO',
-        social: {
-          linkedin: '#',
-          twitter: '#',
-          skype: '#',
-        },
-      },
-    ],
-  },
-
   contact: {
     title: 'Contact us',
     sections: [
