@@ -178,13 +178,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
         }
       ]} />
       <About name="about" title={fields.aboutTitle} text={fields.aboutText} />
-      <Team name="team" title={fields.meetOurTeamTitle} text={fields.meetOurTeamText} cta={{
-        label: fields.meetOurTeamButton,
-        to: 'contact',
-        as: Link,
-        ...smoothLinkProps,
-        variant: 'secondary',
-      }}
+      <Team name="team" title={fields.meetOurTeamTitle} text={fields.meetOurTeamText} cta={null}
         people={teamMembers.map(member => {
           return ({
             avatar: {

@@ -72,11 +72,13 @@ const Team = ({
           </Fade>
         ))}
       </Grid>
-      <Fade top cascade duration={600}>
-        <Button {...CtaProps} {...cta}>
-          {cta.label}
-        </Button>
-      </Fade>
+      {cta !== null && (
+        <Fade top cascade duration={600}>
+          <Button {...CtaProps} {...cta}>
+            {cta.label}
+          </Button>
+        </Fade>
+      )}
     </Container>
   </Box>
 );
