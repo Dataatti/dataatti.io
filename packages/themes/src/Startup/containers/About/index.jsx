@@ -5,10 +5,10 @@ import Box from '@pagerland/common/src/components/Box';
 import Fade from 'react-reveal/Fade';
 import Typography from '@pagerland/common/src/components/Typography';
 import Container from '@pagerland/common/src/components/Container';
-import Button from '@pagerland/common/src/components/Button';
+import marked from 'marked';
 
 import data from '../../docs.data';
-import { RoundedImage } from './styled.components';
+import { RoundedImage, TextWithLink } from './styled.components';
 
 import Background from './Background';
 import Squares from './Squares';
@@ -40,7 +40,7 @@ const About = ({
       <Box {...CaptionProps}>
         <Fade bottom cascade duration={600}>
           <Typography {...TitleProps}>{title}</Typography>
-          <Typography {...TextProps}>{text}</Typography>
+          <TextWithLink {...TextProps} dangerouslySetInnerHTML={{ __html: marked(text) }} />
           {/* <Button {...CtaProps} {...cta}>
             {cta.label}
           </Button> */}

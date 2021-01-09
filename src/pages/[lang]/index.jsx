@@ -202,6 +202,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
             },
             name: member.fields.name,
             position: member.fields.position,
+            introduction: member.fields.introduction,
             social: {
               linkedin: member.fields.linkedIn,
             }

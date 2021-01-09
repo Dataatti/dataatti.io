@@ -34,6 +34,7 @@ const Team = ({
   AvatarProps,
   NameProps,
   PositionProps,
+  IntroductionProps,
   LinkedinIconProps,
   TwitterIconProps,
   SkypeIconProps,
@@ -53,6 +54,7 @@ const Team = ({
               <Avatar {...AvatarProps} {...person.avatar} />
               <Typography {...NameProps}>{person.name}</Typography>
               <Typography {...PositionProps}>{person.position}</Typography>
+              <Typography {...IntroductionProps}>{person.introduction}</Typography>
               {person.social.linkedin && (
                 <Link href={person.social.linkedin}>
                   <Icon icon={LinkedinAlt} {...LinkedinIconProps} />
@@ -140,6 +142,10 @@ Team.propTypes = {
    * Props of person position
    */
   PositionProps: PropTypes.object,
+  /**
+   * Props of person introduction
+   */
+  IntroductionProps: PropTypes.object,
   /**
    * Props of linkedin link icon
    */
@@ -240,6 +246,10 @@ Team.defaultProps = {
     color: 'black',
   },
   PositionProps: {
+    color: 'gray.1',
+    mb: 2,
+  },
+  IntroductionProps: {
     color: 'gray.1',
     mb: 2,
   },
