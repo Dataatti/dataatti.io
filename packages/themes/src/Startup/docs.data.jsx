@@ -13,10 +13,10 @@ import Twitter from '@pagerland/icons/src/monochrome/Twitter';
 import Linkedin from '@pagerland/icons/src/monochrome/Linkedin';
 
 import * as Yup from 'yup';
-import Welcome from './assets/welcome.jpg';
-import Welcome2x from './assets/welcome@2x.jpg';
-import AboutUs from './assets/about-us.jpg';
-import AboutUs2x from './assets/about-us@2x.jpg';
+import Welcome from './assets/landing.jpg';
+import Welcome2x from './assets/landing.jpg';
+import AboutUs from './assets/hackathon.jpg';
+import AboutUs2x from './assets/hackathon.jpg';
 
 import Avatar1 from './assets/avatars/avatar-1.jpg';
 import Avatar12x from './assets/avatars/avatar-1@2x.jpg';
@@ -167,6 +167,8 @@ export default {
     img: {
       src: AboutUs,
       srcSet: `${AboutUs} 1x, ${AboutUs2x} 2x`,
+      title: 'Credit: Jouni Kuru from Brave Teddy',
+      alt: 'Turku City Hackathon winners, Dataatti'
     },
     title: 'About us',
     text:
