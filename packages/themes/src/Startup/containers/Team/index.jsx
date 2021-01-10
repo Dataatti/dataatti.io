@@ -36,7 +36,6 @@ const Team = ({
   NameProps,
   PositionProps,
   EmailWrapperProps,
-  EmailIconProps,
   EmailTextProps,
   IntroductionProps,
   LinkedinIconProps,
@@ -59,11 +58,6 @@ const Team = ({
               <Typography {...NameProps}>{person.name}</Typography>
               <Typography {...PositionProps}>{person.position}</Typography>
               <Box {...EmailWrapperProps}>
-                <Icon
-                  color={'accent'}
-                  icon={PaperAirplane}
-                  {...EmailIconProps}
-                />
                 <Link {...EmailTextProps} href={'mailto:' + person.email}>{person.email}</Link>
               </Box>
               <Typography {...IntroductionProps}>{person.introduction}</Typography>
@@ -158,17 +152,12 @@ Team.propTypes = {
   * Props of email wrapper
   * @See @pagerland/common/src/components/Box
   */
-  SectionItemProps: PropTypes.object,
-  /**
-   * Props of email icon wrapper
-   * @See @pagerland/common/src/components/Icon
-   */
-  SectionIconProps: PropTypes.object,
+  EmailWrapperProps: PropTypes.object,
   /**
    * Props of email text wrapper
    * @See @pagerland/common/src/components/Typography
    */
-  SectionTextProps: PropTypes.object,
+  EmailTextProps: PropTypes.object,
   /**
    * Props of person introduction
    */
@@ -279,7 +268,7 @@ Team.defaultProps = {
     mb: 2,
   },
   EmailWrapperProps: {
-    mb: 3,
+    mb: 2,
     flexBox: true,
     justifyContent: {
       _: 'center',
@@ -287,10 +276,6 @@ Team.defaultProps = {
     alignItems: {
       _: 'center'
     }
-  },
-  EmailIconProps: {
-    fontSize: 22,
-    mr: 2,
   },
   EmailTextProps: {
     color: 'gray.1',
