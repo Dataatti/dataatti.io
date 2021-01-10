@@ -42,7 +42,9 @@ const Services = ({
         {services.map((service, key) => (
           <Fade bottom cascade duration={600} delay={key * 100} key={key}>
             <Box {...ServiceItemProps}>
-              <Img src={service.image} {...ServiceIconProps} />
+              {service.image && (
+                <Img src={service.image} {...ServiceIconProps} />
+              )}
               {service.icon && (
                 <Badge margin="20px auto" height="100px" width="100px" backgroundColor={['primary', 'accent', 'secondary'][key % 3]}>
                   <Icon icon={service.icon} IconProps={{ fontSize: '72px' }} />

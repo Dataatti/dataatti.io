@@ -184,6 +184,7 @@ Welcome.defaultProps = {
   },
   ImageProps: {
     width: '100%',
+    height: 'auto',
     maxWidth: 544,
   },
   AvatarsProps: [

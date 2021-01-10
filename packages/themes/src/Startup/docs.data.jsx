@@ -111,6 +111,7 @@ export default {
     img: {
       src: Welcome,
       srcSet: `${Welcome} 1x, ${Welcome2x} 2x`,
+      alt: 'Finnish lake landscape'
     },
     avatars: [
       {

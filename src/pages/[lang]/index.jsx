@@ -198,14 +198,19 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
             avatar: {
               src: member.fields.image.fields.file.url,
               width: '120px',
-              height: '120px'
+              height: '120px',
+              ImgProps: {
+                alt: member.fields.name,
+                width: '120px',
+                height: '120px',
+              }
             },
             name: member.fields.name,
             position: member.fields.position,
             introduction: member.fields.introduction,
             social: {
               linkedin: member.fields.linkedIn,
-            }
+            },
           })
         })}
         GridProps={{
