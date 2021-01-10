@@ -251,6 +251,7 @@ Team.defaultProps = {
   },
   IntroductionProps: {
     color: 'gray.1',
+    fontSize: '15px',
     mb: 2,
   },
   CtaProps: {

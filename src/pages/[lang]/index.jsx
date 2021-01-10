@@ -281,15 +281,22 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { lang } = context.params;
-  // Add contentfull requests here
+  // Add contentful requests here
   try {
-    // get page content
     let entries
     let langToggle
+    let teamMembers
     if (lang === "fi") {
+      // get page content
       entries = await client
         .getEntry("5pymhLgyj8UGm4hNxtlKE5", {
           locale: "fi",
+        })
+      // get team member data
+      teamMembers = await client
+        .getEntries({
+          content_type: 'teamMember',
+          locale: "fi"
         })
       langToggle = {
         label: 'In English',
@@ -299,9 +306,16 @@ export async function getStaticProps(context) {
         href: '/en'
       }
     } else {
+      // get page content
       entries = await client
         .getEntry("5pymhLgyj8UGm4hNxtlKE5", {
           locale: "en-US",
+        })
+      // get team member data
+      teamMembers = await client
+        .getEntries({
+          content_type: 'teamMember',
+          locale: "en-US"
         })
       langToggle = {
         label: 'Suomeksi',
@@ -311,10 +325,6 @@ export async function getStaticProps(context) {
         href: '/fi'
       }
     }
-
-    // get team member data
-    const teamMembers = await client
-      .getEntries({ content_type: 'teamMember' })
 
     return {
       props: {
