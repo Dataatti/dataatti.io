@@ -9,7 +9,6 @@ import { Wrapper } from './styled.components';
 const Typography = ({ children, ...props }) => <Wrapper {...props}>{children}</Wrapper>;
 
 Typography.propTypes = {
-  children: PropTypes.node.isRequired,
   as: PropTypes.elementType,
   variant: PropTypes.oneOfType([
     PropTypes.oneOf([
