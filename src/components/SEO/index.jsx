@@ -13,7 +13,7 @@ function Index({ description, meta, title }) {
       <meta name="og:description" content={description} />
       <meta name="og:type" content="website" />
       <meta name="twitter:card" content="summary" />
-      <meta name="twitter:creator" content="Pagerland Team" />
+      <meta name="twitter:creator" content="Dataatti" />
       <meta name="twitter:title" content={formattedTitle} />
       <meta name="twitter:description" content={description} />
       {meta.map(({ name, content }) => (

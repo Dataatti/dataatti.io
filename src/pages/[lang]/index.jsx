@@ -131,7 +131,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
         <link href={theme.typography.googleFont} rel="stylesheet" />
         <meta name="theme-color" content={theme.colors.primary} />
       </Head>
-      <SEO title="Dataatti" />
+      <SEO title="Dataatti" description={fields.seoDescription} />
 
       <Sticky isIOSFixEnabled={false} style={{ zIndex: 999, position: 'relative' }}>
         <Navbar Logo={Logo}
