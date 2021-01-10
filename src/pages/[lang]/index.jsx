@@ -133,7 +133,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
       </Head>
       <SEO title="Dataatti" />
 
-      <Sticky style={{ zIndex: 999, position: 'relative' }}>
+      <Sticky isIOSFixEnabled={false} style={{ zIndex: 999, position: 'relative' }}>
         <Navbar Logo={Logo}
           links={[
             {
