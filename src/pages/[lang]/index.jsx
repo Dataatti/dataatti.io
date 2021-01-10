@@ -41,7 +41,7 @@ const client = createClient({
   accessToken: "SvsZP-sQaZK1v-v3so-iuvBmrMMGTy82Q0VBPXfMzUQ"
 });
 
-const Logo = props => <img src="/logo.svg" alt="dataatti logo" width="150px" height="50px" {...props} />;
+const Logo = props => <img src="/logo.svg" alt="Dataatti logo" width="150px" height="50px" {...props} />;
 
 const Startup = ({ fields, langToggle, teamMembers }) => {
 
