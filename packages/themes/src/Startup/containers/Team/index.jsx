@@ -265,7 +265,7 @@ Team.defaultProps = {
   },
   PositionProps: {
     color: 'gray.1',
-    mb: 2,
+    mb: 0,
   },
   EmailWrapperProps: {
     mb: 2,
