@@ -8,6 +8,7 @@ import Container from '@pagerland/common/src/components/Container';
 import Grid from '@pagerland/common/src/components/Grid';
 import Button from '@pagerland/common/src/components/Button';
 import Icon from '@pagerland/common/src/components/Icon';
+import PaperAirplane from '@pagerland/icons/src/monochrome/PaperAirplane';
 
 import LinkedinAlt from '@pagerland/icons/src/monochrome/LinkedinAlt';
 import Twitter from '@pagerland/icons/src/monochrome/Twitter';
@@ -34,6 +35,9 @@ const Team = ({
   AvatarProps,
   NameProps,
   PositionProps,
+  EmailWrapperProps,
+  EmailIconProps,
+  EmailTextProps,
   IntroductionProps,
   LinkedinIconProps,
   TwitterIconProps,
@@ -54,6 +58,14 @@ const Team = ({
               <Avatar {...AvatarProps} {...person.avatar} />
               <Typography {...NameProps}>{person.name}</Typography>
               <Typography {...PositionProps}>{person.position}</Typography>
+              <Box {...EmailWrapperProps}>
+                <Icon
+                  color={'accent'}
+                  icon={PaperAirplane}
+                  {...EmailIconProps}
+                />
+                <Link {...EmailTextProps} href={'mailto:' + person.email}>{person.email}</Link>
+              </Box>
               <Typography {...IntroductionProps}>{person.introduction}</Typography>
               {person.social.linkedin && (
                 <Link href={person.social.linkedin}>
@@ -143,6 +155,21 @@ Team.propTypes = {
    */
   PositionProps: PropTypes.object,
   /**
+  * Props of email wrapper
+  * @See @pagerland/common/src/components/Box
+  */
+  SectionItemProps: PropTypes.object,
+  /**
+   * Props of email icon wrapper
+   * @See @pagerland/common/src/components/Icon
+   */
+  SectionIconProps: PropTypes.object,
+  /**
+   * Props of email text wrapper
+   * @See @pagerland/common/src/components/Typography
+   */
+  SectionTextProps: PropTypes.object,
+  /**
    * Props of person introduction
    */
   IntroductionProps: PropTypes.object,
@@ -182,6 +209,8 @@ Team.propTypes = {
       avatar: PropTypes.object,
       name: PropTypes.node,
       position: PropTypes.node,
+      introduction: PropTypes.node,
+      email: PropTypes.node,
       social: PropTypes.shape({
         linkedin: PropTypes.string,
         twitter: PropTypes.string,
@@ -248,6 +277,23 @@ Team.defaultProps = {
   PositionProps: {
     color: 'gray.1',
     mb: 2,
+  },
+  EmailWrapperProps: {
+    mb: 3,
+    flexBox: true,
+    justifyContent: {
+      _: 'center',
+    },
+    alignItems: {
+      _: 'center'
+    }
+  },
+  EmailIconProps: {
+    fontSize: 22,
+    mr: 2,
+  },
+  EmailTextProps: {
+    color: 'gray.1',
   },
   IntroductionProps: {
     color: 'gray.1',
