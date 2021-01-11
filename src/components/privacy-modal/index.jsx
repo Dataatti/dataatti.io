@@ -11,7 +11,7 @@ const PrivacyModal = ({ privacyText }) => {
         createPortal(
             <div className="privacy-modal__wrapper">
                 <div>{privacyText} <Link href="/en/privacy-policy"><a>{router.query.lang === "fi" ? "Lue lisää" : "Learn more"}</a></Link></div>
-                <button onClick={() => setAccepted(true)}>Accept</button>
+                <button onClick={() => setAccepted(true)}>{router.query.lang === "fi" ? "Hyväksy" : "Accept"}</button>
                 <style jsx>{`
                     .privacy-modal__wrapper {
                         position: fixed;
@@ -38,10 +38,11 @@ const PrivacyModal = ({ privacyText }) => {
                         padding: 11px 48px 12px;
                         cursor: pointer;
                         font-family: 'Hind',sans-serif;
-                        background-color: #51B3A7;
+                        background-color: rgb(12, 75, 91);
                         color: #FFFFFF;
                         line-height: 1.6;
                         font-weight: bold;
+                        margin-left: 10px;
                     }
                 `}</style>
             </div>, document.body)

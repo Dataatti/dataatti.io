@@ -1,14 +1,28 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { base } from '@pagerland/common/src/utils';
+
+const animation = keyframes`
+  50% {
+    transform: translateX(10px);
+  }
+`;
+const animationY = keyframes`
+  50% {
+    transform: translateY(10px);
+  }
+`;
 
 const Svg = styled.svg`
   ${base};
   overflow: visible !important;
+  g {
+    animation: ${animation} 5s infinite ease-in, ${animationY} 3s infinite ease-out;
+  }
 `;
 
-const Square = props => (
+const Square = (props) => (
   <Svg viewBox="54 14 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <g filter="url(#square_filter)">
       <path
@@ -26,8 +40,7 @@ const Square = props => (
         width="186.667"
         height="186.667"
         filterUnits="userSpaceOnUse"
-        colorInterpolationFilters="sRGB"
-      >
+        colorInterpolationFilters="sRGB">
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feColorMatrix
           in="SourceAlpha"
