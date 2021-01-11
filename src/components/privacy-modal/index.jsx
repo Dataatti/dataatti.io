@@ -1,17 +1,17 @@
 import { createPortal } from 'react-dom';
-import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const PrivacyModal = ({ privacyText }) => {
     const router = useRouter();
-    const [open, setOpen] = useState(true);
+    const [accepted, setAccepted] = useLocalStorage("accepted", false);
 
-    return open && process.browser &&
+    return !accepted && process.browser &&
         createPortal(
             <div className="privacy-modal__wrapper">
                 <div>{privacyText} <Link href="/en/privacy-policy"><a>{router.query.lang === "fi" ? "Lue lisää" : "Learn more"}</a></Link></div>
-                <button onClick={() => setOpen(false)}>Accept</button>
+                <button onClick={() => setAccepted(true)}>Accept</button>
                 <style jsx>{`
                     .privacy-modal__wrapper {
                         position: fixed;
