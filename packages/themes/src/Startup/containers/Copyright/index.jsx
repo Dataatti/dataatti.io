@@ -91,9 +91,6 @@ Copyright.defaultProps = {
   },
   WrapperProps: {
     py: 18,
-    borderTopWidth: 1,
-    borderTopStyle: 'solid',
-    borderTopColor: 'gray.5',
   },
   ContainerProps: {
     display: 'flex',
