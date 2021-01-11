@@ -110,7 +110,7 @@ export default {
     ],
     img: {
       src: Welcome,
-      srcSet: `${Welcome} 1x, ${Welcome2x} 2x`,
+      srcSet: `${Welcome} 1x`,
       alt: 'Finnish lake landscape',
     },
     avatars: [
@@ -167,7 +167,7 @@ export default {
   about: {
     img: {
       src: AboutUs,
-      srcSet: `${AboutUs} 1x, ${AboutUs2x} 2x`,
+      srcSet: `${AboutUs} 1x`,
       title: 'Credit: Jouni Kuru from Brave Teddy',
       alt: 'Turku City Hackathon winners, Dataatti',
     },
