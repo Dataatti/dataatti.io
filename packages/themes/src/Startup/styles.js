@@ -21,6 +21,7 @@ export const colors = {
 export const typography = {
   googleFont: 'https://fonts.googleapis.com/css2?family=Hind:wght@400;700&display=swap',
   fontFamily: "'Hind', sans-serif",
+  fontDisplay: 'swap',
   color: colors.gray[1],
   sizes: {
     base: 16,

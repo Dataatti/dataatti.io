@@ -129,7 +129,9 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
     <>
       <Theme>
         <Head>
-          <link href={theme.typography.googleFont} rel="stylesheet" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link rel="preload" as="style" href={theme.typography.googleFont} />
+          <link rel="stylesheet" href={theme.typography.googleFont} media="print" onload="this.media='all'" />
           <meta name="theme-color" content={theme.colors.primary} />
         </Head>
         <SEO title="Dataatti" description={fields.seoDescription} />
