@@ -127,151 +127,152 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
   }
 
   return (
-    <Theme>
-      <Head>
-        <link href={theme.typography.googleFont} rel="stylesheet" />
-        <meta name="theme-color" content={theme.colors.primary} />
-      </Head>
-      <SEO title="Dataatti" description={fields.seoDescription} />
-
-      <Sticky isIOSFixEnabled={false} style={{ zIndex: 999, position: 'relative' }}>
-        <Navbar Logo={Logo}
-          links={[
+    <>
+      <Theme>
+        <Head>
+          <link href={theme.typography.googleFont} rel="stylesheet" />
+          <meta name="theme-color" content={theme.colors.primary} />
+        </Head>
+        <SEO title="Dataatti" description={fields.seoDescription} />
+        <Sticky isIOSFixEnabled={false} style={{ zIndex: 999, position: 'relative' }}>
+          <Navbar Logo={Logo}
+            links={[
+              {
+                to: '',
+                label: fields.navbarHome,
+              },
+              {
+                to: 'services',
+                label: fields.navbarServices,
+              },
+              {
+                to: 'about',
+                label: fields.navbarAbout,
+              },
+              {
+                to: 'team',
+                label: fields.navbarTeam,
+              },
+            ]}
+            actions={[
+              langToggle,
+              {
+                to: 'contact',
+                label: fields.navbarContact,
+                as: Link,
+                ...smoothLinkProps,
+                variant: 'accent'
+              },
+            ]}
+          />
+        </Sticky>
+        <Welcome name="" title={fields.headline} text={fields.headerText} avatars={[]} actions={[
+          {
+            label: fields.homeButtonText,
+            to: 'services',
+            as: Link,
+            ...smoothLinkProps,
+            variant: 'secondary',
+          },
+        ]} />
+        <Services name="services" title={fields.servicesTitle} services={[
+          {
+            icon: Desktop,
+            title: fields.servicesTitleOne,
+            text: fields.servicesTextOne,
+          },
+          {
+            icon: User,
+            title: fields.servicesTitleTwo,
+            text: fields.servicesTextTwo,
+          },
+          {
+            icon: MobileAndroid,
+            title: fields.servicesTitleThree,
+            text: fields.servicesTextThree,
+          }
+        ]} />
+        <About name="about" title={fields.aboutTitle} text={fields.aboutText} />
+        <Team name="team" title={fields.meetOurTeamTitle} text={fields.meetOurTeamText} cta={null}
+          people={teamMembers.map(member => {
+            return ({
+              avatar: {
+                src: member.fields.image.fields.file.url,
+                width: '120px',
+                height: '120px',
+                ImgProps: {
+                  alt: member.fields.name,
+                  width: '120px',
+                  height: '120px',
+                }
+              },
+              name: member.fields.name,
+              position: member.fields.position,
+              email: member.fields.email,
+              introduction: member.fields.introduction,
+              social: {
+                linkedin: member.fields.linkedIn,
+              },
+            })
+          })}
+          GridProps={{
+            mb: {
+              _: 4,
+              md: 5,
+            },
+            gridTemplateColumns: {
+              _: 'repeat(2, 1fr)',
+              md: 'repeat(3, 1fr)',
+              lg: 'repeat(3, 1fr)',
+            },
+            gridColumnGap: '32px',
+            gridRowGap: {
+              _: '32px',
+              md: '64px',
+            },
+          }} />
+        <Contact name="contact" title={fields.contactTitle} mailer={{
+          onSubmit: (e) => handleSubmit(e), fields: mailerFields, cta: fields.contactFormSubmitButton, title: fields.contactFormTitle, validationSchema: validationSchema
+        }}
+          sections={[
+            /*  {
+               icon: MapMarker,
+               text: textToMultiline`5263 Sunset St undefined Salinas,\nWest Virginia 25420\nUnited States`,
+             }, */
             {
-              to: '',
-              label: fields.navbarHome,
+              icon: MobilePhone,
+              text: '+358 40 521 6860',
             },
             {
-              to: 'services',
-              label: fields.navbarServices,
+              icon: PaperAirplane,
+              text: 'hello@dataatti.com',
             },
             {
-              to: 'about',
-              label: fields.navbarAbout,
+              icon: DocumentInfo,
+              text: '3172458-9'
             },
             {
-              to: 'team',
-              label: fields.navbarTeam,
+              icon: Building,
+              text: 'Dataatti Oy',
             },
           ]}
-          actions={[
-            langToggle,
+          socialLinks={[
             {
-              to: 'contact',
-              label: fields.navbarContact,
-              as: Link,
-              ...smoothLinkProps,
-              variant: 'accent'
+              icon: Instagram,
+              href: 'https://www.instagram.com/dataatti/',
+              title: 'Instagram',
+            },
+            {
+              icon: Linkedin,
+              href: 'https://www.linkedin.com/company/dataatti/',
+              title: 'LinkedIn',
             },
           ]}
         />
-      </Sticky>
-      <Welcome name="" title={fields.headline} text={fields.headerText} avatars={[]} actions={[
-        {
-          label: fields.homeButtonText,
-          to: 'services',
-          as: Link,
-          ...smoothLinkProps,
-          variant: 'secondary',
-        },
-      ]} />
-      <Services name="services" title={fields.servicesTitle} services={[
-        {
-          icon: Desktop,
-          title: fields.servicesTitleOne,
-          text: fields.servicesTextOne,
-        },
-        {
-          icon: User,
-          title: fields.servicesTitleTwo,
-          text: fields.servicesTextTwo,
-        },
-        {
-          icon: MobileAndroid,
-          title: fields.servicesTitleThree,
-          text: fields.servicesTextThree,
-        }
-      ]} />
-      <About name="about" title={fields.aboutTitle} text={fields.aboutText} />
-      <Team name="team" title={fields.meetOurTeamTitle} text={fields.meetOurTeamText} cta={null}
-        people={teamMembers.map(member => {
-          return ({
-            avatar: {
-              src: member.fields.image.fields.file.url,
-              width: '120px',
-              height: '120px',
-              ImgProps: {
-                alt: member.fields.name,
-                width: '120px',
-                height: '120px',
-              }
-            },
-            name: member.fields.name,
-            position: member.fields.position,
-            email: member.fields.email,
-            introduction: member.fields.introduction,
-            social: {
-              linkedin: member.fields.linkedIn,
-            },
-          })
-        })}
-        GridProps={{
-          mb: {
-            _: 4,
-            md: 5,
-          },
-          gridTemplateColumns: {
-            _: 'repeat(2, 1fr)',
-            md: 'repeat(3, 1fr)',
-            lg: 'repeat(3, 1fr)',
-          },
-          gridColumnGap: '32px',
-          gridRowGap: {
-            _: '32px',
-            md: '64px',
-          },
-        }} />
-      <Contact name="contact" title={fields.contactTitle} mailer={{
-        onSubmit: (e) => handleSubmit(e), fields: mailerFields, cta: fields.contactFormSubmitButton, title: fields.contactFormTitle, validationSchema: validationSchema
-      }}
-        sections={[
-          /*  {
-             icon: MapMarker,
-             text: textToMultiline`5263 Sunset St undefined Salinas,\nWest Virginia 25420\nUnited States`,
-           }, */
-          {
-            icon: MobilePhone,
-            text: '+358 40 521 6860',
-          },
-          {
-            icon: PaperAirplane,
-            text: 'hello@dataatti.com',
-          },
-          {
-            icon: DocumentInfo,
-            text: '3172458-9'
-          },
-          {
-            icon: Building,
-            text: 'Dataatti Oy',
-          },
-        ]}
-        socialLinks={[
-          {
-            icon: Instagram,
-            href: 'https://www.instagram.com/dataatti/',
-            title: 'Instagram',
-          },
-          {
-            icon: Linkedin,
-            href: 'https://www.linkedin.com/company/dataatti/',
-            title: 'LinkedIn',
-          },
-        ]}
-      />
+        <Copyright copyright={"© Dataatti Oy 2020"} links={[]} />
+      </Theme>
       <PrivacyModal open={true} />
-      <Copyright copyright={"© Dataatti Oy 2020"} links={[]} />
-    </Theme>
+    </>
   )
 };
 
