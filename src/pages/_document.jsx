@@ -4,16 +4,23 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
-  static getInitialProps({ renderPage }) {
+  static getInitialProps(ctx) {
+
+    const { pathname } = ctx;
+    const lang = ctx.query.lang === "fi" ? "fi" : "en";
+
     const sheet = new ServerStyleSheet();
-    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />));
+
+    const page = ctx.renderPage(App => props => sheet.collectStyles(<App {...props} />));
     const styleTags = sheet.getStyleElement();
-    return { ...page, styleTags };
+
+    return { ...page, styleTags, lang };
   }
 
   render() {
+    const { lang } = this.props;
     return (
-      <Html lang="en">
+      <Html lang={lang}>
         <Head>
           {this.props.styleTags}
           <link rel="manifest" href="/manifest.webmanifest" />
