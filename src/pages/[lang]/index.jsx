@@ -36,9 +36,9 @@ import PrivacyModal from '../../components/privacy-modal';
 
 const client = createClient({
   // This is the space ID. A space is like a project folder in Contentful terms
-  space: "52qlh6k2p2ly",
+  space: process.env.CONTENTFUL_SPACE,
   // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
-  accessToken: "SvsZP-sQaZK1v-v3so-iuvBmrMMGTy82Q0VBPXfMzUQ"
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 });
 
 const Logo = props => <img src="/logo.svg" alt="Dataatti logo" width="150px" height="50px" {...props} />;
