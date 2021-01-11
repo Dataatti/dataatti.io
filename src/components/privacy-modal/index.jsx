@@ -42,6 +42,7 @@ const PrivacyModal = ({ privacyText }) => {
                         color: #FFFFFF;
                         line-height: 1.6;
                         font-weight: bold;
+                        margin-left: 10px;
                     }
                 `}</style>
             </div>, document.body)
