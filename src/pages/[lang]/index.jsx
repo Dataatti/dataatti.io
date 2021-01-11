@@ -244,7 +244,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
             },
             {
               icon: PaperAirplane,
-              text: 'hello@dataatti.com',
+              text: 'hello@dataatti.io',
             },
             {
               icon: DocumentInfo,
