@@ -16,17 +16,17 @@ export default {
     transition: ${transition.all};
 
     ${variant({
-      prop: 'variant',
-      scale: 'Button.variants',
-    })}
+    prop: 'variant',
+    scale: 'Button.variants',
+  })}
     ${variant({
-      prop: 'size',
-      scale: 'Button.sizes',
-    })}
+    prop: 'size',
+    scale: 'Button.sizes',
+  })}
     ${variant({
-      prop: 'disabled',
-      scale: 'Button.disabled',
-    })}
+    prop: 'disabled',
+    scale: 'Button.disabled',
+  })}
   `,
   variants: {
     default: css`

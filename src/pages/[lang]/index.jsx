@@ -32,6 +32,7 @@ import { smoothLinkProps } from '@pagerland/common/src/utils';
 import SEO from '../../components/SEO';
 
 import { createClient } from 'contentful';
+import PrivacyModal from '../../components/privacy-modal';
 
 // 52qlh6k2p2ly
 const client = createClient({
@@ -268,6 +269,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
           },
         ]}
       />
+      <PrivacyModal open={true} />
       <Copyright copyright={"© Dataatti Oy 2020"} links={[]} />
     </Theme>
   )
