@@ -105,13 +105,13 @@ export default {
         to: 'services',
         as: Link,
         ...smoothLinkProps,
-        variant: 'secondary',
+        variant: 'primary',
       },
     ],
     img: {
       src: Welcome,
       srcSet: `${Welcome} 1x, ${Welcome2x} 2x`,
-      alt: 'Finnish lake landscape'
+      alt: 'Finnish lake landscape',
     },
     avatars: [
       {
@@ -169,7 +169,7 @@ export default {
       src: AboutUs,
       srcSet: `${AboutUs} 1x, ${AboutUs2x} 2x`,
       title: 'Credit: Jouni Kuru from Brave Teddy',
-      alt: 'Turku City Hackathon winners, Dataatti'
+      alt: 'Turku City Hackathon winners, Dataatti',
     },
     title: 'About us',
     text:
@@ -492,7 +492,7 @@ export default {
         date: Yup.string().required('Required'),
       }),
       // eslint-disable-next-line no-undef
-      onSubmit: values => window.alert(`Form sent with values ${JSON.stringify(values)}`),
+      onSubmit: (values) => window.alert(`Form sent with values ${JSON.stringify(values)}`),
       fields: [
         {
           name: 'name',

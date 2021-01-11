@@ -58,11 +58,13 @@ const Team = ({
               <Typography {...NameProps}>{person.name}</Typography>
               <Typography {...PositionProps}>{person.position}</Typography>
               <Box {...EmailWrapperProps}>
-                <Link {...EmailTextProps} href={'mailto:' + person.email}>{person.email}</Link>
+                <Link {...EmailTextProps} href={'mailto:' + person.email}>
+                  {person.email}
+                </Link>
               </Box>
               <Typography {...IntroductionProps}>{person.introduction}</Typography>
               {person.social.linkedin && (
-                <Link href={person.social.linkedin}>
+                <Link href={person.social.linkedin} title="LinkedIn">
                   <Icon icon={LinkedinAlt} {...LinkedinIconProps} />
                 </Link>
               )}
@@ -149,9 +151,9 @@ Team.propTypes = {
    */
   PositionProps: PropTypes.object,
   /**
-  * Props of email wrapper
-  * @See @pagerland/common/src/components/Box
-  */
+   * Props of email wrapper
+   * @See @pagerland/common/src/components/Box
+   */
   EmailWrapperProps: PropTypes.object,
   /**
    * Props of email text wrapper
@@ -188,7 +190,7 @@ Team.propTypes = {
   cta: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.node,
-    }),
+    })
   ),
   /**
    * List of team members
@@ -205,7 +207,7 @@ Team.propTypes = {
         twitter: PropTypes.string,
         skype: PropTypes.string,
       }),
-    }),
+    })
   ),
 };
 
@@ -274,8 +276,8 @@ Team.defaultProps = {
       _: 'center',
     },
     alignItems: {
-      _: 'center'
-    }
+      _: 'center',
+    },
   },
   EmailTextProps: {
     color: 'gray.1',

@@ -10,7 +10,7 @@ const PrivacyModal = ({ privacyText }) => {
     return !accepted && process.browser &&
         createPortal(
             <div className="privacy-modal__wrapper">
-                <div>{privacyText} <Link href="/en/privacy-policy"><a>{router.query.lang === "fi" ? "Lue lisää" : "Learn more"}</a></Link></div>
+                <div>{privacyText} <Link href="/en/privacy-policy" title="Privacy policy"><a>{router.query.lang === "fi" ? "Lue lisää" : "Learn more"}</a></Link></div>
                 <button onClick={() => setAccepted(true)}>Accept</button>
                 <style jsx>{`
                     .privacy-modal__wrapper {

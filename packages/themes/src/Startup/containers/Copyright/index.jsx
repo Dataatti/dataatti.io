@@ -48,7 +48,7 @@ Copyright.propTypes = {
   links: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.node,
-    }),
+    })
   ),
   /**
    * Main content text props
@@ -87,7 +87,7 @@ Copyright.defaultProps = {
   copyright: data.copyright,
   TextProps: {
     variant: 'body2',
-    color: 'gray.3',
+    color: 'gray.1',
   },
   WrapperProps: {
     py: 18,

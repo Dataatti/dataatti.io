@@ -171,7 +171,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
             to: 'services',
             as: Link,
             ...smoothLinkProps,
-            variant: 'secondary',
+            variant: 'primary',
           },
         ]} />
         <Services name="services" title={fields.servicesTitle} services={[
