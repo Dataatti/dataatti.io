@@ -34,7 +34,6 @@ import SEO from '../../components/SEO';
 import { createClient } from 'contentful';
 import PrivacyModal from '../../components/privacy-modal';
 
-// 52qlh6k2p2ly
 const client = createClient({
   // This is the space ID. A space is like a project folder in Contentful terms
   space: "52qlh6k2p2ly",
@@ -271,7 +270,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
         />
         <Copyright copyright={"© Dataatti Oy 2020"} links={[]} />
       </Theme>
-      <PrivacyModal open={true} />
+      <PrivacyModal privacyText={fields.cookiePolicy} />
     </>
   )
 };

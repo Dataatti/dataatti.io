@@ -3,9 +3,8 @@ import { useRouter } from 'next/router'
 const PrivacyPolicy = () => {
 
     const router = useRouter();
-
     return (
-        <div>
+        <div className="policy-container">
             <button onClick={() => router.back()}>Back</button>
             <h1>Cookie Policy for Dataatti</h1>
             <p>This is the Cookie Policy for Dataatti, accessible from dataatti.io</p>
@@ -37,6 +36,26 @@ const PrivacyPolicy = () => {
             <ul>
                 <li>Email: hello@dataatti.io</li>
             </ul>
+            <style jsx>{`
+                .policy-container {
+                    padding: 18px;
+                    font-family: 'Hind',sans-serif;
+                }
+
+                button {
+                        all: unset;
+                        border-radius: 24px;
+                        box-shadow: 0 24px 32px rgba(208,111,63,0.14);
+                        transition: all .2s ease-in-out;
+                        padding: 11px 48px 12px;
+                        cursor: pointer;
+                        font-family: 'Hind',sans-serif;
+                        background-color: #51B3A7;
+                        color: #FFFFFF;
+                        line-height: 1.6;
+                        font-weight: bold;
+                    }
+            `}</style>
         </div>
     )
 }
