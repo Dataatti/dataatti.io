@@ -18,7 +18,7 @@ const Svg = styled.svg`
   ${base};
   overflow: visible !important;
   g {
-    animation: ${animation} 5s infinite ease-in, ${animationY} 3s infinite ease-out;
+    animation: ${animation} 15s infinite ease-in, ${animationY} 11s infinite ease-out;
   }
 `;
 
