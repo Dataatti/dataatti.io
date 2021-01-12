@@ -1,11 +1,25 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { base } from '@pagerland/common/src/utils';
+
+const animation = keyframes`
+  50% {
+    transform: translateX(-5px);
+  }
+`;
+const animationY = keyframes`
+  50% {
+    transform: translateY(-5px);
+  }
+`;
 
 const Svg = styled.svg`
   ${base};
   overflow: visible !important;
+  g {
+    animation: ${animation} 5s infinite ease-in, ${animationY} 3s infinite ease-out;
+  }
 `;
 
 const SquareBlur = props => (
