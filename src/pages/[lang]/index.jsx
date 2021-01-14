@@ -242,7 +242,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
              }, */
             {
               icon: MobilePhone,
-              text: '+358 40 521 6860',
+              text: '+358 40 419 6798',
             },
             {
               icon: PaperAirplane,
@@ -270,7 +270,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
             },
           ]}
         />
-        <Copyright copyright={"© Dataatti Oy 2020"} links={[]} />
+        <Copyright copyright={"© Dataatti Oy " + new Date().getFullYear()} links={[]} />
       </Theme>
       <PrivacyModal privacyText={fields.cookiePolicy} />
     </>
