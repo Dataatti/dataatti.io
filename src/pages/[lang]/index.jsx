@@ -242,7 +242,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
              }, */
             {
               icon: MobilePhone,
-              text: '+358 40 521 6860',
+              text: '+358 40 419 6798',
             },
             {
               icon: PaperAirplane,
