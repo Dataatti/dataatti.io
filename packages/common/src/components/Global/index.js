@@ -15,16 +15,21 @@ export default createGlobalStyle`
 
   body {
     -webkit-tap-highlight-color: transparent;
-    ${props => props.theme.body}
+    ${(props) => props.theme.body}
   }
 
   .sticky {
-    z-index: ${props => props.theme.zIndex?.sticky ?? 1010};
+    z-index: ${(props) => props.theme.zIndex?.sticky ?? 1010};
   }
 
   a {
     cursor: pointer;
   }
 
-  ${props => props.theme.global}
+  ::selection {
+    background: #d06f3f;
+    color: #ffffff;
+  }
+
+  ${(props) => props.theme.global}
 `;

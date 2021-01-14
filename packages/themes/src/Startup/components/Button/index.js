@@ -79,7 +79,7 @@ export default {
   },
   disabled: {
     true: css`
-      color: ${props => (props.variant === 'default' ? colors.gray[4] : colors.gray[7])} !important;
+      color: ${props => (props.variant === 'default' ? colors.gray[4] : colors.primary)} !important;
       cursor: default;
       background-color: ${props =>
         props.variant === 'default' ? colors.gray[6] : colors.gray[5]} !important;

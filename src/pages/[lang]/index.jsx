@@ -233,7 +233,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
             },
           }} />
         <Contact name="contact" title={fields.contactTitle} mailer={{
-          onSubmit: (e, actions) => handleSubmit(e, actions), fields: mailerFields, cta: fields.contactFormSubmitButton, title: fields.contactFormTitle, validationSchema: validationSchema
+          onSubmit: (e, actions) => handleSubmit(e, actions), fields: mailerFields, cta: fields.contactFormSubmitButton, ctaSent: fields.contantFormSubmitButtonSent, title: fields.contactFormTitle, validationSchema: validationSchema
         }}
           sections={[
             /*  {

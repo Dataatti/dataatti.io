@@ -8,11 +8,6 @@ export default {
     font-weight: 400;
     line-height: ${body.lineHeight};
 
-    ::selection {
-      background: #d06f3f;
-      color: #ffffff;
-    }
-
     label& {
       cursor: pointer;
       user-select: none;
