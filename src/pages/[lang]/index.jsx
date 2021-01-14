@@ -270,7 +270,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
             },
           ]}
         />
-        <Copyright copyright={"© Dataatti Oy 2020"} links={[]} />
+        <Copyright copyright={"© Dataatti Oy " + new Date().getFullYear()} links={[]} />
       </Theme>
       <PrivacyModal privacyText={fields.cookiePolicy} />
     </>
