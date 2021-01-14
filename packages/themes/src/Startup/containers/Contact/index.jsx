@@ -90,7 +90,7 @@ const Contact = ({
                   ))}
                 </div>
                 <Button type="submit" {...MailerButtonProps} disabled={formSent}>
-                  {formSent ? mailer.ctaSent : mailer.cta}
+                  {formSent ? mailer.ctaSent + ' 🚀' : mailer.cta}
                 </Button>
               </Fade>
             </Form>
