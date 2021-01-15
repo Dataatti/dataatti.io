@@ -9,9 +9,9 @@ const Startup = () => {
   useEffect(() => {
     const userLang = navigator.language || navigator.userLanguage;
     if (userLang === "fi-FI") {
-      router.push("/fi");
+      router.replace("/fi");
     } else {
-      router.push("/en")
+      router.replace("/en")
     }
   }, [])
   return (
