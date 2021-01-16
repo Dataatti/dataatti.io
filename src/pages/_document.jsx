@@ -1,6 +1,5 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
@@ -46,25 +45,49 @@ export default class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff"></meta>
+
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              // REFERENCE: https://stackoverflow.com/questions/60173853/how-to-set-the-google-analytics-cookie-only-after-another-consent-cookie-is-set
+
+              window.addEventListener('load', function(){
+                // request gtag cookies when consent has been given before
+                if (window.localStorage.getItem('accepted') === "true") {
+                  setCookies();
+                }
+              });
+
+              // when localStorage gets updated, update cookie policy
+              window.addEventListener('storage', function() {
+                var cookiesAccepted = window.localStorage.getItem('accepted');
+                if (cookiesAccepted === "true") {
+                  setCookies();
+                } 
+              });
+
+              //it is absolutely crucial to define gtag in the global scope
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){window.dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.GOOGLE_ANALYTICS_TRACKING_ID}', {'anonymize_ip': true});
+
+              function setCookies() {
+                var s = document.createElement('script');
+                s.type = "text/javascript";
+                s.async = "true";
+                s.src = "https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_TRACKING_ID}";
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+              }
+                  `}}
+          />
         </Head>
         <body>
           <Main />
           <div id="portal" />
           <NextScript />
 
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_TRACKING_ID}`}
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', '${process.env.GOOGLE_ANALYTICS_TRACKING_ID}');`,
-            }}
-          />
         </body>
       </Html>
     );
