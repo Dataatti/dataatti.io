@@ -6,9 +6,6 @@ import Squares from '@pagerland/themes/src/Startup/components/Squares/Square';
 import SquaresBlur from '@pagerland/themes/src/Startup/components/Squares/SquareBlur';
 import Head from 'next/head';
 
-import Button from '@pagerland/common/src/components/Button';
-
-
 export default function FourOhFour() {
   const [lang, setLang] = useState();
 
