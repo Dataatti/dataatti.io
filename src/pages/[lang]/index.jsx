@@ -132,9 +132,15 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
           <link rel="preload" as="style" href={theme.typography.googleFont} />
           <link rel="stylesheet" href={theme.typography.googleFont} media="print" onload="this.media='all'" />
+
+          {/* Help SEO with translations */}
+          <link rel="alternate" hrefLang="en" href="https://dataatti.io/en/" />
+          <link rel="alternate" hrefLang="fi" href="https://dataatti.io/fi/" />
+          <link rel="alternate" hrefLang="x-default" href="https://dataatti.io/fi/" />
+
           <meta name="theme-color" content={theme.colors.primary} />
         </Head>
-        <SEO title="Dataatti" description={fields.seoDescription} />
+        <SEO title={fields.seoTitle} description={fields.seoDescription} />
         <Sticky isIOSFixEnabled={false} style={{ zIndex: 999, position: 'relative' }}>
           <Navbar Logo={Logo}
             links={[

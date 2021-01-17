@@ -22,7 +22,6 @@ export default class MyDocument extends Document {
         <Head>
           {this.props.styleTags}
           <link rel="manifest" href="/manifest.webmanifest" />
-          <link rel="canonical" href="https://dataatti.io/fi/" />
 
           <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png" />
           <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png" />
