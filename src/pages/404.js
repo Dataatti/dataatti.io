@@ -4,43 +4,50 @@ import { useState, useEffect } from 'react';
 import Box from '@pagerland/common/src/components/Box';
 import Squares from '@pagerland/themes/src/Startup/components/Squares/Square';
 import SquaresBlur from '@pagerland/themes/src/Startup/components/Squares/SquareBlur';
+import Head from 'next/head';
+
+import Button from '@pagerland/common/src/components/Button';
 
 
 export default function FourOhFour() {
-    const [lang, setLang] = useState();
+  const [lang, setLang] = useState();
 
-    useEffect(() => {
-        const userLang = navigator.language || navigator.userLanguage;
-        if (userLang === "fi-FI") {
-            setLang("fi")
-        } else {
-            setLang("en")
-        }
-    }, [])
+  useEffect(() => {
+    const userLang = navigator.language || navigator.userLanguage;
+    if (userLang === "fi-FI") {
+      setLang("fi")
+    } else {
+      setLang("en")
+    }
+  }, [])
 
-    return (
-        <div className="wrapper">
-            <div className="inner-wrapper">
-                <Box>
-                    <Box>
-                        <Squares className="squares-1" />
-                        <Squares className="squares-2" />
-                        <Squares className="squares-3" />
-                        <Squares className="squares-4" />
+  return (
+    <>
+      <Head>
+        <title>Dataatti - 404</title>
+      </Head>
+      <div className="wrapper">
+        <div className="inner-wrapper">
+          <Box>
+            <Box>
+              <Squares className="squares-1" />
+              <Squares className="squares-2" />
+              <Squares className="squares-3" />
+              <Squares className="squares-4" />
 
-                        <SquaresBlur className="squaresBlur-1" />
-                        <SquaresBlur className="squaresBlur-2" />
-                        <SquaresBlur className="squaresBlur-3" />
-                        <SquaresBlur className="squaresBlur-4" />
-                    </Box>
-                </Box>
-                <img src="/logo.svg" alt="Dataatti logo" width="300px" height="100px" />
-                <h1>404 - Page Not Found</h1>
-                <Link href="/[lang]" as={`/${lang}`}>
-                    <a>Go back home</a>
-                </Link>
-            </div>
-            <style jsx>{`
+              <SquaresBlur className="squaresBlur-1" />
+              <SquaresBlur className="squaresBlur-2" />
+              <SquaresBlur className="squaresBlur-3" />
+              <SquaresBlur className="squaresBlur-4" />
+            </Box>
+          </Box>
+          <img src="/logo.svg" alt="Dataatti logo" width="300px" height="100px" />
+          <h1>404 - Page Not Found</h1>
+          <Link href="/[lang]" as={`/${lang}`}>
+            Go back home
+          </Link>
+        </div>
+        <style jsx>{`
                 .wrapper {
                     width: 100%;
                     height:100vh;
@@ -58,7 +65,7 @@ export default function FourOhFour() {
                     flex-wrap: wrap;
                 }
             `}</style>
-            <style global jsx>{`
+        <style global jsx>{`
             .inner-wrapper > * {
                 width: 100%;
                 text-align: center;
@@ -66,8 +73,8 @@ export default function FourOhFour() {
 
             .squares-1 {
                 position: absolute;
-                top: 30%;
-                left: 30%;
+                top: 20%;
+                left: 20%;
                 height: 50px;
                 width:50px;
                 color: rgb(208, 111, 63);
@@ -75,7 +82,7 @@ export default function FourOhFour() {
 
             .squares-2 {
                 position: absolute;
-                top: 55%;
+                top: 75%;
                 left: 32%;
                 height: 50px;
                 width:50px;
@@ -84,7 +91,7 @@ export default function FourOhFour() {
 
             .squares-3 {
                 position: absolute;
-                top: 40%;
+                top: 15%;
                 left: 66%;
                 height: 50px;
                 width:50px;
@@ -93,7 +100,7 @@ export default function FourOhFour() {
 
             .squares-4 {
                 position: absolute;
-                top: 60%;
+                top: 86%;
                 left: 70%;
                 height: 50px;
                 width:50px;
@@ -102,8 +109,8 @@ export default function FourOhFour() {
 
             .squaresBlur-1 {
                 position: absolute;
-                top: 28%;
-                left: 28%;
+                top: 18%;
+                left: 18%;
                 height: 50px;
                 width:50px;
                 color: rgb(208, 111, 63);
@@ -111,7 +118,7 @@ export default function FourOhFour() {
 
             .squaresBlur-2 {
                 position: absolute;
-                top: 53%;
+                top: 73%;
                 left: 30%;
                 height: 50px;
                 width:50px;
@@ -120,7 +127,7 @@ export default function FourOhFour() {
 
             .squaresBlur-3 {
                 position: absolute;
-                top: 38%;
+                top: 18%;
                 left: 64%;
                 height: 50px;
                 width:50px;
@@ -129,7 +136,7 @@ export default function FourOhFour() {
 
             .squaresBlur-4 {
                 position: absolute;
-                top: 58%;
+                top: 88%;
                 left: 68%;
                 height: 50px;
                 width:50px;
@@ -137,6 +144,7 @@ export default function FourOhFour() {
             }
 
             `}</style>
-        </div>
-    )
+      </div>
+    </>
+  )
 }
