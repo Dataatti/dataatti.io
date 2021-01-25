@@ -136,10 +136,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
           {/* Help SEO with translations */}
           <link rel="alternate" href="https://dataatti.io/fi/" hrefLang="x-default"  />
           <link rel="alternate" href="https://dataatti.io/fi/" hrefLang="fi"  />
-          <link rel="alternate" href="https://dataatti.io/fi/" hreflang="fi-fi" />
           <link rel="alternate" href="https://dataatti.io/en/" hrefLang="en"  />
-          <link rel="alternate" href="https://dataatti.io/en/" hreflang="en-us" />
-          <link rel="alternate" href="https://dataatti.io/en/" hreflang="en-gb" />
 
           <meta name="theme-color" content={theme.colors.primary} />
         </Head>
