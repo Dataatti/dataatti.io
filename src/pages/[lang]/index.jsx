@@ -16,6 +16,7 @@ import Instagram from '@pagerland/icons/src/monochrome/Instagram';
 import Linkedin from '@pagerland/icons/src/monochrome/Linkedin';
 
 import Sticky from 'react-sticky-el';
+import Header from '../../components/header';
 
 import Theme, { theme } from '@pagerland/themes/src/Startup';
 import {
@@ -141,7 +142,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
           <meta name="theme-color" content={theme.colors.primary} />
         </Head>
         <SEO title={fields.seoTitle} description={fields.seoDescription} />
-        <Sticky isIOSFixEnabled={false} style={{ zIndex: 999, position: 'relative' }}>
+        <Header>
           <Navbar Logo={Logo}
             links={[
               {
@@ -172,7 +173,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
               },
             ]}
           />
-        </Sticky>
+        </Header>
         <Welcome name="" title={fields.headline} text={fields.headerText} avatars={[]} actions={[
           {
             label: fields.homeButtonText,
