@@ -14,7 +14,6 @@
   "dependencies": {
     "contentful": "^8.1.6",
     "dotenv": "8.2.0",
-    "eslint-plugin-import": "^2.22.1",
     "marked": "^1.2.7",
     "next": "10.0.4",
     "next-absolute-url": "1.2.2",
