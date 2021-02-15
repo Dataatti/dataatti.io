@@ -34,6 +34,7 @@ import SEO from '../../components/SEO';
 
 import { createClient } from 'contentful';
 import PrivacyModal from '../../components/privacy-modal';
+import { BlogSection } from '../../components/blog/parts/blog-section';
 
 const client = createClient({
   // This is the space ID. A space is like a project folder in Contentful terms
@@ -201,6 +202,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
           }
         ]} />
         <About name="about" title={fields.aboutTitle} text={fields.aboutText} />
+        <BlogSection />
         <Team name="team" title={fields.meetOurTeamTitle} text={fields.meetOurTeamText} cta={null}
           people={teamMembers.map(member => {
             return ({
