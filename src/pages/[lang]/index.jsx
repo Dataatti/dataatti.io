@@ -135,9 +135,9 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
           <link rel="stylesheet" href={theme.typography.googleFont} media="print" onload="this.media='all'" />
 
           {/* Help SEO with translations */}
-          <link rel="alternate" hrefLang="en" href="https://dataatti.io/en/" />
-          <link rel="alternate" hrefLang="fi" href="https://dataatti.io/fi/" />
-          <link rel="alternate" hrefLang="x-default" href="https://dataatti.io/fi/" />
+          <link rel="alternate" href="https://dataatti.io/fi/" hrefLang="x-default"  />
+          <link rel="alternate" href="https://dataatti.io/fi/" hrefLang="fi"  />
+          <link rel="alternate" href="https://dataatti.io/en/" hrefLang="en"  />
 
           <meta name="theme-color" content={theme.colors.primary} />
         </Head>
