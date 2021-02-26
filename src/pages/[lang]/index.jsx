@@ -34,6 +34,7 @@ import SEO from '../../components/SEO';
 
 import { createClient } from 'contentful';
 import PrivacyModal from '../../components/privacy-modal';
+import { BlogSection } from '../../components/blog/parts/blog-section';
 
 const client = createClient({
   // This is the space ID. A space is like a project folder in Contentful terms
@@ -135,9 +136,9 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
           <link rel="stylesheet" href={theme.typography.googleFont} media="print" onload="this.media='all'" />
 
           {/* Help SEO with translations */}
-          <link rel="alternate" href="https://dataatti.io/fi/" hrefLang="x-default"  />
-          <link rel="alternate" href="https://dataatti.io/fi/" hrefLang="fi"  />
-          <link rel="alternate" href="https://dataatti.io/en/" hrefLang="en"  />
+          <link rel="alternate" hrefLang="en" href="https://dataatti.io/en/" />
+          <link rel="alternate" hrefLang="fi" href="https://dataatti.io/fi/" />
+          <link rel="alternate" hrefLang="x-default" href="https://dataatti.io/fi/" />
 
           <meta name="theme-color" content={theme.colors.primary} />
         </Head>
@@ -201,6 +202,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
           }
         ]} />
         <About name="about" title={fields.aboutTitle} text={fields.aboutText} />
+        <BlogSection />
         <Team name="team" title={fields.meetOurTeamTitle} text={fields.meetOurTeamText} cta={null}
           people={teamMembers.map(member => {
             return ({
