@@ -1,0 +1,8 @@
+.browserlistrc
+.editorconfig
+.gitignore
+.next
+.prettierignore
+.vscode
+src/packages/**
+
