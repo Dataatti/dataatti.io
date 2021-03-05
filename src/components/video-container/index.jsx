@@ -15,6 +15,7 @@ const VideoContainer = ({ videoSrc }) => {
           width: 100%;
           height: 100%;
           border: 0;
+          border-radius: 32px 0;
         }
       `}</style>
     </div>
