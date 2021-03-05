@@ -203,7 +203,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
           ]}
         />
         <About name="about" title={fields.aboutTitle} text={fields.aboutText} />
-        <BlogSection />
+        <BlogSection content={teamMembers} />
         <Team
           name="team"
           title={fields.meetOurTeamTitle}
