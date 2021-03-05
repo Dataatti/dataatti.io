@@ -54,7 +54,7 @@ const Welcome = ({
         ))}
         <Squares />
         <Fade cascade duration={600}>
-          {CustomComponent && <>{CustomComponent}</>}
+          {CustomComponent && CustomComponent}
           {/* img && <RoundedImage {...ImageProps} {...img} /> */}
         </Fade>
       </Box>
