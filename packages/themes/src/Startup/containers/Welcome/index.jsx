@@ -17,6 +17,7 @@ const Welcome = ({
   title,
   text,
   img,
+  CustomComponent,
   actions,
   avatars,
   WrapperProps,
@@ -27,6 +28,7 @@ const Welcome = ({
   ActionButtonsProps,
   ImageWrapperProps,
   ImageProps,
+  CustomComponentProps,
   AvatarsProps,
 }) => (
   <Box name={name} {...WrapperProps}>
@@ -52,7 +54,8 @@ const Welcome = ({
         ))}
         <Squares />
         <Fade cascade duration={600}>
-          <RoundedImage {...ImageProps} {...img} />
+          {CustomComponent && <>{CustomComponent}</>}
+          {/* img && <RoundedImage {...ImageProps} {...img} /> */}
         </Fade>
       </Box>
     </ContainerWithBackground>
@@ -177,6 +180,8 @@ Welcome.defaultProps = {
   ImageWrapperProps: {
     zIndex: 4,
     position: 'relative',
+    maxWidth: '544px',
+    width: '100%',
     my: {
       _: 90,
       lg: 0,
