@@ -9,7 +9,9 @@
     "dev": "next",
     "build": "next build && next export",
     "start": "next start",
-    "docs": "yarn workspace @pagerland/docs storybook"
+    "docs": "yarn workspace @pagerland/docs storybook",
+    "lint": "eslint src --ext .jsx",
+    "lint:fix": "eslint src --ext .jsx --fix"
   },
   "dependencies": {
     "contentful": "^8.1.6",

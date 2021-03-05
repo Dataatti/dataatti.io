@@ -1,11 +1,11 @@
-import React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import React from "react";
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
   static getInitialProps(ctx) {
     const { pathname } = ctx;
-    const lang = ctx.query.lang === 'fi' ? 'fi' : 'en';
+    const lang = ctx.query.lang === "fi" ? "fi" : "en";
 
     const sheet = new ServerStyleSheet();
 
@@ -32,12 +32,7 @@ export default class MyDocument extends Document {
           <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png" />
           <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png" />
           <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png" />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="192x192"
-            href="/icons/android-icon-192x192.png"
-          />
+          <link rel="icon" type="image/png" sizes="192x192" href="/icons/android-icon-192x192.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
@@ -79,14 +74,14 @@ export default class MyDocument extends Document {
                 var x = document.getElementsByTagName('script')[0];
                 x.parentNode.insertBefore(s, x);
               }
-                  `}}
+                  `,
+            }}
           />
         </Head>
         <body>
           <Main />
           <div id="portal" />
           <NextScript />
-
         </body>
       </Html>
     );

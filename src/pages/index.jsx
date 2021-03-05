@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 const Startup = () => {
-
   const router = useRouter();
 
   useEffect(() => {
@@ -11,13 +10,10 @@ const Startup = () => {
     if (userLang === "fi-FI") {
       router.replace("/fi");
     } else {
-      router.replace("/en")
+      router.replace("/en");
     }
-  }, [])
-  return (
-    <>
-    </>
-  )
+  }, []);
+  return <></>;
 };
 
 export default Startup;

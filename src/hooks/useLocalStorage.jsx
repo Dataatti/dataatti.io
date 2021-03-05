@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 // Hook
 export function useLocalStorage(key, initialValue) {
@@ -19,18 +19,17 @@ export function useLocalStorage(key, initialValue) {
 
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
-  const setValue = value => {
+  const setValue = (value) => {
     try {
       // Allow value to be a function so we have same API as useState
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value;
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
       // Save state
       setStoredValue(valueToStore);
       // Save to local storage
       window.localStorage.setItem(key, JSON.stringify(valueToStore));
       //dirty workaround to get storage event to fire in current document to allow Google Analytics opt out to work correctly
       if (key === "accepted") {
-        window.dispatchEvent(new Event('storage'));
+        window.dispatchEvent(new Event("storage"));
       }
     } catch (error) {
       // A more advanced implementation would handle the error case
