@@ -2,7 +2,6 @@ import Fade from "react-reveal/Fade";
 import Link from "next/link";
 
 export const BlogCard = ({ _key, href, content }) => {
-  console.log(content);
   return (
     <Fade bottom cascade duration={600} delay={_key * 100} key={_key}>
       <div className="blog-card-wrapper">
@@ -19,9 +18,9 @@ export const BlogCard = ({ _key, href, content }) => {
             </div>
           </div>
           <p className="blog-preview-paragraph">{content.text}</p>
-          {/* <Link href={href || "/404"}>
-          <a className="blog-link">blog</a>
-        </Link> */}
+          <Link href={href || "/404"}>
+            <a className="blog-link">{content.readMore || "Read More"}</a>
+          </Link>
         </div>
       </div>
       <style jsx>{`
@@ -41,7 +40,7 @@ export const BlogCard = ({ _key, href, content }) => {
           justify-content: center;
           position: relative;
           flex-wrap: wrap;
-          box-shadow: -1px -38px 0px -2px rgba(255, 255, 255, 0.25) inset;
+          box-shadow: 0px -40px 14px 0px rgba(255, 255, 255, 0.5) inset;
           height: 400px;
         }
 
@@ -53,6 +52,7 @@ export const BlogCard = ({ _key, href, content }) => {
           height: 200px;
           background: url("https://i.picsum.photos/id/1026/400/200.jpg?hmac=HAuXegf1JXD21IFkjxjPD7vdzD55W4HqEx_hgv7b1L4")
             no-repeat;
+          background-size: cover;
           border-radius: 32px 32px 0px 0px;
         }
 
@@ -89,7 +89,7 @@ export const BlogCard = ({ _key, href, content }) => {
 
         .blog-header-wrapper span {
           color: gray;
-          font-size: 0.85rem;
+          font-size: 0.9rem;
           line-height: 1rem;
           width: 100%;
         }
@@ -102,6 +102,22 @@ export const BlogCard = ({ _key, href, content }) => {
         .blog-preview-paragraph {
           width: 100%;
           overflow: hidden;
+          height: 70px;
+          text-overflow: ellipsis;
+        }
+
+        .blog-link {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          text-align: center;
+          margin: 0;
+          padding-top: 60px;
+          background-image: linear-gradient(to bottom, transparent, white);
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
         }
       `}</style>
     </Fade>
