@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import { Wrapper } from './styled.components';
+import { Wrapper } from "./styled.components";
 
 /**
  * Guidance and suggestions for using icon

@@ -166,136 +166,143 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
             ]}
           />
         </Header>
-        <Welcome
-          name=""
-          title={fields.headline}
-          text={fields.headerText}
-          avatars={[]}
-          actions={[
-            {
-              label: fields.homeButtonText,
-              to: "services",
-              as: Link,
-              ...smoothLinkProps,
-              variant: "primary",
-            },
-          ]}
-        />
-        <Services
-          name="services"
-          title={fields.servicesTitle}
-          services={[
-            {
-              icon: Desktop,
-              title: fields.servicesTitleOne,
-              text: fields.servicesTextOne,
-            },
-            {
-              icon: User,
-              title: fields.servicesTitleTwo,
-              text: fields.servicesTextTwo,
-            },
-            {
-              icon: MobileAndroid,
-              title: fields.servicesTitleThree,
-              text: fields.servicesTextThree,
-            },
-          ]}
-        />
-        <About name="about" title={fields.aboutTitle} text={fields.aboutText} />
-        <BlogSection content={teamMembers} />
-        <Team
-          name="team"
-          title={fields.meetOurTeamTitle}
-          text={fields.meetOurTeamText}
-          cta={null}
-          people={teamMembers.map((member) => {
-            return {
-              avatar: {
-                src: member.fields.image.fields.file.url,
-                width: "120px",
-                height: "120px",
-                ImgProps: {
-                  alt: member.fields.name,
+        <div className="overflow-hidden">
+          <Welcome
+            name=""
+            title={fields.headline}
+            text={fields.headerText}
+            avatars={[]}
+            actions={[
+              {
+                label: fields.homeButtonText,
+                to: "services",
+                as: Link,
+                ...smoothLinkProps,
+                variant: "primary",
+              },
+            ]}
+          />
+          <Services
+            name="services"
+            title={fields.servicesTitle}
+            services={[
+              {
+                icon: Desktop,
+                title: fields.servicesTitleOne,
+                text: fields.servicesTextOne,
+              },
+              {
+                icon: User,
+                title: fields.servicesTitleTwo,
+                text: fields.servicesTextTwo,
+              },
+              {
+                icon: MobileAndroid,
+                title: fields.servicesTitleThree,
+                text: fields.servicesTextThree,
+              },
+            ]}
+          />
+          <About name="about" title={fields.aboutTitle} text={fields.aboutText} />
+          <BlogSection content={teamMembers} />
+          <Team
+            name="team"
+            title={fields.meetOurTeamTitle}
+            text={fields.meetOurTeamText}
+            cta={null}
+            people={teamMembers.map((member) => {
+              return {
+                avatar: {
+                  src: member.fields.image.fields.file.url,
                   width: "120px",
                   height: "120px",
+                  ImgProps: {
+                    alt: member.fields.name,
+                    width: "120px",
+                    height: "120px",
+                  },
                 },
+                name: member.fields.name,
+                position: member.fields.position,
+                email: member.fields.email,
+                introduction: member.fields.introduction,
+                social: {
+                  linkedin: member.fields.linkedIn,
+                },
+              };
+            })}
+            GridProps={{
+              mb: {
+                _: 4,
+                md: 5,
               },
-              name: member.fields.name,
-              position: member.fields.position,
-              email: member.fields.email,
-              introduction: member.fields.introduction,
-              social: {
-                linkedin: member.fields.linkedIn,
+              gridTemplateColumns: {
+                _: "repeat(2, 1fr)",
+                md: "repeat(3, 1fr)",
+                lg: "repeat(3, 1fr)",
               },
-            };
-          })}
-          GridProps={{
-            mb: {
-              _: 4,
-              md: 5,
-            },
-            gridTemplateColumns: {
-              _: "repeat(2, 1fr)",
-              md: "repeat(3, 1fr)",
-              lg: "repeat(3, 1fr)",
-            },
-            gridColumnGap: "32px",
-            gridRowGap: {
-              _: "32px",
-              md: "64px",
-            },
-          }}
-        />
-        <Contact
-          name="contact"
-          title={fields.contactTitle}
-          mailer={{
-            onSubmit: (e, actions) => handleSubmit(e, actions),
-            fields: mailerFields,
-            cta: fields.contactFormSubmitButton,
-            ctaSent: fields.contantFormSubmitButtonSent,
-            title: fields.contactFormTitle,
-            validationSchema: validationSchema,
-          }}
-          sections={[
-            /*  {
+              gridColumnGap: "32px",
+              gridRowGap: {
+                _: "32px",
+                md: "64px",
+              },
+            }}
+          />
+          <Contact
+            name="contact"
+            title={fields.contactTitle}
+            mailer={{
+              onSubmit: (e, actions) => handleSubmit(e, actions),
+              fields: mailerFields,
+              cta: fields.contactFormSubmitButton,
+              ctaSent: fields.contantFormSubmitButtonSent,
+              title: fields.contactFormTitle,
+              validationSchema: validationSchema,
+            }}
+            sections={[
+              /*  {
                icon: MapMarker,
                text: textToMultiline`5263 Sunset St undefined Salinas,\nWest Virginia 25420\nUnited States`,
              }, */
-            {
-              icon: MobilePhone,
-              text: "+358 40 419 6798",
-            },
-            {
-              icon: PaperAirplane,
-              text: "hello@dataatti.io",
-            },
-            {
-              icon: DocumentInfo,
-              text: "3172458-9",
-            },
-            {
-              icon: Building,
-              text: "Dataatti Oy",
-            },
-          ]}
-          socialLinks={[
-            {
-              icon: Instagram,
-              href: "https://www.instagram.com/dataatti/",
-              title: "Instagram",
-            },
-            {
-              icon: Linkedin,
-              href: "https://www.linkedin.com/company/dataatti/",
-              title: "LinkedIn",
-            },
-          ]}
-        />
-        <Copyright copyright={"© Dataatti Oy " + new Date().getFullYear()} links={[]} />
+              {
+                icon: MobilePhone,
+                text: "+358 40 419 6798",
+              },
+              {
+                icon: PaperAirplane,
+                text: "hello@dataatti.io",
+              },
+              {
+                icon: DocumentInfo,
+                text: "3172458-9",
+              },
+              {
+                icon: Building,
+                text: "Dataatti Oy",
+              },
+            ]}
+            socialLinks={[
+              {
+                icon: Instagram,
+                href: "https://www.instagram.com/dataatti/",
+                title: "Instagram",
+              },
+              {
+                icon: Linkedin,
+                href: "https://www.linkedin.com/company/dataatti/",
+                title: "LinkedIn",
+              },
+            ]}
+          />
+          <Copyright copyright={"© Dataatti Oy " + new Date().getFullYear()} links={[]} />
+        </div>
       </Theme>
       <PrivacyModal privacyText={fields.cookiePolicy} />
+      <style jsx>{`
+        .overflow-hidden {
+          overflow: hidden;
+        }
+      `}</style>
     </>
   );
 };

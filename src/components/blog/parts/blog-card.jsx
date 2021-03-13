@@ -1,5 +1,7 @@
 import Fade from "react-reveal/Fade";
 import Link from "next/link";
+import { ArrowRight } from "@pagerland/icons/src/line";
+import Icon from "@pagerland/common/src/components/Icon";
 
 export const BlogCard = ({ _key, href, content }) => {
   return (
@@ -19,19 +21,25 @@ export const BlogCard = ({ _key, href, content }) => {
           </div>
           <p className="blog-preview-paragraph">{content.text}</p>
           <Link href={href || "/404"}>
-            <a className="blog-link">{content.readMore || "Read More"}</a>
+            <a className="blog-link">
+              {content.readMore || "Read More"} <ArrowRight className="arrow-right" />
+            </a>
           </Link>
         </div>
       </div>
       <style jsx>{`
         .blog-card-wrapper {
-          box-shadow: 0 36px 64px rgb(34 39 43 / 6%);
+          box-shadow: 0 16px 32px rgb(34 39 43 / 6%);
           background-color: white;
-          width: 30%;
+          min-width: 25%;
           border-radius: 32px;
-          height: 400px;
-          margin: 20px 0px;
+          height: 420px;
+          margin: 20px;
           overflow: hidden;
+        }
+
+        .blog-card-wrapper:last-child {
+          padding-right: 20px;
         }
 
         .blog-inner-wrapper {
@@ -49,7 +57,7 @@ export const BlogCard = ({ _key, href, content }) => {
           top: 0;
           left: 0;
           width: 100%;
-          height: 200px;
+          height: 150px;
           background: url("https://i.picsum.photos/id/1026/400/200.jpg?hmac=HAuXegf1JXD21IFkjxjPD7vdzD55W4HqEx_hgv7b1L4")
             no-repeat;
           background-size: cover;
@@ -57,7 +65,7 @@ export const BlogCard = ({ _key, href, content }) => {
         }
 
         .blog-header-wrapper {
-          margin-top: 200px;
+          margin-top: 150px;
           width: 100%;
         }
 
@@ -102,13 +110,13 @@ export const BlogCard = ({ _key, href, content }) => {
         .blog-preview-paragraph {
           width: 100%;
           overflow: hidden;
-          height: 70px;
+          height: 120px;
           text-overflow: ellipsis;
         }
 
         .blog-link {
           position: absolute;
-          bottom: 0;
+          bottom: -20px;
           left: 0;
           width: 100%;
           text-align: center;
@@ -118,6 +126,18 @@ export const BlogCard = ({ _key, href, content }) => {
           display: flex;
           justify-content: center;
           align-items: flex-end;
+          color: #51b3a7;
+          text-decoration: none;
+        }
+
+        @media screen and (max-width: 460px) {
+          .blog-card-wrapper {
+            min-width: 90%;
+          }
+        }
+
+        :global(.arrow-right) {
+          fill: #51b3a7;
         }
       `}</style>
     </Fade>

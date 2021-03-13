@@ -1,22 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import Box from '@pagerland/common/src/components/Box';
-import Fade from 'react-reveal/Fade';
-import Typography from '@pagerland/common/src/components/Typography';
-import Container from '@pagerland/common/src/components/Container';
-import Grid from '@pagerland/common/src/components/Grid';
-import Button from '@pagerland/common/src/components/Button';
-import Icon from '@pagerland/common/src/components/Icon';
-import PaperAirplane from '@pagerland/icons/src/monochrome/PaperAirplane';
+import Box from "@pagerland/common/src/components/Box";
+import Fade from "react-reveal/Fade";
+import Typography from "@pagerland/common/src/components/Typography";
+import Container from "@pagerland/common/src/components/Container";
+import Grid from "@pagerland/common/src/components/Grid";
+import Button from "@pagerland/common/src/components/Button";
+import Icon from "@pagerland/common/src/components/Icon";
+import PaperAirplane from "@pagerland/icons/src/monochrome/PaperAirplane";
 
-import LinkedinAlt from '@pagerland/icons/src/monochrome/LinkedinAlt';
-import Twitter from '@pagerland/icons/src/monochrome/Twitter';
-import Skype from '@pagerland/icons/src/monochrome/Skype';
+import LinkedinAlt from "@pagerland/icons/src/monochrome/LinkedinAlt";
+import Twitter from "@pagerland/icons/src/monochrome/Twitter";
+import Skype from "@pagerland/icons/src/monochrome/Skype";
 
-import Link from '@pagerland/common/src/components/Link';
-import data from '../../docs.data';
-import Avatar from '../../components/Avatar';
+import Link from "@pagerland/common/src/components/Link";
+import data from "../../docs.data";
+import Avatar from "../../components/Avatar";
 
 const Team = ({
   name,
@@ -58,7 +58,7 @@ const Team = ({
               <Typography {...NameProps}>{person.name}</Typography>
               <Typography {...PositionProps}>{person.position}</Typography>
               <Box {...EmailWrapperProps}>
-                <Link {...EmailTextProps} href={'mailto:' + person.email}>
+                <Link {...EmailTextProps} href={"mailto:" + person.email}>
                   {person.email}
                 </Link>
               </Box>
@@ -190,7 +190,7 @@ Team.propTypes = {
   cta: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.node,
-    })
+    }),
   ),
   /**
    * List of team members
@@ -207,7 +207,7 @@ Team.propTypes = {
         twitter: PropTypes.string,
         skype: PropTypes.string,
       }),
-    })
+    }),
   ),
 };
 
@@ -220,25 +220,25 @@ Team.defaultProps = {
     },
   },
   ContainerProps: {
-    textAlign: 'center',
+    textAlign: "center",
   },
   CaptionProps: {
     mb: {
       _: 4,
       md: 5,
     },
-    mx: 'auto',
+    mx: "auto",
     maxWidth: 736,
   },
   TitleProps: {
-    as: 'h2',
-    variant: 'h2',
-    color: 'black',
+    as: "h2",
+    variant: "h2",
+    color: "black",
     mb: 3,
-    textAlign: 'center',
+    textAlign: "center",
   },
   TextProps: {
-    color: 'gray.1',
+    color: "gray.1",
     mb: 4,
   },
   GridProps: {
@@ -247,14 +247,14 @@ Team.defaultProps = {
       md: 5,
     },
     gridTemplateColumns: {
-      _: 'repeat(2, 1fr)',
-      md: 'repeat(3, 1fr)',
-      lg: 'repeat(4, 1fr)',
+      _: "repeat(2, 1fr)",
+      md: "repeat(3, 1fr)",
+      lg: "repeat(4, 1fr)",
     },
-    gridColumnGap: '32px',
+    gridColumnGap: "32px",
     gridRowGap: {
-      _: '32px',
-      md: '64px',
+      _: "32px",
+      md: "64px",
     },
   },
   AvatarProps: {
@@ -262,50 +262,50 @@ Team.defaultProps = {
     mb: 2,
   },
   NameProps: {
-    variant: 'h5',
-    color: 'black',
+    variant: "h5",
+    color: "black",
   },
   PositionProps: {
-    color: 'gray.1',
+    color: "gray.1",
     mb: 0,
   },
   EmailWrapperProps: {
     mb: 2,
     flexBox: true,
     justifyContent: {
-      _: 'center',
+      _: "center",
     },
     alignItems: {
-      _: 'center',
+      _: "center",
     },
   },
   EmailTextProps: {
-    color: 'gray.1',
+    color: "gray.1",
   },
   IntroductionProps: {
-    color: 'gray.1',
-    fontSize: '15px',
+    color: "gray.1",
+    fontSize: "15px",
     mb: 2,
   },
   CtaProps: {
-    textAlign: 'center',
-    mx: 'auto',
-    variant: 'secondary',
-    as: 'a',
+    textAlign: "center",
+    mx: "auto",
+    variant: "secondary",
+    as: "a",
   },
   LinkedinIconProps: {
     mx: 2,
-    color: 'primary',
+    color: "primary",
     fontSize: 24,
   },
   TwitterIconProps: {
     mx: 2,
-    color: 'secondary',
+    color: "secondary",
     fontSize: 24,
   },
   SkypeIconProps: {
     mx: 2,
-    color: 'accent',
+    color: "accent",
     fontSize: 24,
   },
   ...data.team,

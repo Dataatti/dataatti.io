@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import Box from '@pagerland/common/src/components/Box';
-import Fade from 'react-reveal/Fade';
-import Typography from '@pagerland/common/src/components/Typography';
-import Container from '@pagerland/common/src/components/Container';
-import Grid from '@pagerland/common/src/components/Grid';
+import Box from "@pagerland/common/src/components/Box";
+import Fade from "react-reveal/Fade";
+import Typography from "@pagerland/common/src/components/Typography";
+import Container from "@pagerland/common/src/components/Container";
+import Grid from "@pagerland/common/src/components/Grid";
 
-import Img from '@pagerland/common/src/components/Img';
-import Badge from '@pagerland/common/src/components/Badge';
-import data from '../../docs.data';
-import Icon from '@pagerland/common/src/components/Icon';
+import Img from "@pagerland/common/src/components/Img";
+import Badge from "@pagerland/common/src/components/Badge";
+import data from "../../docs.data";
+import Icon from "@pagerland/common/src/components/Icon";
 
 const Services = ({
   name,
@@ -42,12 +42,15 @@ const Services = ({
         {services.map((service, key) => (
           <Fade bottom cascade duration={600} delay={key * 100} key={key}>
             <Box {...ServiceItemProps}>
-              {service.image && (
-                <Img src={service.image} {...ServiceIconProps} />
-              )}
+              {service.image && <Img src={service.image} {...ServiceIconProps} />}
               {service.icon && (
-                <Badge margin="20px auto" height="100px" width="100px" backgroundColor={['primary', 'accent', 'secondary'][key % 3]}>
-                  <Icon icon={service.icon} IconProps={{ fontSize: '72px' }} />
+                <Badge
+                  margin="20px auto"
+                  height="100px"
+                  width="100px"
+                  backgroundColor={["primary", "accent", "secondary"][key % 3]}
+                >
+                  <Icon icon={service.icon} IconProps={{ fontSize: "72px" }} />
                 </Badge>
               )}
               <Typography {...ServiceTitleProps}>{service.title}</Typography>
@@ -56,11 +59,6 @@ const Services = ({
           </Fade>
         ))}
       </Grid>
-      {/* <Fade top cascade duration={600}>
-        <Button {...CtaProps} {...cta}>
-          {cta.label}
-        </Button>
-      </Fade> */}
     </Container>
   </Box>
 );
@@ -163,52 +161,52 @@ Services.defaultProps = {
     },
   },
   ContainerProps: {
-    textAlign: 'center',
+    textAlign: "center",
   },
   CaptionProps: {
     mb: 5,
   },
   TitleProps: {
-    as: 'h2',
-    variant: 'h2',
-    color: 'black',
+    as: "h2",
+    variant: "h2",
+    color: "black",
     mb: 3,
-    textAlign: 'center',
+    textAlign: "center",
   },
   TextProps: {
-    color: 'gray.1',
+    color: "gray.1",
     mb: 4,
   },
   GridProps: {
     gridTemplateColumns: {
-      _: '1fr',
-      lg: 'repeat(3, 1fr)',
+      _: "1fr",
+      lg: "repeat(3, 1fr)",
     },
-    gridGap: '64px',
+    gridGap: "64px",
     maxWidth: 1088,
-    mx: 'auto',
+    mx: "auto",
     mb: 5,
   },
   ServiceIconProps: {
-    display: 'block',
-    mx: 'auto',
+    display: "block",
+    mx: "auto",
     mb: 3,
   },
   ServiceTitleProps: {
-    textAlign: 'center',
-    as: 'h3',
-    variant: 'h3',
+    textAlign: "center",
+    as: "h3",
+    variant: "h3",
     mb: 3,
   },
   ServiceTextProps: {
-    color: 'gray.1',
-    textAlign: 'center',
+    color: "gray.1",
+    textAlign: "center",
   },
   CtaProps: {
-    textAlign: 'center',
-    mx: 'auto',
-    variant: 'secondary',
-    as: 'a',
+    textAlign: "center",
+    mx: "auto",
+    variant: "secondary",
+    as: "a",
   },
   ...data.services,
 };
