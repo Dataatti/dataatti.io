@@ -4,55 +4,55 @@ import { BlogCard } from "./blog-card";
 
 export const BlogSection = ({ WrapperProps, name, content }) => {
   const draggable = useRef();
-  const blogs = ["/test1", "/test2", "/test3", "/test4"];
+  const blogs = ["/test1", "/test2", "/test3", "/test4", "/test4"];
 
-  useEffect(() => {
-    if (screen.width < 460) return;
-    draggable.current.style.cursor = "grab";
+  // useEffect(() => {
+  //   if (screen.width < 460) return;
+  //   draggable.current.style.cursor = "grab";
 
-    let pos = { top: 0, left: 0, x: 0, y: 0 };
+  //   let pos = { top: 0, left: 0, x: 0, y: 0 };
 
-    const mouseDownHandler = function (e) {
-      draggable.current.style.cursor = "grabbing";
-      draggable.current.style.userSelect = "none";
+  //   const mouseDownHandler = function (e) {
+  //     draggable.current.style.cursor = "grabbing";
+  //     draggable.current.style.userSelect = "none";
 
-      pos = {
-        left: draggable.current.scrollLeft,
-        top: draggable.current.scrollTop,
-        // Get the current mouse position
-        x: e.clientX,
-        y: e.clientY,
-      };
+  //     pos = {
+  //       left: draggable.current.scrollLeft,
+  //       top: draggable.current.scrollTop,
+  //       // Get the current mouse position
+  //       x: e.clientX,
+  //       y: e.clientY,
+  //     };
 
-      document.addEventListener("mousemove", mouseMoveHandler);
-      document.addEventListener("mouseup", mouseUpHandler);
-    };
+  //     document.addEventListener("mousemove", mouseMoveHandler);
+  //     document.addEventListener("mouseup", mouseUpHandler);
+  //   };
 
-    const mouseMoveHandler = function (e) {
-      // How far the mouse has been moved
-      const dx = e.clientX - pos.x;
-      const dy = e.clientY - pos.y;
+  //   const mouseMoveHandler = function (e) {
+  //     // How far the mouse has been moved
+  //     const dx = e.clientX - pos.x;
+  //     const dy = e.clientY - pos.y;
 
-      // Scroll the element
-      draggable.current.scrollTop = pos.top - dy;
-      draggable.current.scrollLeft = pos.left - dx;
-    };
+  //     // Scroll the element
+  //     draggable.current.scrollTop = pos.top - dy;
+  //     draggable.current.scrollLeft = pos.left - dx;
+  //   };
 
-    const mouseUpHandler = function () {
-      draggable.current.style.cursor = "grab";
-      draggable.current.style.removeProperty("user-select");
+  //   const mouseUpHandler = function () {
+  //     draggable.current.style.cursor = "grab";
+  //     draggable.current.style.removeProperty("user-select");
 
-      document.removeEventListener("mousemove", mouseMoveHandler);
-      document.removeEventListener("mouseup", mouseUpHandler);
-    };
+  //     document.removeEventListener("mousemove", mouseMoveHandler);
+  //     document.removeEventListener("mouseup", mouseUpHandler);
+  //   };
 
-    // Attach the handler
-    draggable.current.addEventListener("mousedown", mouseDownHandler);
+  //   // Attach the handler
+  //   draggable.current.addEventListener("mousedown", mouseDownHandler);
 
-    return () => {
-      draggable.current.removeEventListener("mousedown", mouseDownHandler);
-    };
-  }, []);
+  //   return () => {
+  //     draggable.current.removeEventListener("mousedown", mouseDownHandler);
+  //   };
+  // }, []);
 
   return (
     <div className="blogs-wrapper">
@@ -62,6 +62,8 @@ export const BlogSection = ({ WrapperProps, name, content }) => {
           <BlogCard
             _key={i}
             href={el}
+            // Workaround toistaseks et saan css:n toimii näis korteis oikein
+            last={i + 1 === blogs.length}
             content={{
               header: "Dataatti founders story",
               text:

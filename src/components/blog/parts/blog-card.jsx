@@ -3,10 +3,10 @@ import Link from "next/link";
 import { ArrowRight } from "@pagerland/icons/src/line";
 import Icon from "@pagerland/common/src/components/Icon";
 
-export const BlogCard = ({ _key, href, content }) => {
+export const BlogCard = ({ _key, href, content, last }) => {
   return (
     <Fade bottom cascade duration={600} delay={_key * 100} key={_key}>
-      <div className="blog-card-wrapper">
+      <div className={`blog-card-wrapper ${last ? "blog-card-wrapper-last" : ""}`}>
         <div className="blog-inner-wrapper">
           <div className="blog-bg-image"></div>
           <div className="blog-header-wrapper">
@@ -22,7 +22,7 @@ export const BlogCard = ({ _key, href, content }) => {
           <p className="blog-preview-paragraph">{content.text}</p>
           <Link href={href || "/404"}>
             <a className="blog-link">
-              {content.readMore || "Read More"} <ArrowRight className="arrow-right" />
+              <span>{content.readMore || "Read More"}</span> <ArrowRight className="arrow-right" />
             </a>
           </Link>
         </div>
@@ -38,7 +38,7 @@ export const BlogCard = ({ _key, href, content }) => {
           overflow: hidden;
         }
 
-        .blog-card-wrapper:last-child {
+        .blog-card-wrapper-last {
           padding-right: 20px;
         }
 
@@ -130,7 +130,25 @@ export const BlogCard = ({ _key, href, content }) => {
           text-decoration: none;
         }
 
-        @media screen and (max-width: 460px) {
+        @media screen and (max-width: 1150px) {
+          .blog-card-wrapper {
+            min-width: 30%;
+          }
+        }
+
+        @media screen and (max-width: 1000px) {
+          .blog-card-wrapper {
+            min-width: 45%;
+          }
+        }
+
+        @media screen and (max-width: 740px) {
+          .blog-card-wrapper {
+            min-width: 60%;
+          }
+        }
+
+        @media screen and (max-width: 560px) {
           .blog-card-wrapper {
             min-width: 90%;
           }
@@ -138,6 +156,7 @@ export const BlogCard = ({ _key, href, content }) => {
 
         :global(.arrow-right) {
           fill: #51b3a7;
+          padding-bottom: 4px;
         }
       `}</style>
     </Fade>
