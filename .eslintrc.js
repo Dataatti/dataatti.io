@@ -12,7 +12,12 @@ module.exports = {
   },
   plugins: ["prettier"],
   rules: {
-    "prettier/prettier": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
     "react/prop-types": 0,
     "react/jsx-key": 0,
     "react/react-in-jsx-scope": 0,
@@ -22,5 +27,5 @@ module.exports = {
       version: "latest",
     },
   },
-  ignorePatterns: [".next", "node_modules", "public", "build"],
+  ignorePatterns: [".next", "node_modules", "public", "build", "packages"],
 };
