@@ -1,45 +1,37 @@
 import Fade from "react-reveal/Fade";
 import Link from "next/link";
 import { ArrowRight } from "@pagerland/icons/src/line";
-import Icon from "@pagerland/common/src/components/Icon";
 
-export const BlogCard = ({ _key, href, content, last }) => {
+export const BlogCard = ({ _key, href, content }) => {
   return (
-    <Fade bottom cascade duration={600} delay={_key * 100} key={_key}>
-      <div className={`blog-card-wrapper ${last ? "blog-card-wrapper-last" : ""}`}>
-        <div className="blog-inner-wrapper">
-          <div className="blog-bg-image"></div>
-          <div className="blog-header-wrapper">
-            <h3 className="blog-header-text">{content.header}</h3>
-            <div className="blog-author-wrapper">
-              <img src={content.author.fields.image.fields.file.url} />
-              <div>
-                <span>{content.author.fields.name}</span>
-                <span>21.2.2021</span>
-              </div>
+    <div className="blog-card-wrapper">
+      <div className="blog-inner-wrapper">
+        <div className="blog-bg-image"></div>
+        <div className="blog-header-wrapper">
+          <h3 className="blog-header-text">{content.header}</h3>
+          <div className="blog-author-wrapper">
+            <img src={content.author.fields.image.fields.file.url} />
+            <div>
+              <span>{content.author.fields.name}</span>
+              <span>21.2.2021</span>
             </div>
           </div>
-          <p className="blog-preview-paragraph">{content.text}</p>
-          <Link href={href || "/404"}>
-            <a className="blog-link">
-              <span>{content.readMore || "Read More"}</span> <ArrowRight className="arrow-right" />
-            </a>
-          </Link>
         </div>
+        <p className="blog-preview-paragraph">{content.text}</p>
+        <Link href={href || "/404"}>
+          <a className="blog-link">
+            <span>{content.readMore || "Read More"}</span> <ArrowRight className="arrow-right" />
+          </a>
+        </Link>
       </div>
       <style jsx>{`
         .blog-card-wrapper {
-          box-shadow: 0 16px 32px rgb(34 39 43 / 6%);
-          background-color: white;
-          min-width: 25%;
+          width: 25rem;
           border-radius: 32px;
           height: 420px;
           margin: 20px;
           overflow: hidden;
-        }
-
-        .blog-card-wrapper-last {
-          padding-right: 20px;
+          box-shadow: 0 16px 16px 0px rgb(34 39 43 / 10%);
         }
 
         .blog-inner-wrapper {
@@ -48,7 +40,7 @@ export const BlogCard = ({ _key, href, content, last }) => {
           justify-content: center;
           position: relative;
           flex-wrap: wrap;
-          box-shadow: 0px -40px 14px 0px rgba(255, 255, 255, 0.5) inset;
+          background-color: white;
           height: 400px;
         }
 
@@ -82,6 +74,7 @@ export const BlogCard = ({ _key, href, content, last }) => {
 
         .blog-header-wrapper h3 {
           color: #d06f3f;
+          font-size: 1.75rem;
         }
         .blog-header-wrapper > * {
           margin: 0;
@@ -97,7 +90,7 @@ export const BlogCard = ({ _key, href, content, last }) => {
 
         .blog-header-wrapper span {
           color: gray;
-          font-size: 0.9rem;
+          font-size: 1rem;
           line-height: 1rem;
           width: 100%;
         }
@@ -130,27 +123,21 @@ export const BlogCard = ({ _key, href, content, last }) => {
           text-decoration: none;
         }
 
-        @media screen and (max-width: 1150px) {
+        @media screen and (max-width: 1330px) {
           .blog-card-wrapper {
-            min-width: 30%;
+            width: 20rem;
           }
         }
 
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 1080px) {
           .blog-card-wrapper {
-            min-width: 45%;
+            min-width: 20rem;
           }
         }
 
-        @media screen and (max-width: 740px) {
+        @media screen and (max-width: 420px) {
           .blog-card-wrapper {
-            min-width: 60%;
-          }
-        }
-
-        @media screen and (max-width: 560px) {
-          .blog-card-wrapper {
-            min-width: 90%;
+            margin: 0 auto;
           }
         }
 
@@ -159,6 +146,6 @@ export const BlogCard = ({ _key, href, content, last }) => {
           padding-bottom: 4px;
         }
       `}</style>
-    </Fade>
+    </div>
   );
 };

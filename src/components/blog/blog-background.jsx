@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { breakpoints, colors } from "../../styles";
+import { breakpoints, colors } from "@pagerland/themes/src/Startup/styles";
 
 const Svg = styled.svg`
   position: absolute;
@@ -21,7 +21,7 @@ const Svg = styled.svg`
   }
 `;
 
-const Background = (props) => (
+export const BlogBackground = (props) => (
   <Svg viewBox="0 0 1600 936" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       d="M1600 0C1416.58 448.746 967.778 531 700 404C432.222 277 255.556 228 0 296V808C362.222 1139 944.444 711 1600 785V0Z"
@@ -30,4 +30,4 @@ const Background = (props) => (
   </Svg>
 );
 
-export default Background;
+export default BlogBackground;

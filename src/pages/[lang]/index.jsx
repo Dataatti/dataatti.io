@@ -26,7 +26,7 @@ import SEO from "../../components/SEO";
 import { createClient } from "contentful";
 import PrivacyModal from "../../components/privacy-modal";
 import VideoContainer from "../../components/video-container";
-import { BlogSection } from "../../components/blog/parts";
+import { BlogSection } from "../../components/blog";
 
 const client = createClient({
   // This is the space ID. A space is like a project folder in Contentful terms
