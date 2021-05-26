@@ -1,28 +1,30 @@
 import Fade from "react-reveal/Fade";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { ArrowRight } from "@pagerland/icons/src/line";
+import { options } from "marked";
 
-export const BlogCard = ({ _key, href, content }) => {
+export const BlogCard = ({ href, content }) => {
+  const router = useRouter();
+
   return (
-    <div className="blog-card-wrapper">
+    <div className="blog-card-wrapper" onClick={() => router.push(href)}>
+      <div className="blog-bg-image"></div>
       <div className="blog-inner-wrapper">
-        <div className="blog-bg-image"></div>
         <div className="blog-header-wrapper">
-          <h3 className="blog-header-text">{content.header}</h3>
+          <h3 className="blog-header-text">{content?.header}</h3>
           <div className="blog-author-wrapper">
-            <img src={content.author.fields.image.fields.file.url} />
+            <img src={content?.author?.fields?.image?.fields?.file?.url} />
             <div>
               <span>{content.author.fields.name}</span>
-              <span>21.2.2021</span>
+              <span>{new Intl.DateTimeFormat(router.query.lang).format(new Date(content.created))}</span>
             </div>
           </div>
         </div>
-        <p className="blog-preview-paragraph">{content.text}</p>
-        <Link href={href || "/404"}>
-          <a className="blog-link">
-            <span>{content.readMore || "Read More"}</span> <ArrowRight className="arrow-right" />
-          </a>
-        </Link>
+        <p className="blog-preview-paragraph">{content.shortText.slice(0, 100) + "..."}</p>
+        <div className="blog-link">
+          <span>{content.readMore || "Read More"}</span> <ArrowRight className="arrow-right" />
+        </div>
       </div>
       <style jsx>{`
         .blog-card-wrapper {
@@ -32,32 +34,27 @@ export const BlogCard = ({ _key, href, content }) => {
           margin: 20px;
           overflow: hidden;
           box-shadow: 0 16px 16px 0px rgb(34 39 43 / 10%);
+          cursor: pointer;
         }
 
         .blog-inner-wrapper {
           padding: 1rem;
-          display: flex;
-          justify-content: center;
-          position: relative;
           flex-wrap: wrap;
           background-color: white;
           height: 400px;
         }
 
         .blog-bg-image {
-          position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 150px;
-          background: url("https://i.picsum.photos/id/1026/400/200.jpg?hmac=HAuXegf1JXD21IFkjxjPD7vdzD55W4HqEx_hgv7b1L4")
-            no-repeat;
+          background: url(${content.headerImageUrl}) no-repeat;
           background-size: cover;
           border-radius: 32px 32px 0px 0px;
         }
 
         .blog-header-wrapper {
-          margin-top: 150px;
           width: 100%;
         }
 
@@ -67,7 +64,7 @@ export const BlogCard = ({ _key, href, content }) => {
         }
 
         .blog-author-wrapper div {
-          margin-left: 8px;
+          margin-left: 0.5rem;
           display: flex;
           flex-wrap: wrap;
         }
@@ -102,25 +99,19 @@ export const BlogCard = ({ _key, href, content }) => {
 
         .blog-preview-paragraph {
           width: 100%;
+          margin: 0.5rem 0;
           overflow: hidden;
-          height: 120px;
           text-overflow: ellipsis;
         }
 
         .blog-link {
-          position: absolute;
-          bottom: -20px;
-          left: 0;
           width: 100%;
-          text-align: center;
           margin: 0;
-          padding-top: 60px;
-          background-image: linear-gradient(to bottom, transparent, white);
           display: flex;
-          justify-content: center;
-          align-items: flex-end;
-          color: #51b3a7;
+          align-items: center;
+          color: #d06f3f;
           text-decoration: none;
+          user-select: none;
         }
 
         @media screen and (max-width: 1330px) {
@@ -142,8 +133,7 @@ export const BlogCard = ({ _key, href, content }) => {
         }
 
         :global(.arrow-right) {
-          fill: #51b3a7;
-          padding-bottom: 4px;
+          fill: #d06f3f;
         }
       `}</style>
     </div>

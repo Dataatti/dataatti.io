@@ -37,7 +37,7 @@ const client = createClient({
 
 const Logo = (props) => <img src="/logo.svg" alt="Dataatti logo" width="150px" height="50px" {...props} />;
 
-const Startup = ({ fields, langToggle, teamMembers }) => {
+const Startup = ({ fields, langToggle, teamMembers, blogPosts }) => {
   // validation for the contact form
   const validationSchema = Yup.object().shape({
     fullName: Yup.string()
@@ -206,7 +206,7 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
             ]}
           />
           <About name="about" title={fields.aboutTitle} text={fields.aboutText} />
-          <BlogSection content={teamMembers} />
+          <BlogSection content={blogPosts} />
           <Team
             name="team"
             title={fields.meetOurTeamTitle}
@@ -323,6 +323,7 @@ export async function getStaticProps(context) {
     let entries;
     let langToggle;
     let teamMembers;
+    let blogPosts;
     if (lang === "fi") {
       // get page content
       entries = await client.getEntry("5pymhLgyj8UGm4hNxtlKE5", {
@@ -331,6 +332,11 @@ export async function getStaticProps(context) {
       // get team member data
       teamMembers = await client.getEntries({
         content_type: "teamMember",
+        locale: "fi",
+      });
+
+      blogPosts = await client.getEntries({
+        content_type: "blogPost",
         locale: "fi",
       });
       langToggle = {
@@ -350,6 +356,10 @@ export async function getStaticProps(context) {
         content_type: "teamMember",
         locale: "en-US",
       });
+      blogPosts = await client.getEntries({
+        content_type: "blogPost",
+        locale: "en-US",
+      });
       langToggle = {
         label: "Suomeksi",
         as: "a",
@@ -364,6 +374,7 @@ export async function getStaticProps(context) {
         fields: entries.fields,
         langToggle,
         teamMembers: teamMembers.items,
+        blogPosts: blogPosts.items,
       },
     };
   } catch (err) {

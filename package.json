@@ -21,7 +21,8 @@
     "next-absolute-url": "1.2.2",
     "next-compose-plugins": "2.2.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-markdown": "^6.0.2"
   },
   "devDependencies": {
     "@storybook/addon-actions": "6.0.26",
