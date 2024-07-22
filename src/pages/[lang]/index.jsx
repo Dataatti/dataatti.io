@@ -236,9 +236,9 @@ const Startup = ({ fields, langToggle, teamMembers }) => {
               md: 5,
             },
             gridTemplateColumns: {
-              _: "repeat(2, 1fr)",
-              md: "repeat(3, 1fr)",
-              lg: "repeat(3, 1fr)",
+              _: "repeat(1, 1fr)",
+              md: "repeat(1, 1fr)",
+              lg: "repeat(1, 1fr)",
             },
             gridColumnGap: "32px",
             gridRowGap: {
