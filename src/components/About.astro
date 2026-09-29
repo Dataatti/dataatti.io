@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import photo from "../assets/petro.jpg";
-import { about, site } from "../content/site";
+import { about, site, common } from "../content/site";
 import Icon from "./Icon.astro";
 import Square from "./Square.astro";
 
@@ -27,12 +27,8 @@ const parts = about.paragraphs.map((p) => p.split("{hackathon}"));
   <div class="container inner">
     <div class="profile-wrap">
       <Square color="accent" size={71} right={-48} top={42} blur />
-      <Square color="accent" size={45} left={-87} bottom={54} blur class="hide-sm" />
       <Square color="secondary" size={130} left={182} bottom={-94} blur />
-      <Square color="accent" size={42} left={20} top={-40} />
-      <Square color="accent" size={65} left={-25} bottom={-29} />
       <Square color="accent" size={80} right={-40} bottom={36} />
-      <Square color="secondary" size={33} right={-30} top={160} />
       <Square color="secondary" size={89} left={-50} top={33} />
 
       <figure class="profile">
@@ -51,7 +47,7 @@ const parts = about.paragraphs.map((p) => p.split("{hackathon}"));
         </figcaption>
         <a class="in" href={site.linkedinPerson} target="_blank" rel="noopener">
           <Icon name="linkedin" size={28} />
-          <span class="visually-hidden">{about.linkedinLabel}</span>
+          <span class="visually-hidden">{about.linkedinLabel} {common.newTab}</span>
         </a>
       </figure>
     </div>
@@ -64,7 +60,7 @@ const parts = about.paragraphs.map((p) => p.split("{hackathon}"));
           {after !== undefined && (
             <>
               <a class="text-link" href={about.hackathon.href} target="_blank" rel="noopener">
-                {about.hackathon.label}
+                {about.hackathon.label}<span class="visually-hidden"> {common.newTab}</span>
               </a>
               {after}
             </>
@@ -124,7 +120,8 @@ const parts = about.paragraphs.map((p) => p.split("{hackathon}"));
     margin: 0;
     padding: 48px 32px 40px;
     text-align: center;
-    background: var(--white);
+    background: var(--surface);
+    border: 1px solid var(--card-edge);
     border-radius: 128px 0;
     box-shadow: var(--shadow-card);
   }
@@ -137,25 +134,29 @@ const parts = about.paragraphs.map((p) => p.split("{hackathon}"));
   }
   .name {
     display: block;
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 1.6;
-    color: var(--black);
+    color: var(--heading);
   }
   .role {
     display: block;
     color: var(--muted);
   }
   .in {
-    display: inline-flex;
-    margin-top: 12px;
-    color: var(--primary);
-    transition: color var(--ease);
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-top: 8px;
+    color: var(--brand-text);
+    border-radius: 50%;
+    transition: background-color var(--ease);
   }
   .in:hover {
-    color: var(--primary-1);
+    background: color-mix(in srgb, var(--brand-text) 12%, transparent);
   }
   .caption {
-    max-width: 544px;
+    max-width: 560px;
     text-align: center;
   }
   @media (min-width: 1170px) {
@@ -171,6 +172,7 @@ const parts = about.paragraphs.map((p) => p.split("{hackathon}"));
   }
   .para {
     color: var(--text);
+    max-width: 62ch;
   }
   @media (max-width: 449px) {
     .about :global(.hide-sm) {

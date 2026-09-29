@@ -6,8 +6,14 @@
 export interface ConsultingPackage {
   title: string;
   pitch: string;
+  /** Icon shown on the card. */
+  icon: "users" | "code" | "building";
+  /** One line: who this package suits. Rendered under the pitch. */
+  goodFit: string;
   /** What the customer gets. */
   includes: string[];
+  /** Optional session length, e.g. "90 minutes". Not rendered while empty. */
+  duration?: string;
   /** Holvi product page. */
   url: string;
 }
@@ -18,6 +24,10 @@ export const pricing = {
   vatNote: "+ VAT",
   grossNote: "626,25 € incl. VAT 25.5 %",
   buttonLabel: "Book on Holvi",
+  /** Format shared by all packages (matches the hero copy: one focused session). */
+  format: "One focused session",
+  goodFitLabel: "Good fit if",
+  durationLabel: "Length",
 };
 
 export const shop = {
@@ -28,6 +38,8 @@ export const shop = {
 export const packages: ConsultingPackage[] = [
   {
     title: "AI employee onboarding and adaptation",
+    icon: "users",
+    goodFit: "your team is getting started with AI, or only some people use it so far.",
     pitch: "Get your whole team using AI in their daily work, with tools that fit.",
     includes: [
       "Tooling selection recommendations",
@@ -38,6 +50,8 @@ export const packages: ConsultingPackage[] = [
   },
   {
     title: "Dev workflow level up",
+    icon: "code",
+    goodFit: "you build software and want to know what to change first to work AI-first.",
     pitch: "Find out how AI-ready your development workflow is and what to change first.",
     includes: [
       "Assessment of how AI-ready your current dev workflow is",
@@ -48,6 +62,8 @@ export const packages: ConsultingPackage[] = [
   },
   {
     title: "Organisation AI adoption",
+    icon: "building",
+    goodFit: "you want to see where AI helps across the whole business, not just in one team.",
     pitch: "See where AI helps across your business functions and how to make it stick.",
     includes: [
       "How different business functions can use AI",

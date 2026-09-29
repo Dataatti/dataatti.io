@@ -29,13 +29,13 @@ import { nav, site } from "../content/site";
       <ul class="links">
         {nav.links.map((link) => (
           <li>
-            <a class="link" href={link.href}>
+            <a class="link" href={link.href.startsWith("#") ? `/${link.href}` : link.href}>
               {link.label}
             </a>
           </li>
         ))}
       </ul>
-      <a class="btn btn--accent btn--small cta" href={nav.cta.href}>
+      <a class="btn btn--accent btn--small cta" href={`/${nav.cta.href}`}>
         {nav.cta.label}
       </a>
     </nav>
@@ -71,6 +71,26 @@ import { nav, site } from "../content/site";
     if (e.matches) setOpen(false);
   });
 
+  // Mark the section in view (aria-current) so the current location is always visible.
+  const links = [...menu.querySelectorAll<HTMLAnchorElement>(".link")];
+  const targets = links
+    .map((a) => ({ a, el: document.getElementById(a.hash.slice(1)) }))
+    .filter((t): t is { a: HTMLAnchorElement; el: HTMLElement } => t.el !== null);
+  if (targets.length && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const t = targets.find((x) => x.el === entry.target);
+          if (!t) continue;
+          if (entry.isIntersecting) t.a.setAttribute("aria-current", "location");
+          else t.a.removeAttribute("aria-current");
+        }
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    targets.forEach((t) => io.observe(t.el));
+  }
+
   const onScroll = () => header.classList.toggle("stuck", window.scrollY > 20);
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
@@ -82,11 +102,12 @@ import { nav, site } from "../content/site";
     top: 0;
     z-index: 1000;
     width: 100%;
-    background: var(--white);
-    transition: all var(--ease);
+    background: var(--bg);
+    transition: box-shadow var(--ease);
   }
   .header.stuck {
     box-shadow: var(--shadow-card);
+    border-bottom: 1px solid var(--card-edge);
   }
   .bar {
     display: flex;
@@ -97,6 +118,8 @@ import { nav, site } from "../content/site";
     min-height: var(--navbar-h);
   }
   .logo {
+    position: relative;
+    z-index: 1030;
     display: block;
     line-height: 0;
   }
@@ -115,7 +138,7 @@ import { nav, site } from "../content/site";
     width: 44px;
     height: 44px;
     padding: 0;
-    color: var(--black);
+    color: var(--heading);
     cursor: pointer;
     background: none;
     border: 0;
@@ -172,10 +195,13 @@ import { nav, site } from "../content/site";
     gap: 8px;
     overflow: auto;
     visibility: hidden;
-    background: var(--white);
+    background: var(--bg);
     opacity: 0;
-    transform: scale(1.1);
-    transition: all var(--ease);
+    transform: scale(1.04);
+    transition:
+      opacity var(--ease),
+      transform var(--ease),
+      visibility var(--ease);
   }
   .open .menu {
     visibility: visible;
@@ -190,11 +216,19 @@ import { nav, site } from "../content/site";
   .link {
     display: block;
     padding: 12px 16px;
-    font-size: 20px;
-    transition: all var(--ease);
+    font-size: 1.25rem;
+    color: var(--heading);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+    transition: text-decoration-color var(--ease);
   }
   .link:hover {
-    color: #257a6f;
+    text-decoration-color: var(--tone-secondary);
+  }
+  .link[aria-current] {
+    text-decoration-color: var(--accent);
   }
   .cta {
     margin-top: 8px;
@@ -223,10 +257,11 @@ import { nav, site } from "../content/site";
       flex-direction: row;
       margin: 0 auto;
       padding-left: 100px; /* balance the CTA so links sit visually centered */
+      gap: 8px;
     }
     .link {
-      padding: 4px 16px;
-      font-size: 16px;
+      padding: 10px 16px;
+      font-size: 1rem;
     }
     .cta {
       margin-top: 0;

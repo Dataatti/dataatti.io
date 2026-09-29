@@ -23,10 +23,42 @@
   --white: #ffffff;
   --link: #a8531f; /* accent, darkened for text contrast */
 
+  /* Semantic roles (redefined for dark mode below). Brand hues above stay fixed. */
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --surface: #ffffff; /* cards */
+  --heading: var(--black);
+  --brand-text: #0c4b5b; /* primary as text/icon on --bg or --surface, 9.7:1 */
+  --tone-secondary: #257a6f; /* secondary as text/icon, 5.1:1 */
+  --tone-accent: #b05827; /* accent as text/icon, 4.9:1 */
+  --focus: #126f87; /* 5.8:1 on white */
+  --on-dark-focus: #ffffff;
+
   --font: "Hind", sans-serif;
   --shadow-card: 0 36px 64px rgba(34, 39, 43, 0.06);
+  --card-edge: transparent;
   --ease: 0.2s ease-in-out;
+  --ease-out: 0.18s cubic-bezier(0.2, 0, 0, 1);
   --navbar-h: 84px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --black: #f3f6f7;
+    --text: #e8ecee; /* 15.5:1 on #0d1517 */
+    --muted: #a3adb1; /* 8.1:1 on #0d1517, 7.0:1 on cards */
+    --line: rgba(255, 255, 255, 0.1);
+    --bg: #0d1517;
+    --bg-soft: #131e21;
+    --surface: #172428;
+    --link: #f2a377; /* 9.0:1 on #0d1517 */
+    --brand-text: #7fcfe2; /* 10.5:1 on #0d1517 */
+    --tone-secondary: #75c3b9; /* 7.8:1 on cards */
+    --tone-accent: #f08a58; /* 6.4:1 on cards */
+    --focus: #7fcfe2;
+    --shadow-card: 0 36px 64px rgba(0, 0, 0, 0.35);
+    --card-edge: rgba(255, 255, 255, 0.08);
+  }
 }
 
 *,
@@ -50,10 +82,10 @@ body {
   margin: 0;
   overflow-x: clip;
   font-family: var(--font);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--text);
-  background: var(--white);
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -86,7 +118,7 @@ a {
 }
 
 :focus-visible {
-  outline: 3px solid var(--primary-2);
+  outline: 3px solid var(--focus);
   outline-offset: 3px;
   border-radius: 6px;
 }
@@ -145,30 +177,38 @@ h3,
 h4,
 h5 {
   font-weight: 700;
-  color: var(--black);
+  color: var(--heading);
 }
 h1 {
-  font-size: 40px;
-  line-height: 1.15;
+  font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
 }
 h2 {
-  font-size: 30px;
-  line-height: 1.3;
+  font-size: clamp(1.75rem, 1.45rem + 1.2vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 h3 {
-  font-size: 24px;
-  line-height: 1.4;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  text-wrap: balance;
 }
 h4 {
-  font-size: 20px;
-  line-height: 1.6;
+  font-size: 1.25rem;
+  line-height: 1.5;
 }
 h5 {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.7;
 }
+p {
+  text-wrap: pretty;
+}
 .lead {
-  font-size: 20px;
+  font-size: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
   line-height: 1.6;
   color: var(--muted);
 }
@@ -188,27 +228,38 @@ h5 {
   text-underline-offset: 3px;
 }
 .text-link:hover {
-  color: var(--accent-1);
+  text-decoration-thickness: 2px;
+}
+@media (prefers-color-scheme: light) {
+  .text-link:hover {
+    color: var(--accent-1);
+  }
 }
 
 /* Buttons */
 .btn {
-  display: inline-block;
-  padding: 11px 48px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 48px;
   font: inherit;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
-  line-height: 1.6;
+  line-height: 1.4;
   color: var(--white);
   text-align: center;
   white-space: nowrap;
   cursor: pointer;
   border: none;
   border-radius: 24px;
-  transition: all var(--ease);
+  transition:
+    background-color var(--ease),
+    box-shadow var(--ease),
+    transform var(--ease-out);
   --btn: var(--primary);
   --btn-hover: var(--primary-1);
-  --btn-active: var(--primary-2);
+  --btn-active: #093946;
   background: var(--btn);
   box-shadow: 0 24px 32px color-mix(in srgb, var(--btn) 14%, transparent);
 }
@@ -219,42 +270,86 @@ h5 {
   background: var(--btn-active);
   box-shadow: none;
 }
+@media (prefers-reduced-motion: no-preference) {
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+  .btn:active {
+    transform: translateY(0);
+  }
+}
 .btn--accent {
-  --btn: #b05827; /* accent, slightly darker for white-text contrast */
-  --btn-hover: var(--accent-1);
-  --btn-active: var(--accent);
+  --btn: #b05827; /* white text 4.9:1 */
+  --btn-hover: #9c4a1d; /* 6.2:1 */
+  --btn-active: #8f4519; /* 6.9:1 */
 }
 .btn--secondary {
-  --btn: #257a6f; /* secondary, darker for white-text contrast */
-  --btn-hover: #277569;
-  --btn-active: var(--secondary);
+  --btn: #257a6f; /* white text 5.1:1 */
+  --btn-hover: #1d6a60; /* 6.4:1 */
+  --btn-active: #175a51;
 }
 .btn--small {
-  padding: 6px 48px 7px;
-  font-size: 14px;
-  line-height: 1.7;
-  border-radius: 18px;
+  min-height: 44px;
+  padding: 6px 32px;
+  font-size: 0.9375rem;
+  border-radius: 22px;
 }
 .btn--large {
-  padding: 15px 48px;
-  font-size: 20px;
+  min-height: 56px;
+  padding: 14px 48px;
+  font-size: 1.25rem;
   line-height: 1.3;
   border-radius: 28px;
 }
 .btn--ghost {
-  color: var(--primary);
+  color: var(--brand-text);
   background: transparent;
   box-shadow: none;
 }
 .btn--ghost:hover {
-  color: var(--primary-1);
-  background: transparent;
+  color: var(--brand-text);
+  background: color-mix(in srgb, var(--brand-text) 8%, transparent);
+}
+.btn--ghost:active {
+  background: color-mix(in srgb, var(--brand-text) 14%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  .btn {
+    --btn: #126f87; /* white text 5.8:1 */
+    --btn-hover: #0f5f73;
+    --btn-active: #0c4b5b;
+    box-shadow: none;
+  }
+  .btn--accent {
+    --btn: #b05827;
+    --btn-hover: #9c4a1d;
+    --btn-active: #8f4519;
+  }
+  .btn--secondary {
+    --btn: #257a6f;
+    --btn-hover: #1d6a60;
+    --btn-active: #175a51;
+  }
+  .btn--ghost {
+    --btn: transparent;
+    --btn-hover: transparent;
+    --btn-active: transparent;
+  }
 }
 
 @media (max-width: 449px) {
   .btn {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -265,4 +360,8 @@ h5 {
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+html.menu-open {
+  overflow: hidden;
 }

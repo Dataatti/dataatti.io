@@ -4,6 +4,11 @@
 
 export type IconName = "package" | "message" | "clock" | "target";
 
+/** Shared accessibility strings. */
+export const common = {
+  newTab: "(opens in a new tab)",
+};
+
 export interface Link {
   label: string;
   href: string;
@@ -21,6 +26,7 @@ export const site = {
   linkedinCompany: "https://www.linkedin.com/company/dataatti/",
   logoAlt: "Dataatti",
   themeColor: "#ffffff",
+  themeColorDark: "#0d1517",
 };
 
 export const seo = {
@@ -42,7 +48,7 @@ export const nav = {
   openLabel: "Open menu",
   closeLabel: "Close menu",
   links: [
-    { label: "Services", href: "#services" },
+    { label: "Process", href: "#process" },
     { label: "Packages", href: "#packages" },
     { label: "About", href: "#about" },
   ] satisfies Link[],
@@ -51,11 +57,11 @@ export const nav = {
 
 export const hero = {
   title: "Practical AI for your team, without the consulting overhead",
-  text: "I help teams and organisations put AI to work in real, everyday tasks. Pick a fixed-price package, tell me about your situation, and you get concrete next steps in one focused session.",
+  text: "I help teams and organisations put AI to work on real, everyday tasks. Pick a fixed-price package, tell me about your situation, and leave one focused session with concrete next steps.",
   primary: { label: "See the packages", href: "#packages" } satisfies Link,
   secondary: { label: "Get in touch", href: "#contact" } satisfies Link,
   card: {
-    label: "After one session you have",
+    label: "After one session, you have",
     title: "Clear answers, not a long report",
     items: [
       "Tooling recommendations that fit your team",
@@ -66,10 +72,9 @@ export const hero = {
 };
 
 export const howItWorks = {
-  id: "services",
-  title: "How it works",
-  text: "Simple and quick, from purchase to a session in your calendar.",
-  stepLabel: "Step",
+  id: "process",
+  title: "From question to plan, fast",
+  text: "Four simple steps from purchase to a session in your calendar.",
   steps: [
     {
       icon: "package",
@@ -115,7 +120,7 @@ export const about = {
   // Use {hackathon} to place the hackathon link inside a paragraph.
   paragraphs: [
     "I have CTO-level experience from a real startup, and I work AI-first myself. My advice is practical and focused on modern technology you can put to use right away.",
-    "Dataatti was founded in Turku after winning the {hackathon}.",
+    "I founded Dataatti in Turku after winning the {hackathon}.",
     "My aim is to be an accessible, lightweight alternative to traditional consulting: fixed-price packages and a quick start instead of long engagements.",
   ],
   hackathon: {
@@ -126,7 +131,7 @@ export const about = {
 
 export const contact = {
   id: "contact",
-  title: "Contact information",
+  title: "Contact",
   emailLabel: "Email",
   phoneLabel: "Phone",
   businessIdLabel: "Business ID",
