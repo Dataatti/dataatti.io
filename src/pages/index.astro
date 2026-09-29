@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import Packages from "../components/Packages.astro";
+import About from "../components/About.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import { seo, site } from "../content/site";
+import { packages, pricing } from "../content/packages";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${site.url}#organization`,
+  name: site.name,
+  legalName: site.legalName,
+  url: site.url,
+  logo: new URL("/logo.svg", site.url).toString(),
+  description: seo.description,
+  email: site.email,
+  telephone: site.phone,
+  taxID: site.businessId,
+  sameAs: [site.linkedinCompany],
+  founder: {
+    "@type": "Person",
+    name: site.founder,
+    url: site.linkedinPerson,
+    jobTitle: "Founder & consultant",
+    sameAs: [site.linkedinPerson],
+  },
+  makesOffer: packages.map((pkg) => ({
+    "@type": "Offer",
+    url: pkg.url,
+    priceCurrency: "EUR",
+    price: pricing.price.replace(/[^\d.]/g, ""),
+    itemOffered: { "@type": "Service", name: pkg.title, description: pkg.pitch },
+  })),
+};
+---
+
+<Layout jsonLd={jsonLd}>
+  <Navbar />
+  <main id="main">
+    <Hero />
+    <HowItWorks />
+    <Packages />
+    <About />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>

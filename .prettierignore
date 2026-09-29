@@ -1,8 +1,4 @@
-.browserlistrc
-.editorconfig
-.gitignore
-.next
-.prettierignore
-.vscode
-src/packages/**
-
+dist
+.astro
+package-lock.json
+public
