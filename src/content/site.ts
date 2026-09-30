@@ -101,11 +101,11 @@ export const howItWorks = {
 export const packagesSection = {
   id: "packages",
   title: "Packages",
-  text: "Three fixed-price consulting packages. Simple to buy, simple to act on.",
+  text: "The most time-cost efficient consulting you've ever received. From an AI-driven startup CTO.",
   includesLabel: "What you get",
   notes: [
-    "Pricing is flexible for justified cases, so just ask if the price is a blocker.",
-    "After the first session we can also agree on a custom partnership if you want to keep going.",
+    "The price for the sessions is flexible if you think you have a good argument for it.",
+    "Want a longer partnership? Book the first one and let's see if things kick off. Happy to book follow-ups and set up a custom deal!",
   ],
 };
 

@@ -1,6 +1,7 @@
 ---
 import { packages, pricing, shop } from "../content/packages";
 import { packagesSection, common } from "../content/site";
+import { Image } from "astro:assets";
 import Icon from "./Icon.astro";
 import Square from "./Square.astro";
 
@@ -37,11 +38,16 @@ const tones = ["primary", "secondary", "accent"];
     <ul class="cards">
       {packages.map((pkg, i) => (
         <li class={`card tone-${tones[i % tones.length]}`}>
-          <span class="badge">
-            <Icon name={pkg.icon} size={28} />
-          </span>
+          <Image
+            class="product-img"
+            src={pkg.image}
+            alt=""
+            widths={[240, 480]}
+            sizes="240px"
+            width={240}
+            height={240}
+          />
           <h3>{pkg.title}</h3>
-          <p class="pitch">{pkg.pitch}</p>
           {pkg.duration && (
             <p class="meta">
               <span class="chip">
@@ -49,16 +55,11 @@ const tones = ["primary", "secondary", "accent"];
               </span>
             </p>
           )}
-          <p class="fit">
-            <strong>{pricing.goodFitLabel}</strong>
-            {pkg.goodFit}
-          </p>
 
           <div class="price">
             <span class="amount">{pricing.price}</span>
             <span class="vat">{pricing.vatNote}</span>
           </div>
-          <p class="gross">{pricing.grossNote}</p>
 
           <p class="includes-label">{packagesSection.includesLabel}</p>
           <ul class="list">
@@ -150,40 +151,34 @@ const tones = ["primary", "secondary", "accent"];
       border-radius: 64px;
     }
   }
-  /* --tone: text/icon/badge colour, >= 4.9:1 on the card in both schemes */
+  /* --tone: text/icon colour, >= 4.9:1 on the card */
   .tone-primary {
     --tone: var(--brand-text);
-    --badge: var(--primary);
   }
   .tone-secondary {
     --tone: var(--tone-secondary);
-    --badge: #257a6f;
   }
   .tone-accent {
     --tone: var(--tone-accent);
-    --badge: #b05827;
   }
-  .badge {
-    display: grid;
-    place-items: center;
-    width: 56px;
-    height: 56px;
-    margin: 0 auto 20px;
-    color: var(--white);
-    background: var(--badge);
-    border-radius: 20px;
+  .product-img {
+    display: block;
+    width: 240px;
+    max-width: 100%;
+    height: auto;
+    margin: -16px auto 8px;
   }
   h3 {
-    margin-bottom: 12px;
+    margin-bottom: 20px;
     font-size: 1.375rem;
     text-align: center;
     color: var(--tone);
   }
   @media (min-width: 1170px) {
     .card {
-      /* rows line up across the three cards: badge, title, pitch, ..., button */
+      /* rows line up across the three cards: image, title, meta, price, label, list, button */
       display: grid;
-      grid-row: span 10;
+      grid-row: span 7;
       grid-template-rows: subgrid;
     }
     .cards {
@@ -192,10 +187,6 @@ const tones = ["primary", "secondary", "accent"];
     .list {
       align-self: start;
     }
-  }
-  .pitch {
-    text-align: center;
-    color: var(--muted);
   }
   .meta {
     display: flex;
@@ -213,22 +204,6 @@ const tones = ["primary", "secondary", "accent"];
     background: color-mix(in srgb, var(--tone) 10%, transparent);
     border-radius: 999px;
   }
-  .fit {
-    margin: 16px 0 28px;
-    padding: 12px 16px;
-    font-size: 0.9375rem;
-    text-align: center;
-    color: var(--text);
-    background: var(--bg-soft);
-    border-radius: 16px;
-  }
-  .fit strong {
-    display: block;
-    font-size: 0.875rem;
-    color: var(--heading);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
   .price {
     display: flex;
     align-items: baseline;
@@ -244,14 +219,8 @@ const tones = ["primary", "secondary", "accent"];
     line-height: 1;
   }
   .vat {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 700;
-  }
-  .gross {
-    margin-top: 4px;
-    font-size: 0.875rem;
-    text-align: center;
-    color: var(--muted);
   }
   .includes-label {
     margin-top: 32px;

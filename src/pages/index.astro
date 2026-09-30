@@ -34,8 +34,13 @@ const jsonLd = {
     "@type": "Offer",
     url: pkg.url,
     priceCurrency: "EUR",
-    price: pricing.price.replace(/[^\d.]/g, ""),
-    itemOffered: { "@type": "Service", name: pkg.title, description: pkg.pitch },
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      price: pricing.price.replace(/[^\d.]/g, ""),
+      priceCurrency: "EUR",
+      valueAddedTaxIncluded: false,
+    },
+    itemOffered: { "@type": "Service", name: pkg.title, description: pkg.includes.join(". ") },
   })),
 };
 ---

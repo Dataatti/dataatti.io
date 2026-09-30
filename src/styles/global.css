@@ -42,6 +42,11 @@
   --navbar-h: 84px;
 }
 
+::selection {
+  color: var(--white);
+  background: var(--accent);
+}
+
 *,
 *::before,
 *::after {
