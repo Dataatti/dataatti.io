@@ -1,0 +1,84 @@
+---
+import { howItWorks } from "../content/site";
+import Icon from "./Icon.astro";
+
+const tones = ["primary", "accent", "secondary", "primary"];
+---
+
+<section class="section how" id={howItWorks.id} aria-labelledby="how-title">
+  <div class="container">
+    <div class="head">
+      <h2 class="section-title" id="how-title">
+        {howItWorks.title}
+      </h2>
+      <p class="section-text">{howItWorks.text}</p>
+    </div>
+    <ol class="grid">
+      {howItWorks.steps.map((step, i) => (
+        <li class="step">
+          <span class={`icon icon--${tones[i % tones.length]}`}>
+            <Icon name={step.icon} size={44} />
+          </span>
+          <h3>{step.title}</h3>
+          <p class="text">{step.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .head {
+    margin-bottom: 48px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    max-width: 1088px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1170px) {
+    .grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+  }
+  .step {
+    text-align: center;
+  }
+  .icon {
+    display: grid;
+    place-items: center;
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 16px;
+    color: var(--white);
+    border-radius: 50%;
+    background: var(--c);
+    box-shadow: 0 24px 32px color-mix(in srgb, var(--c) 20%, transparent);
+  }
+  .icon--primary {
+    --c: var(--primary);
+  }
+  .icon--accent {
+    --c: var(--accent);
+  }
+  .icon--secondary {
+    --c: #257a6f; /* white icon 5.1:1 (was #51b3a7, 2.5:1) */
+  }
+  h3 {
+    margin-bottom: 8px;
+    font-size: 1.25rem;
+  }
+  .text {
+    max-width: 30ch;
+    margin: 0 auto;
+    color: var(--muted);
+  }
+</style>
