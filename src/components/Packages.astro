@@ -42,14 +42,13 @@ const tones = ["primary", "secondary", "accent"];
           </span>
           <h3>{pkg.title}</h3>
           <p class="pitch">{pkg.pitch}</p>
-          <p class="meta">
-            <span class="chip">{pricing.format}</span>
-            {pkg.duration && (
+          {pkg.duration && (
+            <p class="meta">
               <span class="chip">
                 {pricing.durationLabel}: {pkg.duration}
               </span>
-            )}
-          </p>
+            </p>
+          )}
           <p class="fit">
             <strong>{pricing.goodFitLabel}</strong>
             {pkg.goodFit}

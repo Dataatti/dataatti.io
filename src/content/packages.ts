@@ -24,8 +24,6 @@ export const pricing = {
   vatNote: "+ VAT",
   grossNote: "626,25 € incl. VAT 25.5 %",
   buttonLabel: "Book on Holvi",
-  /** Format shared by all packages (matches the hero copy: one focused session). */
-  format: "One focused session",
   goodFitLabel: "Good fit if",
   durationLabel: "Length",
 };

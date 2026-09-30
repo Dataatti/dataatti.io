@@ -26,7 +26,6 @@ export const site = {
   linkedinCompany: "https://www.linkedin.com/company/dataatti/",
   logoAlt: "Dataatti",
   themeColor: "#ffffff",
-  themeColorDark: "#0d1517",
 };
 
 export const seo = {

@@ -23,8 +23,8 @@
   --white: #ffffff;
   --link: #a8531f; /* accent, darkened for text contrast */
 
-  /* Semantic roles (redefined for dark mode below). Brand hues above stay fixed. */
-  color-scheme: light dark;
+  /* Semantic roles. Brand hues above stay fixed. */
+  color-scheme: light;
   --bg: #ffffff;
   --surface: #ffffff; /* cards */
   --heading: var(--black);
@@ -40,25 +40,6 @@
   --ease: 0.2s ease-in-out;
   --ease-out: 0.18s cubic-bezier(0.2, 0, 0, 1);
   --navbar-h: 84px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --black: #f3f6f7;
-    --text: #e8ecee; /* 15.5:1 on #0d1517 */
-    --muted: #a3adb1; /* 8.1:1 on #0d1517, 7.0:1 on cards */
-    --line: rgba(255, 255, 255, 0.1);
-    --bg: #0d1517;
-    --bg-soft: #131e21;
-    --surface: #172428;
-    --link: #f2a377; /* 9.0:1 on #0d1517 */
-    --brand-text: #7fcfe2; /* 10.5:1 on #0d1517 */
-    --tone-secondary: #75c3b9; /* 7.8:1 on cards */
-    --tone-accent: #f08a58; /* 6.4:1 on cards */
-    --focus: #7fcfe2;
-    --shadow-card: 0 36px 64px rgba(0, 0, 0, 0.35);
-    --card-edge: rgba(255, 255, 255, 0.08);
-  }
 }
 
 *,
@@ -228,12 +209,8 @@ p {
   text-underline-offset: 3px;
 }
 .text-link:hover {
+  color: var(--accent-1);
   text-decoration-thickness: 2px;
-}
-@media (prefers-color-scheme: light) {
-  .text-link:hover {
-    color: var(--accent-1);
-  }
 }
 
 /* Buttons */
@@ -312,30 +289,6 @@ p {
 }
 .btn--ghost:active {
   background: color-mix(in srgb, var(--brand-text) 14%, transparent);
-}
-
-@media (prefers-color-scheme: dark) {
-  .btn {
-    --btn: #126f87; /* white text 5.8:1 */
-    --btn-hover: #0f5f73;
-    --btn-active: #0c4b5b;
-    box-shadow: none;
-  }
-  .btn--accent {
-    --btn: #b05827;
-    --btn-hover: #9c4a1d;
-    --btn-active: #8f4519;
-  }
-  .btn--secondary {
-    --btn: #257a6f;
-    --btn-hover: #1d6a60;
-    --btn-active: #175a51;
-  }
-  .btn--ghost {
-    --btn: transparent;
-    --btn-hover: transparent;
-    --btn-active: transparent;
-  }
 }
 
 @media (max-width: 449px) {
