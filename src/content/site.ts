@@ -49,7 +49,6 @@ export const nav = {
   links: [
     { label: "Process", href: "#process" },
     { label: "Packages", href: "#packages" },
-    { label: "About", href: "#about" },
   ] satisfies Link[],
   cta: { label: "Book a session", href: "#packages" } satisfies Link,
 };
@@ -60,6 +59,10 @@ export const hero = {
   primary: { label: "See the packages", href: "#packages" } satisfies Link,
   secondary: { label: "Get in touch", href: "#contact" } satisfies Link,
   card: {
+    name: "Petro Silenius",
+    role: "Founder & consultant",
+    photoAlt: "Portrait of Petro Silenius",
+    linkedinLabel: "Petro Silenius on LinkedIn",
     label: "After one session, you have",
     title: "Clear answers, not a long report",
     items: [
@@ -107,25 +110,6 @@ export const packagesSection = {
     "The price for the sessions is flexible if you think you have a good argument for it.",
     "Want a longer partnership? Book the first one and let's see if things kick off. Happy to book follow-ups and set up a custom deal!",
   ],
-};
-
-export const about = {
-  id: "about",
-  title: "About",
-  name: "Petro Silenius",
-  role: "Founder & consultant",
-  photoAlt: "Portrait of Petro Silenius",
-  linkedinLabel: "Petro Silenius on LinkedIn",
-  // Use {hackathon} to place the hackathon link inside a paragraph.
-  paragraphs: [
-    "I have CTO-level experience from a real startup, and I work AI-first myself. My advice is practical and focused on modern technology you can put to use right away.",
-    "I founded Dataatti in Turku after winning the {hackathon}.",
-    "My aim is to be an accessible, lightweight alternative to traditional consulting: fixed-price packages and a quick start instead of long engagements.",
-  ],
-  hackathon: {
-    label: "Turku city hackathon",
-    href: "https://www.turku.fi/uutinen/2020-10-30_hackathonin-voittajaideaa-kehitetaan-kaupungin-avoimen-tiedon-palveluksi",
-  },
 };
 
 export const contact = {

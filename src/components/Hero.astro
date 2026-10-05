@@ -1,5 +1,7 @@
 ---
-import { hero } from "../content/site";
+import { Image } from "astro:assets";
+import { common, hero, site } from "../content/site";
+import photo from "../assets/petro.jpg";
 import Square from "./Square.astro";
 import Icon from "./Icon.astro";
 ---
@@ -28,6 +30,25 @@ import Icon from "./Icon.astro";
       <Square color="secondary" size={99} right={-60} top={40} blur />
 
       <div class="card">
+        <div class="profile">
+          <Image
+            class="avatar"
+            src={photo}
+            alt={hero.card.photoAlt}
+            width={104}
+            height={104}
+            densities={[1, 2]}
+            loading="eager"
+          />
+          <div class="who">
+            <p class="name">{hero.card.name}</p>
+            <p class="role">{hero.card.role}</p>
+          </div>
+          <a class="in" href={site.linkedinPerson} target="_blank" rel="noopener">
+            <Icon name="linkedin" size={28} />
+            <span class="visually-hidden">{hero.card.linkedinLabel} {common.newTab}</span>
+          </a>
+        </div>
         <p class="card-label">{hero.card.label}</p>
         <p class="card-title">{hero.card.title}</p>
         <ul class="card-list">
@@ -126,6 +147,52 @@ import Icon from "./Icon.astro";
       padding: 48px;
       border-radius: 64px;
     }
+  }
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .avatar {
+    flex: none;
+    width: 88px;
+    height: 88px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--white);
+  }
+  @media (min-width: 768px) {
+    .avatar {
+      width: 104px;
+      height: 104px;
+    }
+  }
+  .who {
+    flex: 1;
+    min-width: 0;
+  }
+  .name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--white);
+  }
+  .role {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .in {
+    flex: none;
+    display: inline-flex;
+    padding: 8px;
+    color: var(--white);
+    border-radius: 12px;
+    transition: color 0.2s ease;
+  }
+  .in:hover {
+    color: var(--secondary-1);
   }
   .card-label {
     margin-bottom: 8px;
