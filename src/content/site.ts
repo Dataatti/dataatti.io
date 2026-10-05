@@ -60,7 +60,6 @@ export const hero = {
   secondary: { label: "Get in touch", href: "#contact" } satisfies Link,
   card: {
     name: "Petro Silenius",
-    role: "Founder & consultant",
     photoAlt: "Portrait of Petro Silenius",
     linkedinLabel: "Petro Silenius on LinkedIn",
     label: "After one session, you have",
