@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { seo } from "../content/site";
+---
+
+<Layout title={seo.notFound.title} noindex>
+  <Navbar />
+  <main id="main" class="container nf">
+    <h1>{seo.notFound.heading}</h1>
+    <p class="lead">{seo.notFound.text}</p>
+    <a class="btn" href="/">
+      {seo.notFound.button}
+    </a>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .nf {
+    padding-top: 96px;
+    padding-bottom: 160px;
+    text-align: center;
+  }
+  h1 {
+    margin-bottom: 16px;
+  }
+  .lead {
+    margin-bottom: 32px;
+  }
+</style>

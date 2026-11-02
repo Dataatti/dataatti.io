@@ -1,0 +1,270 @@
+---
+import { nav, site } from "../content/site";
+---
+
+<a class="skip-link" href="#main">
+  Skip to content
+</a>
+<header class="header" id="header">
+  <div class="container bar">
+    <a class="logo" href="/" aria-label={site.name}>
+      <img src="/logo.svg" alt={site.logoAlt} width="150" height="50" />
+    </a>
+
+    <button
+      class="toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="menu"
+      aria-label={nav.openLabel}
+      data-open-label={nav.openLabel}
+      data-close-label={nav.closeLabel}
+    >
+      <span class="burger" aria-hidden="true">
+        <i></i>
+      </span>
+    </button>
+
+    <nav id="menu" class="menu" aria-label={nav.menuLabel}>
+      <ul class="links">
+        {nav.links.map((link) => (
+          <li>
+            <a class="link" href={link.href.startsWith("#") ? `/${link.href}` : link.href}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a class="btn btn--accent btn--small cta" href={`/${nav.cta.href}`}>
+        {nav.cta.label}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById("header")!;
+  const toggle = header.querySelector<HTMLButtonElement>(".toggle")!;
+  const menu = document.getElementById("menu")!;
+
+  const setOpen = (open: boolean) => {
+    header.classList.toggle("open", open);
+    document.documentElement.classList.toggle("menu-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute(
+      "aria-label",
+      (open ? toggle.dataset.closeLabel : toggle.dataset.openLabel) ?? "",
+    );
+  };
+
+  toggle.addEventListener("click", () => setOpen(!header.classList.contains("open")));
+  menu.addEventListener("click", (e) => {
+    if ((e.target as HTMLElement).closest("a")) setOpen(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && header.classList.contains("open")) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+  window.matchMedia("(min-width: 1170px)").addEventListener("change", (e) => {
+    if (e.matches) setOpen(false);
+  });
+
+  // Mark the section in view (aria-current) so the current location is always visible.
+  const links = [...menu.querySelectorAll<HTMLAnchorElement>(".link")];
+  const targets = links
+    .map((a) => ({ a, el: document.getElementById(a.hash.slice(1)) }))
+    .filter((t): t is { a: HTMLAnchorElement; el: HTMLElement } => t.el !== null);
+  if (targets.length && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const t = targets.find((x) => x.el === entry.target);
+          if (!t) continue;
+          if (entry.isIntersecting) t.a.setAttribute("aria-current", "location");
+          else t.a.removeAttribute("aria-current");
+        }
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    targets.forEach((t) => io.observe(t.el));
+  }
+
+  const onScroll = () => header.classList.toggle("stuck", window.scrollY > 20);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+</script>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: var(--bg);
+    transition: box-shadow var(--ease);
+  }
+  .header.stuck {
+    box-shadow: var(--shadow-card);
+    border-bottom: 1px solid var(--card-edge);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    min-height: var(--navbar-h);
+  }
+  .logo {
+    position: relative;
+    z-index: 1030;
+    display: block;
+    line-height: 0;
+  }
+  .logo img {
+    width: 150px;
+    height: 50px;
+  }
+
+  .toggle {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    z-index: 1030;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    color: var(--heading);
+    cursor: pointer;
+    background: none;
+    border: 0;
+    transform: translateY(-50%);
+  }
+  .burger {
+    position: relative;
+    display: block;
+    width: 24px;
+    height: 18px;
+  }
+  .burger::before,
+  .burger::after,
+  .burger i {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    content: "";
+    background: currentColor;
+    border-radius: 2px;
+    transition: all 0.25s ease-in-out;
+  }
+  .burger::before {
+    top: 0;
+  }
+  .burger i {
+    top: 8px;
+  }
+  .burger::after {
+    bottom: 0;
+  }
+  .open .burger::before {
+    top: 8px;
+    transform: rotate(45deg);
+  }
+  .open .burger::after {
+    bottom: 8px;
+    transform: rotate(-45deg);
+  }
+  .open .burger i {
+    opacity: 0;
+  }
+
+  /* Mobile: full screen menu */
+  .menu {
+    position: fixed;
+    inset: 0;
+    z-index: 1020;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    overflow: auto;
+    visibility: hidden;
+    background: var(--bg);
+    opacity: 0;
+    transform: scale(1.04);
+    transition:
+      opacity var(--ease),
+      transform var(--ease),
+      visibility var(--ease);
+  }
+  .open .menu {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+  .links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .link {
+    display: block;
+    padding: 12px 16px;
+    font-size: 1.25rem;
+    color: var(--heading);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+    transition: text-decoration-color var(--ease);
+  }
+  .link:hover {
+    text-decoration-color: var(--tone-secondary);
+  }
+  .link[aria-current] {
+    text-decoration-color: var(--accent);
+  }
+  .cta {
+    margin-top: 8px;
+  }
+
+  @media (min-width: 1170px) {
+    .bar {
+      justify-content: flex-start;
+    }
+    .toggle {
+      display: none;
+    }
+    .menu {
+      position: static;
+      flex: 1;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 0;
+      overflow: visible;
+      visibility: visible;
+      background: none;
+      opacity: 1;
+      transform: none;
+    }
+    .links {
+      flex-direction: row;
+      margin: 0 auto;
+      padding-left: 100px; /* balance the CTA so links sit visually centered */
+      gap: 8px;
+    }
+    .link {
+      padding: 10px 16px;
+      font-size: 1rem;
+    }
+    .cta {
+      margin-top: 0;
+    }
+  }
+</style>

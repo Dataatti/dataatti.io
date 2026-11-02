@@ -1,49 +1,23 @@
 {
-  "name": "@pagerland/next",
-  "version": "1.0.0",
-  "main": "index.js",
-  "author": "Pagerland Team",
-  "license": "MIT",
+  "name": "dataatti-io",
+  "version": "2.0.0",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "dev": "next",
-    "build": "next build && next export",
-    "start": "next start",
-    "docs": "yarn workspace @pagerland/docs storybook",
-    "lint": "eslint src --ext .jsx",
-    "lint:fix": "eslint src --ext .jsx --fix"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "format": "prettier --write ."
   },
   "dependencies": {
-    "contentful": "^8.1.6",
-    "dotenv": "8.2.0",
-    "marked": "^1.2.7",
-    "next": "10.0.4",
-    "next-absolute-url": "1.2.2",
-    "next-compose-plugins": "2.2.0",
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "@fontsource/hind": "^5.3.0",
+    "astro": "^7.3.5"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "6.0.26",
-    "@storybook/addon-docs": "6.0.26",
-    "@storybook/addon-info": "5.3.21",
-    "@storybook/addon-links": "6.0.26",
-    "@storybook/addons": "6.0.26",
-    "@storybook/react": "6.0.26",
-    "@svgr/webpack": "5.4.0",
-    "@zeit/next-css": "1.0.1",
-    "babel-eslint": "^10.1.0",
-    "babel-plugin-styled-components": "1.11.1",
-    "eslint": "^7.20.0",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.22.0",
-    "next-images": "1.6.0",
-    "next-transpile-modules": "4.1.0",
-    "prettier": "^2.2.1",
-    "webpack": "4.44.2"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+    "prettier": "^3.9.9",
+    "prettier-plugin-astro": "^1.1.0"
+  }
 }
