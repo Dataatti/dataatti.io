@@ -1,0 +1,517 @@
+---
+/**
+ * Personalized pitch pages for prospects: dataatti.io/demo/<slug>/
+ *
+ * One JSON file per prospect in src/data/demos/<slug>.json (schema: src/data/demos/README.md).
+ * Files starting with "_" are examples: built in Netlify deploy previews and locally, never in production.
+ * Pages are noindex and not linked from the site or the sitemap.
+ */
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/Footer.astro";
+import { site } from "../../content/site";
+
+type Lang = "fi" | "sv" | "en";
+
+interface ContentItem {
+  headline?: string;
+  text?: string;
+  sourceUrl?: string;
+  date?: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+interface Demo {
+  slug?: string;
+  lang?: Lang;
+  company: string;
+  contactName?: string;
+  headline: string;
+  intro: string;
+  currentState?: string[];
+  examples: {
+    title: string;
+    channel?: string;
+    before: ContentItem;
+    after: ContentItem;
+    why?: string[];
+  }[];
+  offer?: { title?: string; text?: string; points?: string[] };
+  cta?: { title?: string; text?: string };
+  sender?: { name?: string; role?: string; email?: string; phone?: string };
+}
+
+export function getStaticPaths() {
+  const files = import.meta.glob<Demo>("../../data/demos/*.json", {
+    eager: true,
+    import: "default",
+  });
+  const includeExamples = process.env.CONTEXT !== "production";
+  return Object.entries(files)
+    .map(([path, demo]) => ({ file: path.split("/").pop() ?? "", demo }))
+    .filter(({ file }) => includeExamples || !file.startsWith("_"))
+    .map(({ file, demo }) => ({
+      params: { slug: demo.slug ?? file.replace(/^_/, "").replace(/\.json$/, "") },
+      props: { demo },
+    }));
+}
+
+const LABELS = {
+  fi: {
+    greeting: "Hei",
+    preparedFor: "Ehdotus yritykselle",
+    now: "Mitä huomasimme",
+    examples: "Kaksi esimerkkiä",
+    before: "Nyt",
+    after: "Ehdotuksemme",
+    why: "Miksi muutimme",
+    source: "Alkuperäinen",
+    offer: "Mitä voisimme tehdä yhdessä",
+    contact: "Jutellaanko?",
+    email: "Sähköposti",
+    phone: "Puhelin",
+    disclaimer:
+      "Tämä sivu on Dataatti Oy:n ehdotus. Esimerkkien alkuperäiset tekstit ovat julkisesti saatavilla olevaa sisältöä, joita käytämme vain havainnollistamaan ehdotustamme. Jos haluatte, että poistamme sivun, vastatkaa sähköpostiimme, niin poistamme sen.",
+  },
+  sv: {
+    greeting: "Hej",
+    preparedFor: "Ett förslag till",
+    now: "Det här lade vi märke till",
+    examples: "Två exempel",
+    before: "Nu",
+    after: "Vårt förslag",
+    why: "Varför vi ändrade",
+    source: "Original",
+    offer: "Det här kunde vi göra tillsammans",
+    contact: "Ska vi prata?",
+    email: "E-post",
+    phone: "Telefon",
+    disclaimer:
+      "Den här sidan är ett förslag från Dataatti Oy. De ursprungliga texterna i exemplen är offentligt tillgängligt innehåll som vi använder endast för att illustrera vårt förslag. Om ni vill att vi tar bort sidan, svara på vårt mejl så tar vi bort den.",
+  },
+  en: {
+    greeting: "Hi",
+    preparedFor: "A proposal for",
+    now: "What we noticed",
+    examples: "Two examples",
+    before: "Now",
+    after: "Our version",
+    why: "Why we changed it",
+    source: "Original",
+    offer: "What we could do together",
+    contact: "Shall we talk?",
+    email: "Email",
+    phone: "Phone",
+    disclaimer:
+      "This page is a proposal from Dataatti Oy. The original texts in the examples are publicly available content, used only to illustrate our proposal. If you would like us to remove this page, reply to our email and we will take it down.",
+  },
+} as const;
+
+const { demo } = Astro.props as { demo: Demo };
+const lang: Lang = demo.lang && demo.lang in LABELS ? demo.lang : "fi";
+const t = LABELS[lang];
+const sender = {
+  name: site.founder,
+  company: site.legalName,
+  email: site.email,
+  phone: site.phone,
+  role: undefined as string | undefined,
+  ...demo.sender,
+};
+const slug = Astro.params.slug;
+const canonical = new URL(`/demo/${slug}/`, site.url).toString();
+const title = `${t.preparedFor} ${demo.company} | Dataatti`;
+const paragraphs = (text?: string) =>
+  String(text ?? "")
+    .split(/\n{2,}/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+const safeUrl = (u?: string) => (u && /^https?:\/\//i.test(u) ? u : undefined);
+const tel = (p: string) => `tel:${p.replace(/\s/g, "")}`;
+---
+
+<Layout title={title} description={title} canonical={canonical} noindex lang={lang}>
+  <header class="top container">
+    <a class="logo" href="/" aria-label={site.name}>
+      <img src="/logo.svg" alt={site.logoAlt} width="120" height="40" />
+    </a>
+    <span class="for">
+      {t.preparedFor} <strong>{demo.company}</strong>
+    </span>
+  </header>
+
+  <main id="main" class="container page">
+    <section class="hero">
+      <h1>
+        {t.greeting}
+        {demo.contactName ? ` ${demo.contactName}` : ""}, {demo.headline}
+      </h1>
+      <div class="lead intro">
+        {paragraphs(demo.intro).map((p) => (
+          <p>{p}</p>
+        ))}
+      </div>
+    </section>
+
+    {demo.currentState && demo.currentState.length > 0 && (
+      <section class="block">
+        <h2>{t.now}</h2>
+        <ul class="dots">
+          {demo.currentState.map((o) => (
+            <li>{o}</li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <section class="block">
+      <h2>{t.examples}</h2>
+      <ol class="examples">
+        {demo.examples.map((ex, i) => (
+          <li class="example">
+            <div class="example-head">
+              <span class="num" aria-hidden="true">
+                {i + 1}
+              </span>
+              <div>
+                <h3>{ex.title}</h3>
+                {ex.channel && <span class="channel">{ex.channel}</span>}
+              </div>
+            </div>
+            <div class="compare">
+              {[
+                { kind: "before", label: t.before, item: ex.before },
+                { kind: "after", label: t.after, item: ex.after },
+              ].map(({ kind, label, item }) => (
+                <div class={`card ${kind}`}>
+                  <span class="card-label">{label}</span>
+                  {item.image && (
+                    <img
+                      class="card-image"
+                      src={item.image}
+                      alt={item.imageAlt ?? ""}
+                      loading="lazy"
+                    />
+                  )}
+                  {item.headline && <p class="card-headline">{item.headline}</p>}
+                  <div class="card-text">
+                    {paragraphs(item.text).map((p) => (
+                      <p>{p}</p>
+                    ))}
+                  </div>
+                  {safeUrl(item.sourceUrl) ? (
+                    <a
+                      class="source"
+                      href={safeUrl(item.sourceUrl)}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                    >
+                      {t.source}
+                      {item.date ? ` · ${item.date}` : ""} ↗
+                    </a>
+                  ) : (
+                    item.date && <span class="source">{item.date}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+            {ex.why && ex.why.length > 0 && (
+              <div class="why">
+                <p class="why-title">{t.why}</p>
+                <ul class="dots">
+                  {ex.why.map((w) => (
+                    <li>{w}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    {demo.offer && (
+      <section class="block">
+        <h2>{demo.offer.title ?? t.offer}</h2>
+        {paragraphs(demo.offer.text).map((p) => (
+          <p class="offer-text">{p}</p>
+        ))}
+        {demo.offer.points && demo.offer.points.length > 0 && (
+          <ul class="dots">
+            {demo.offer.points.map((p) => (
+              <li>{p}</li>
+            ))}
+          </ul>
+        )}
+      </section>
+    )}
+
+    <section class="contact">
+      <h2>{demo.cta?.title ?? t.contact}</h2>
+      {paragraphs(demo.cta?.text).map((p) => (
+        <p>{p}</p>
+      ))}
+      <dl class="contact-list">
+        <div>
+          <dt>{t.email}</dt>
+          <dd>
+            <a href={`mailto:${sender.email}`}>{sender.email}</a>
+          </dd>
+        </div>
+        {sender.phone && (
+          <div>
+            <dt>{t.phone}</dt>
+            <dd>
+              <a href={tel(sender.phone)}>{sender.phone}</a>
+            </dd>
+          </div>
+        )}
+      </dl>
+      <a
+        class="btn btn--accent"
+        href={`mailto:${sender.email}?subject=${encodeURIComponent(demo.company)}`}
+      >
+        {t.contact}
+      </a>
+      <p class="signature">
+        {sender.name}
+        {sender.role ? `, ${sender.role}` : ""} · {sender.company}
+      </p>
+    </section>
+
+    <p class="disclaimer">{t.disclaimer}</p>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .top {
+    max-width: 980px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .logo {
+    display: block;
+    line-height: 0;
+  }
+  .logo img {
+    width: 120px;
+    height: 40px;
+  }
+  .for {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .for strong {
+    color: var(--heading);
+  }
+
+  .page {
+    max-width: 980px;
+    padding-bottom: 48px;
+  }
+  .hero {
+    padding: 56px 0 24px;
+  }
+  .hero h1 {
+    color: var(--brand-text);
+    margin-bottom: 20px;
+  }
+  .intro {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 720px;
+  }
+
+  .block {
+    padding: 32px 0 8px;
+  }
+  .block > h2 {
+    margin-bottom: 16px;
+    color: var(--brand-text);
+  }
+  .dots {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 22px;
+    list-style: disc;
+  }
+  .dots li::marker {
+    color: var(--tone-accent);
+  }
+  .offer-text {
+    max-width: 720px;
+    margin-bottom: 12px;
+  }
+
+  .examples {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .example-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .num {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--tone-accent);
+    border-radius: 50%;
+  }
+  .example h3 {
+    font-size: 1.25rem;
+  }
+  .channel {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+    padding: 20px;
+    border-radius: 18px;
+  }
+  .card.before {
+    color: var(--text);
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+  }
+  .card.after {
+    color: var(--black);
+    background: var(--surface);
+    border: 2px solid var(--secondary);
+    box-shadow: var(--shadow-card);
+  }
+  .card-label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .card.after .card-label {
+    color: var(--tone-secondary);
+  }
+  .card-image {
+    width: 100%;
+    border-radius: 12px;
+  }
+  .card-headline {
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--heading);
+  }
+  .card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-wrap: anywhere;
+  }
+  .source {
+    margin-top: auto;
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+  a.source {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .why {
+    margin-top: 16px;
+    padding: 14px 18px;
+    background: color-mix(in srgb, var(--secondary) 12%, var(--white));
+    border-left: 4px solid var(--secondary);
+    border-radius: 0 12px 12px 0;
+  }
+  .why-title {
+    margin-bottom: 6px;
+    font-weight: 700;
+    color: var(--brand-text);
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 40px;
+    padding: 32px 24px;
+    color: var(--white);
+    background: var(--primary);
+    border-radius: 24px;
+  }
+  .contact h2 {
+    color: var(--white);
+  }
+  .contact p {
+    max-width: 640px;
+  }
+  .contact-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 32px;
+    margin: 0;
+  }
+  .contact-list dt {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--secondary-3);
+  }
+  .contact-list dd {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+  .contact-list a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .contact :focus-visible {
+    outline-color: var(--on-dark-focus);
+  }
+  .signature {
+    font-size: 0.9375rem;
+    opacity: 0.85;
+  }
+  .disclaimer {
+    max-width: 720px;
+    margin-top: 32px;
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 720px) {
+    .compare {
+      grid-template-columns: 1fr;
+    }
+    .hero {
+      padding-top: 32px;
+    }
+  }
+</style>

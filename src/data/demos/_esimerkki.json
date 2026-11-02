@@ -1,0 +1,59 @@
+{
+  "slug": "esimerkki",
+  "lang": "fi",
+  "company": "Esimerkkileipomo Oy (kuvitteellinen)",
+  "contactName": "Maija",
+  "headline": "teidän leivästänne puhutaan jo – somessa sitä ei vielä näe",
+  "intro": "Kävimme läpi leipomonne verkkosivut ja Instagramin. Tuotteet ovat selvästi pidettyjä, mutta julkaisut eivät kerro, miksi juuri teille kannattaa tulla.\n\nAlla kaksi esimerkkiä siitä, miltä sama sisältö voisi näyttää hieman hiotumpana.",
+  "currentState": [
+    "Instagramiin on julkaistu viimeksi kesäkuussa, ja julkaisuja on noin yksi kuukaudessa.",
+    "Verkkosivujen etusivulla ei kerrota aukioloaikoja eikä sitä, mistä tuotteita saa.",
+    "Asiakkaiden arvosteluissa kehutaan juureen leivottua ruisleipää, mutta sitä ei mainita omassa viestinnässänne lainkaan."
+  ],
+  "examples": [
+    {
+      "title": "Instagram-julkaisu uutuustuotteesta",
+      "channel": "Instagram",
+      "before": {
+        "text": "Uutta! Tulkaa maistamaan 😊",
+        "date": "12.6.2026"
+      },
+      "after": {
+        "text": "Uunista juuri nyt: kardemummapulla, jonka taikina lepää yön yli. 🫶\n\nSaatavilla tiistaista lauantaihin klo 7 alkaen, niin kauan kuin riittää. Viime lauantaina viimeinen pelti meni klo 10.30.\n\n📍 Esimerkkikatu 1, Turku"
+      },
+      "why": [
+        "Kerrotaan mikä tuote on ja mikä tekee siitä erityisen – \"uutta\" ei vielä houkuttele.",
+        "Konkreettinen aika ja niukkuus (\"niin kauan kuin riittää\") antavat syyn tulla aikaisin.",
+        "Osoite julkaisussa auttaa niitä, jotka näkevät postauksen ensimmäistä kertaa."
+      ]
+    },
+    {
+      "title": "Verkkosivujen etusivun esittelyteksti",
+      "channel": "Verkkosivut",
+      "before": {
+        "headline": "Tervetuloa sivuillemme",
+        "text": "Olemme perheyritys, joka on toiminut vuodesta 1998. Valikoimaamme kuuluvat leivät, pullat ja kakut."
+      },
+      "after": {
+        "headline": "Juureen leivottua ruisleipää Turussa vuodesta 1998",
+        "text": "Perheleipomo, jossa leipä leivotaan joka aamu samalla juurella kuin 25 vuotta sitten.\n\nAvoinna ti–la klo 7–15. Tilauskakut kahden päivän varoitusajalla."
+      },
+      "why": [
+        "Otsikko kertoo heti mitä, missä ja miksi juuri te – \"tervetuloa\" ei kerro mitään.",
+        "Nostimme esiin asian, josta asiakkaat jo kehuvat teitä arvosteluissa.",
+        "Aukioloajat ja tilausohje ovat tieto, jota kävijä useimmiten etsii."
+      ]
+    }
+  ],
+  "offer": {
+    "text": "Voisimme hoitaa teille säännöllisen somesisällön ja päivittää verkkosivujen tekstit niin, että vahvuutenne näkyvät.",
+    "points": [
+      "2–3 valmista julkaisua viikossa, kuvaukset ja tekstit valmiina hyväksyttäväksi",
+      "Verkkosivujen tekstien päivitys yhdellä kertaa",
+      "Kuukausittainen lyhyt katsaus siitä, mikä toimi"
+    ]
+  },
+  "cta": {
+    "text": "Jos esimerkit herättivät ajatuksia, soitetaan 15 minuuttia ja katsotaan, olisiko tästä teille hyötyä. Ei sitoumuksia."
+  }
+}

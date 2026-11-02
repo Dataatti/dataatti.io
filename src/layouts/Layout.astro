@@ -8,6 +8,8 @@ interface Props {
   canonical?: string;
   noindex?: boolean;
   jsonLd?: object;
+  /** Page language for the html lang attribute. */
+  lang?: string;
 }
 
 const {
@@ -16,13 +18,14 @@ const {
   canonical = site.url,
   noindex = false,
   jsonLd,
+  lang = "en",
 } = Astro.props;
 
 const abs = (path: string) => new URL(path, site.url).toString();
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
